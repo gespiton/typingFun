@@ -33,7 +33,13 @@ app.get('/typing', function(req, res) {
     res.end(typing)
 })
 
-app.get('/count', function(req, res) {
-    counting ++
-    res.end(`<html><head><title>Number ${counting}</title></head><body>Counting number page</body></html>`)
+app.get('/jquery', function(req, res) {
+    let typingScript = fs.readFileSync('./src/lib/jquery.js','utf8')
+    res.end(typingScript)
+})
+
+
+app.get('/typingScript', function(req, res) {
+    let typingScript = fs.readFileSync('./src/js/typing.js','utf8')
+    res.end(typingScript)
 })
