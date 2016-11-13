@@ -1,6 +1,6 @@
 // contraller variable
 var done = false
-var demoString = "Typing fun!"
+var demoString = "Guild Wars 2 is a massively multiplayer online role-playing game developed by ArenaNet and published by NCSOFT. Set in the fantasy world of Tyria, the game follows the re-emergence of Destiny's Edge, a disbanded guild dedicated to fighting the Elder Dragons, a Lovecraftian species that has seized control of Tyria in the time since the original Guild Wars. "
 var stringSplit = demoString.split('')
 var charNum = stringSplit.length
 var crChar = 0
