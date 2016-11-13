@@ -24,3 +24,8 @@ app.get('/', function(req, res) {
     let index = fs.readFileSync('./src/template/index.html','utf8')
     res.end(index)
 })
+
+app.get('/typing', function(req, res) {
+    let typing = fs.readFileSync('./src/template/typing.html','utf8')
+    res.end(typing)
+})
