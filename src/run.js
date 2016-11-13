@@ -38,6 +38,10 @@ app.get('/jquery', function(req, res) {
     res.end(typingScript)
 })
 
+app.get('/keyvalue', function(req, res) {
+    let keyvalue = fs.readFileSync('./src/js/keyvalue.js','utf8')
+    res.end(keyvalue)
+})
 
 app.get('/typingScript', function(req, res) {
     let typingScript = fs.readFileSync('./src/js/typing.js','utf8')

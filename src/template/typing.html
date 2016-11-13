@@ -4,9 +4,43 @@
         <meta charset="utf-8">
         <title>Typing page</title>
         <script src="jquery"></script>
+        <script src="keyvalue"></script>
+
+        <style media="screen">
+            .character {
+                display: inline-block;
+                padding: 2px;
+                width: 25px;
+                height: 40px;
+                text-align: center;
+                position: relative;
+                font-size: 30px;
+            }
+            .character.selection::before {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 25px;
+                height: 5px;
+                border-radius: 3px;
+                background-color: #aaaaaa;
+                bottom: 2px;
+            }
+            .character.correct {
+                background-color: #00ff00;
+            }
+            .character.incorrect {
+                background-color: #ff0000;
+            }
+            .typingStage {
+                padding: 20px;
+                display: flex;
+            }
+        </style>
     </head>
     <body>
-        <p id="output">Key input: </p>
+        <div class="typingStage">
+        </div>
         <script src="typingScript"></script>
     </body>
 </html>
