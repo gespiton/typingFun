@@ -7,6 +7,9 @@ const fs = require('fs')
 // Const a webport value
 const webport = 4545
 
+// Couting variable
+var counting = 0
+
 // Initliaze express application
 const app = new express()
 app.disable('x-powered-by')
@@ -28,4 +31,9 @@ app.get('/', function(req, res) {
 app.get('/typing', function(req, res) {
     let typing = fs.readFileSync('./src/template/typing.html','utf8')
     res.end(typing)
+})
+
+app.get('/count', function(req, res) {
+    counting ++
+    res.end(`<html><head><title>Number ${counting}</title></head><body>Counting number page</body></html>`)
 })
