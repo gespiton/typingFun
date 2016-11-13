@@ -1,0 +1,20 @@
+{
+  "name": "typingfun",
+  "version": "1.0.0",
+  "description": "Typing training application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node src/run.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/gespiton/typingFun.git"
+  },
+  "author": "Gespiton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gespiton/typingFun/issues"
+  },
+  "homepage": "https://github.com/gespiton/typingFun#readme"
+}
