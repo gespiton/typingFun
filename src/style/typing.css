@@ -1,15 +1,16 @@
-.curChar{
+.curChar {
     color: blue !important;
     background-color: cyan;
 }
-.char{
+
+.char {
     color: gray;
     display: inline-block;
     /*padding: 4px 4px 4px 4px;
     padding-top: 4px;
     padding-bottom: 8px;*/
-    width: 20px;
-    height: 25px;
+    /*width: 20px;*/
+    /*height: 25px;*/
     text-align: center;
     position: relative;
     font-size: 20px;
@@ -18,20 +19,24 @@
     border-radius: 5px;
     transition: all 0.4s;
 }
-.correct{
+
+.correct {
     color: black;
 }
-.incorrect{
+
+.incorrect {
     background-color: pink;
 }
-.main{
-    background-color:yellow;
+
+.main {
+    background-color: yellow;
 }
 
-#wpfContainer{
+#wpfContainer {
     margin-top: 400px;
 }
-span{
+
+span {
     font-size: 30px;
     color: gray;
 }
