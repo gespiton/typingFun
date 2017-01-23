@@ -1,0 +1,86 @@
+@-webkit-keyframes caret {
+  0% {
+    border-color: gray; }
+  100% {
+    border-color: transparent; } }
+
+@keyframes caret {
+  0% {
+    border-color: gray; }
+  100% {
+    border-color: transparent; } }
+
+.curChar {
+  /*position:sticky; */
+  color: #fae66e !important;
+  text-shadow: 0px 0px 8px #676482;
+  /*background-color: cyan; */
+  font-size: 24px !important;
+  -webkit-transform: translateY(-4px);
+      -ms-transform: translateY(-4px);
+          transform: translateY(-4px);
+  -webkit-animation-name: caret;
+          animation-name: caret;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite; }
+
+.char {
+  overflow: hidden;
+  /*padding: 3px; */
+  height: 30px;
+  color: rgba(128, 128, 128, 0.5);
+  /*text-shadow: 1px 1px 0px gray; */
+  display: inline-block;
+  border-width: 0px 0 3px 0;
+  border-style: solid;
+  border-color: transparent;
+  /*padding: 4px 4px 4px 4px;
+   *padding-top: 4px;
+   *padding-bottom: 8px; */
+  /*width: 20px; */
+  /*height: 25px; */
+  /*text-align: center; */
+  /*position: relative; */
+  font-size: 20px;
+  /*margin-left: 1px;
+   *margin-right: 1px; */
+  /*border-radius: 5px; */
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  white-space: pre;
+  /*padding: 0 1px 0 1px; */ }
+
+.correct {
+  color: #2c3e50;
+  text-shadow: 0px 0px 1px #27ae60; }
+
+.incorrect {
+  /*background-color: pink; */
+  color: #e74c3c;
+  text-shadow: 0px 0px 3px red; }
+
+.main {
+  background-color: #c8c8fa; }
+
+#stage {
+  margin: 0 auto;
+  /*background-color: black; */
+  width: 75%; }
+
+#wpfContainer {
+  position: fixed;
+  left: 20px;
+  bottom: 20px; }
+  #wpfContainer span {
+    font-size: 30px;
+    color: gray; }
+
+#wpf {
+  color: #27ae60 !important;
+  text-shadow: 0 0 8px gray; }
