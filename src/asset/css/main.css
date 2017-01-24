@@ -1,58 +1,54 @@
 @-webkit-keyframes caret {
   0% {
-    border-color: gray; }
+    border-left-color: black; }
   100% {
-    border-color: transparent; } }
+    border-left-color: transparent; } }
 
 @keyframes caret {
   0% {
-    border-color: gray; }
+    border-left-color: black; }
   100% {
-    border-color: transparent; } }
+    border-left-color: transparent; } }
+
+@-webkit-keyframes fadeout {
+  0% {
+    color: #00ff78; }
+  20% {
+    color: rgba(0, 128, 150, 0.75); }
+  100% {
+    background-color: inherit; } }
+
+@keyframes fadeout {
+  0% {
+    color: #00ff78; }
+  20% {
+    color: rgba(0, 128, 150, 0.75); }
+  100% {
+    background-color: inherit; } }
 
 .curChar {
   /*position:sticky; */
-  color: #fae66e !important;
-  text-shadow: 0px 0px 8px #676482;
+  position: relative;
   /*background-color: cyan; */
-  font-size: 24px !important;
-  -webkit-transform: translateY(-4px);
-      -ms-transform: translateY(-4px);
-          transform: translateY(-4px);
-  -webkit-animation-name: caret;
-          animation-name: caret;
-  -webkit-animation-timing-function: ease-in-out;
-          animation-timing-function: ease-in-out;
-  -webkit-animation-duration: 0.3s;
-          animation-duration: 0.3s;
-  -webkit-animation-direction: alternate;
-          animation-direction: alternate;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite; }
+  -webkit-animation: caret ease-in-out 0.5s alternate infinite;
+          animation: caret ease-in-out 0.5s alternate infinite; }
+
+.fadeBgc {
+  -webkit-animation: fadeout ease-in-out 8s;
+          animation: fadeout ease-in-out 8s; }
 
 .char {
   overflow: hidden;
-  /*padding: 3px; */
   height: 30px;
   color: rgba(128, 128, 128, 0.5);
   /*text-shadow: 1px 1px 0px gray; */
   display: inline-block;
-  border-width: 0px 0 3px 0;
+  border-width: 0px 2px 0 2px;
   border-style: solid;
   border-color: transparent;
-  /*padding: 4px 4px 4px 4px;
-   *padding-top: 4px;
-   *padding-bottom: 8px; */
-  /*width: 20px; */
-  /*height: 25px; */
-  /*text-align: center; */
-  /*position: relative; */
   font-size: 20px;
-  /*margin-left: 1px;
-   *margin-right: 1px; */
-  /*border-radius: 5px; */
-  -webkit-transition: all 0.25s;
-  transition: all 0.25s;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
   white-space: pre;
   /*padding: 0 1px 0 1px; */ }
 
@@ -64,9 +60,6 @@
   /*background-color: pink; */
   color: #e74c3c;
   text-shadow: 0px 0px 3px red; }
-
-.main {
-  background-color: #c8c8fa; }
 
 #stage {
   margin: 0 auto;

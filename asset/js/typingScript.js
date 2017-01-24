@@ -61,7 +61,7 @@ $(document).ready(function () {
   function check(pressed) {
     // alert($(domArr[curPos]).text());
     if (pressed == $(domArr[curPos]).text()) {
-      domArr[curPos].addClass('correct');
+      domArr[curPos].addClass('correct fadeBgc');
     } else {
       ++unCorCount;
       domArr[curPos].addClass('incorrect');
