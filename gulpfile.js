@@ -49,7 +49,7 @@ gulp.task('pug', function() {
         .pipe(gulp.dest('src/template'))
 })
 
-gulp.task('server', server.server());
+gulp.task('server', server.runServer());
 
 gulp.task('watch', function() {
     gulp.watch('asset/sass/**/*.sass', ['sass']);

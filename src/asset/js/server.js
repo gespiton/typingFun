@@ -1,42 +1,29 @@
 module.exports = {
-    server: function() {
+    fileMatch: {
+        '/': './src/template/index.html',
+        '/typing': './src/template/typing.html',
+        '/mainJs': './src/asset/js/main.js',
+        '/main.css': './src/asset/css/main.css'
+    },
+
+    runServer: function() {
         const express = require('express');
         const fs = require('fs');
         const webport = 4545;
-        // Initliaze express application
         const app = new express();
-
+        const pageMatch = this.fileMatch;
         app.disable('x-powered-by');
-        // Setting express port
         app.set('port', webport);
-        // Start express server
 
-        // Default index page
-        app.get('/', function(req, res) {
-            let index = fs.readFileSync('./src/template/index.html', 'utf8')
-            res.end(index)
-        });
+        for(let r in this.fileMatch){
+            console.log(r+':'+pageMatch[r]);
+            app.get(r,function (req,res) {
+                console.log(typeof r + r.toString());
+                let resource = fs.readFileSync(pageMatch[r],'utf8');
+                res.end(resource);
+            });
+        }
 
-        app.get('/typing', function(req, res) {
-            let typing = fs.readFileSync('./src/template/typing.html', 'utf8')
-            res.end(typing)
-        });
-
-        app.get('/', function(req, res) {
-            let index = fs.readFileSync('./src/template/index.html', 'utf8')
-            res.end(index)
-        });
-
-        app.get('/mainJs', function(req, res) {
-            let scriptv = fs.readFileSync('./src/asset/js/main.js', 'utf8')
-            res.end(scriptv)
-        });
-
-        app.get('/main.css', function(req, res) {
-            console.log("style loaded");
-            let style = fs.readFileSync('./src/asset/css/main.css', 'utf8')
-            res.end(style)
-        });
 
         // serve static file
         var path = require('path');
