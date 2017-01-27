@@ -1,14 +1,23 @@
-
 | <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 | <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 | <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+link(rel='stylesheet', type='text/css', href='main.css')
+
 header.myHeader
-	.lable typing is FUN
-	nav
-		ul
-			li
-				a.view_profile.btn view profile
-			li
-				a.btn type now
-	img(src='/img/login.png').logState
+    .lable typing is FUN
+    nav
+        ul
+            li
+                a.view_profile.btn view profile
+            li
+                a.btn type now
+    img#logState(src='/img/login.png' role="button" data-toggle="modal" data-target="#login-modal")
 .holder
+//.loginPanel
+//	.infoStage.container
+//		form.form-signin
+//			h2.form-signin-heading Please sign in
+//			input(type='text')
+//			input(type='text')
+// BEGIN # MODAL LOGIN
+include ./form.pug
