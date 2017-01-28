@@ -1,7 +1,7 @@
 | <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 | <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 | <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-link(rel='stylesheet', type='text/css', href='main.css')
+link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
 
 header.myHeader
     .lable typing is FUN
@@ -11,7 +11,7 @@ header.myHeader
                 a.view_profile.btn view profile
             li
                 a.btn type now
-    img#logState(src='/img/login.png' role="button" data-toggle="modal" data-target="#login-modal")
+    img#logState(src='/images/login.png' role="button" data-toggle="modal" data-target="#login-modal")
 .holder
 //.loginPanel
 //	.infoStage.container
@@ -20,4 +20,4 @@ header.myHeader
 //			input(type='text')
 //			input(type='text')
 // BEGIN # MODAL LOGIN
-include ./form.pug
+include form

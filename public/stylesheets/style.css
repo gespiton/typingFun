@@ -23,25 +23,11 @@
   src: local("Fira Mono"), local("FiraMono"), url(http://fonts.gstatic.com/s/firamono/v3/SlRWfq1zeqXiYWAN-lnG-pBw1xU1rKptJj_0jans920.woff2) format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; }
 
-@-webkit-keyframes caret {
-  0% {
-    border-left-color: black; }
-  100% {
-    border-left-color: transparent; } }
-
 @keyframes caret {
   0% {
     border-left-color: black; }
   100% {
     border-left-color: transparent; } }
-
-@-webkit-keyframes fadeout {
-  0% {
-    color: #00ff78; }
-  20% {
-    color: rgba(0, 128, 150, 0.75); }
-  100% {
-    background-color: inherit; } }
 
 @keyframes fadeout {
   0% {
@@ -55,12 +41,10 @@
   /*position:sticky; */
   position: relative;
   /*background-color: cyan; */
-  -webkit-animation: caret ease-in-out 0.5s alternate infinite;
-          animation: caret ease-in-out 0.5s alternate infinite; }
+  animation: caret ease-in-out 0.5s alternate infinite; }
 
 .fadeBgc {
-  -webkit-animation: fadeout ease-in-out 8s;
-          animation: fadeout ease-in-out 8s; }
+  animation: fadeout ease-in-out 8s; }
 
 .char {
   overflow: hidden;
@@ -72,7 +56,6 @@
   border-style: solid;
   border-color: transparent;
   font-size: 20px;
-  -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
   white-space: pre;
   /*padding: 0 1px 0 1px; */ }
@@ -105,15 +88,8 @@
 
 header.myHeader {
   position: fixed;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
   height: 60px;
   width: 100%;
   background-color: rgba(0, 100, 100, 0.3); }
@@ -126,52 +102,26 @@ header.myHeader {
     font-size: 30px;
     pointer-events: none; }
   header.myHeader nav {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: row;
-        -ms-flex-direction: row;
-            flex-direction: row; }
+    flex-direction: row; }
     header.myHeader nav ul {
       list-style: none;
       margin: 0;
       padding: 0 10px;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
       display: flex;
-      -webkit-box-orient: horizontal;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: row;
-          -ms-flex-direction: row;
-              flex-direction: row; }
+      flex-direction: row; }
       header.myHeader nav ul li {
         padding: 0 10px;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
         display: flex;
-        -webkit-box-pack: center;
-        -webkit-justify-content: center;
-            -ms-flex-pack: center;
-                justify-content: center;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-                flex-direction: column; }
+        justify-content: center;
+        flex-direction: column; }
         header.myHeader nav ul li a {
           padding: 0 5px;
           font-size: 25px;
           font-family: Caveat, serif;
-          -webkit-border-radius: 5px;
-                  border-radius: 5px;
+          border-radius: 5px;
           background-color: gray;
           color: white;
-          -webkit-transition: all 0.1s ease-in;
           transition: all 0.1s ease-in; }
   header.myHeader #logState {
     margin-left: auto;
@@ -195,7 +145,6 @@ input[type=password] {
   border: 1px solid #dadfe1;
   height: 30px;
   line-height: 28px;
-  -webkit-transition: all ease-in-out 500ms;
   transition: all ease-in-out 500ms; }
 
 #div-login-msg.success, #div-lost-msg.success, #div-register-msg.success {
@@ -213,7 +162,6 @@ input[type=password] {
   text-align: center;
   background-color: #dadfe1;
   margin-right: 5px;
-  -webkit-transition: all ease-in-out 500ms;
   transition: all ease-in-out 500ms; }
 
 #icon-login-msg.success, #icon-lost-msg.success, #icon-register-msg.success {
@@ -236,8 +184,7 @@ input[type=password] {
 .modal-content {
   background-color: #ececec;
   border: 1px solid #bdc3c7;
-  -webkit-border-radius: 0px;
-          border-radius: 0px;
+  border-radius: 0px;
   outline: 0; }
 
 .modal-header {
@@ -258,14 +205,12 @@ input[type=password] {
   margin-bottom: 0px; }
 
 .btn {
-  -webkit-border-radius: 0px;
-          border-radius: 0px; }
+  border-radius: 0px; }
   .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
     outline: none; }
 
 .btn-lg, .btn-group-lg > .btn {
-  -webkit-border-radius: 0px;
-          border-radius: 0px; }
+  border-radius: 0px; }
 
 .btn-link {
   padding: 5px 10px 0px 0px;
@@ -278,5 +223,6 @@ input[type=password] {
   top: 0px; }
 
 .form-control {
-  -webkit-border-radius: 0px;
-          border-radius: 0px; }
+  border-radius: 0px; }
+
+/*# sourceMappingURL=style.css.map */
