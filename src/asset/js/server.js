@@ -24,6 +24,9 @@ module.exports = {
             });
         }
 
+        app.post('/login',function (req,res) {
+            res.end("i clicked login");
+        });
 
         // serve static file
         var path = require('path');
@@ -31,6 +34,8 @@ module.exports = {
         var dir = path.join(__dirname, '../');
         console.log(dir.toString());
         app.use(express.static(dir));
+
+
 
         app.listen(app.set('port'), function() {
             console.log(`Server run on ${webport}`)

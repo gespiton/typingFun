@@ -8,7 +8,7 @@
             // Begin # DIV Form
             #div-forms
                 // Begin # Login Form
-                form#login-form
+                form#login-form(action='login' method='post')
                     .modal-body
                         #div-login-msg
                             #icon-login-msg.glyphicon.glyphicon-chevron-right
@@ -27,7 +27,7 @@
                             button#login_register_btn.btn.btn-link(type='button') Register
                 // End # Login Form
                 // Begin | Lost Password Form
-                form#lost-form(style='display:none;')
+                form#lost-form(style='display:none;' action='lost' method='post')
                     .modal-body
                         #div-lost-msg
                             #icon-lost-msg.glyphicon.glyphicon-chevron-right
@@ -41,7 +41,7 @@
                             button#lost_register_btn.btn.btn-link(type='button') Register
                 // End | Lost Password Form
                 // Begin | Register Form
-                form#register-form(style='display:none;')
+                form#register-form(style='display:none;' action='register' method='post')
                     .modal-body
                         #div-register-msg
                             #icon-register-msg.glyphicon.glyphicon-chevron-right
