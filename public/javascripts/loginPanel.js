@@ -44,7 +44,7 @@ $(function () {
                 return true;
                 break;
             default:
-                return false;
+                return true;
         }
     });
 
