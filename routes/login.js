@@ -6,6 +6,7 @@ var path = require('path');
 router.post('/', function (req, res, next) {
     var username = req.body.login_username;
     var password = req.body.login_password;
+    console.log(username + ':'+password);
     var newuser = new User();
     User.findOne({username: username, password: password}, function (err, user) {
         if (err) {
