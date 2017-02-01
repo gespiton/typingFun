@@ -16,12 +16,21 @@ $(function () {
             case "login-form":
                 var $lg_username = $('#login_username').val();
                 var $lg_password = $('#login_password').val();
-                if ($lg_username == "ERROR") {
-                    msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Login error");
-                } else {
-                    msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK");
-                }
-                return true;
+
+                $.post('login', {'login_username': $lg_username, 'login_password': $lg_password}, function (result) {
+                        changeIcon(result.loged);
+
+                        if (result.loged == false) {
+                            msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Login error");
+                        } else {
+                            msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK");
+                            setTimeout(function () {
+                                $('#closeBT').click();
+                            }, 1000);
+                        }
+                    }
+                );
+                return false;
                 break;
             case "lost-form":
                 var $ls_email = $('#lost_email').val();
@@ -30,7 +39,7 @@ $(function () {
                 } else {
                     msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'), "success", "glyphicon-ok", "Send OK");
                 }
-                return true;
+                return false;
                 break;
             case "register-form":
                 var $rg_username = $('#register_username').val();
@@ -41,10 +50,10 @@ $(function () {
                 } else {
                     msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "success", "glyphicon-ok", "Register OK");
                 }
-                return true;
+                return false;
                 break;
             default:
-                return true;
+                return false;
         }
     });
 
@@ -96,5 +105,13 @@ $(function () {
             $iconTag.addClass("glyphicon-chevron-right");
             $iconTag.removeClass($iconClass + " " + $divClass);
         }, $msgShowTime);
+    }
+
+    function changeIcon(loged) {
+        if (loged) {
+            $('#logState').attr('src', '/images/loged.png');
+        } else {
+            $('#logState').attr('src', '/images/login.png');
+        }
     }
 });
