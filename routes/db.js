@@ -6,14 +6,13 @@ var express = require('express');
 var fs = require('fs');
 var formidable = require('formidable');
 var book = require('./book.js');
-var express = require('express');
-var router = express.Router();
+var dbs = express.Router();
 
-router.get('/',function (req,res) {
+dbs.get('/',function (req,res) {
     var dbs = fs.readFileSync('./routes/db.html','utf-8');
     res.end(dbs);
 });
-router.post('/',function(req,res){
+dbs.post('/',function(req,res){
     console.log(req.body);
 
         var chapter = req.body.chapter;
@@ -33,4 +32,4 @@ router.post('/',function(req,res){
         });
 });
 
-module.exports = router;
+module.exports = dbs;
