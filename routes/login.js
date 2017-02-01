@@ -1,11 +1,9 @@
+
 var express = require('express');
 var router = express.Router();
-<<<<<<< HEAD
-var http = require('http');
-=======
->>>>>>> origin/another
 var User = require('./User');
 var path = require('path');
+var http = require('http');
 
 router.post('/', function (req, res, next) {
     var username = req.body.login_username;
