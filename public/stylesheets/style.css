@@ -228,4 +228,18 @@ input[type=password] {
 .form-control {
   border-radius: 0px; }
 
+.addArticle {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  height: calc(100vh - 80px); }
+  .addArticle .verticle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 45%; }
+    .addArticle .verticle .Content {
+      background-color: pink;
+      flex-grow: 2; }
+
 /*# sourceMappingURL=style.css.map */

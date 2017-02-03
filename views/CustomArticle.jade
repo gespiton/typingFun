@@ -1,0 +1,17 @@
+extends layout
+
+block content
+	.addArticle
+
+		.verticle.rawWrap
+			input.title.rawTitle(type = 'text')
+			textarea.Content.rawContent
+
+		.stateImg
+
+		form#newArticle.verticle.newWrap(method = 'post' action = 'dbs')
+			input.title.newTitle(type = 'text' name = 'title')
+			textarea(name = 'content').Content.newContent
+			.controls
+				button(type='submit') save
+				button(type = 'button' id = 'newArticle' ) cancel
