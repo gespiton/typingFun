@@ -9,10 +9,9 @@ var book = require('./book.js');
 var dbs = express.Router();
 
 dbs.get('/',function (req,res) {
-    // var dbs = fs.readFileSync('./routes/db.html','utf-8');
-    // res.end(dbs);
     res.render('CustomArticle.jade');
 });
+
 dbs.post('/',function(req,res){
     console.log(req.body);
 

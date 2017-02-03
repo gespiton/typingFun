@@ -1,17 +1,26 @@
 extends layout
 
 block content
-	.addArticle
+	.addArticle.container
+		.col-md-5
+			form.verticle.rawWrap(role = 'form')
+				.form-group
+					label title
+					input.form-control.title.rawTitle(type = 'text')
+				.form-group.content
+					label content
+					textarea.form-control.rawContent
 
-		.verticle.rawWrap
-			input.title.rawTitle(type = 'text')
-			textarea.Content.rawContent
-
-		.stateImg
-
-		form#newArticle.verticle.newWrap(method = 'post' action = 'dbs')
-			input.title.newTitle(type = 'text' name = 'title')
-			textarea(name = 'content').Content.newContent
-			.controls
-				button(type='submit') save
-				button(type = 'button' id = 'newArticle' ) cancel
+		.stateImg.col-md-1
+		.col-md-5
+			form#newArticle.verticle.newWrap(method = 'post' action = 'dbs' role='form')
+				.form-group
+					label title
+					input.form-control.title.newTitle(type = 'text' name = 'title')
+				.form-group.content
+					label content
+					textarea(name = 'content').form-control.newContent
+		.col-md-1
+			.form-group.controls
+				button.btn.btn-primary(type='submit') save
+				button.btn.btn-cancel(type = 'button' id = 'newArticle' ) cancel
