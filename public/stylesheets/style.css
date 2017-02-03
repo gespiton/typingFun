@@ -95,6 +95,7 @@ header.myHeader {
   flex-direction: row;
   height: 60px;
   width: 100%;
+  z-index: 10;
   background-color: rgba(0, 100, 100, 0.3); }
   header.myHeader .lable {
     margin: 5px 10px;
@@ -210,14 +211,18 @@ header.myHeader {
     border-radius: 0px; }
 
 .addArticle.container {
-  height: calc(100vh - 80px); }
+  height: calc(100vh - 80px);
+  z-index: 0; }
   .addArticle.container .verticle {
     height: calc(100vh - 80px);
     display: flex;
     flex-direction: column; }
     .addArticle.container .verticle .form-group.content {
       height: 100%; }
-      .addArticle.container .verticle .form-group.content .textarea {
-        height: inherit !important; }
+      .addArticle.container .verticle .form-group.content textarea {
+        height: 100%; }
+
+body {
+  position: relative; }
 
 /*# sourceMappingURL=style.css.map */
