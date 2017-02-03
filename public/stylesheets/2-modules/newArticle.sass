@@ -1,13 +1,28 @@
-.addArticle.container
-  height: calc(100vh - 80px)
+.addArticle
+  height: calc(100vh - 90px)
   z-index: 0
+  display: flex
+  flex-direction: row
+  justify-content: space-around
 
-  .verticle
-    height: calc(100vh - 80px)
+  // .form-group
+  //   margin: 0
+  .contentWrap
+    width: 40%
+
+    padding: 0
+    .verticle
+      display: flex
+      flex-direction: column
+      // justify-content: space-between
+      height: 100%
+      .form-group.content
+        height: 100%
+        textarea
+          height: 100%
+
+  .controlsWrap
+    padding: 0
     display: flex
     flex-direction: column
-    // justify-content: space-between
-    .form-group.content
-      height: 100%
-      textarea
-        height: 100%
+    justify-content: flex-end
