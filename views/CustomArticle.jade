@@ -5,22 +5,24 @@ block content
 		.contentWrap
 			form.verticle.rawWrap(role = 'form')
 				.form-group
-					label title
+					label put title here
 					input.form-control.title.rawTitle(type = 'text')
 				.form-group.content
-					label content
+					label put content here
 					textarea.form-control.rawContent
-
-		.stateImg
+		.coverterButton
+			button#convertBT.btn check
 		.contentWrap
 			form#newArticle.verticle.newWrap(method = 'post' action = 'dbs' role='form')
 				.form-group
 					label title
-					input.form-control.title.newTitle(type = 'text' name = 'title')
+					input.form-control.title.newTitle(type = 'text' name = 'title' disabled)
 				.form-group.content
 					label content
-					textarea(name = 'content').form-control.newContent
+					textarea(name = 'content' disabled).form-control.newContent
 		.controlsWrap
 			.form-group.controls
-				button.btn.btn-primary(type='submit' form = 'newArticle') save
+				button.btn.btn-primary(type='submit' form = 'newArticle' disabled) save
 				//- button.btn.btn-cancel(type = 'button' id = 'newArticle' ) cancel
+
+	script(src = '/javascripts/addArticle.js')

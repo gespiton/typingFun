@@ -1,12 +1,11 @@
 /**
  * Created by liliz on 2017/2/1.
  */
+
 //visit by /dbs,you can add chapters to database
-var express = require('express');
-// var fs = require('fs');
-// var formidable = require('formidable');
-var book = require('./book.js');
-var dbs = express.Router();
+const express = require('express');
+const book = require('./book.js');
+const dbs = express.Router();
 
 dbs.get('/',function (req,res) {
     res.render('CustomArticle.jade');
@@ -15,11 +14,11 @@ dbs.get('/',function (req,res) {
 dbs.post('/',function(req,res){
     console.log(req.body);
 
-    var title = req.body.title;
-    var content = req.body.content;
+    let title = req.body.title;
+    let content = req.body.content;
     res.send(title+"\n"+content);
 
-    var newbook = new book();
+    let newbook = new book();
     newbook.chapter = chapter;
     newbook.content = content;
     newbook.save(function (err,savebook) {
