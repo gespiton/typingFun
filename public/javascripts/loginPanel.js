@@ -1,8 +1,7 @@
 /**
  * Created by sher on 2017/1/27 0027.
  */
-$(function () {
-
+function loginFunc() {
     var $formLogin = $('#login-form');
     var $formLost = $('#lost-form');
     var $formRegister = $('#register-form');
@@ -11,12 +10,11 @@ $(function () {
     var $msgAnimateTime = 150;
     var $msgShowTime = 2000;
 
-    $("form.headerForm").submit(function () {
+    $("form").submit(function () {
         switch (this.id) {
             case "login-form":
                 var $lg_username = $('#login_username').val();
                 var $lg_password = $('#login_password').val();
-
                 $.post('login', {'login_username': $lg_username, 'login_password': $lg_password}, function (result) {
                         changeIcon(result.loged);
 
@@ -114,4 +112,5 @@ $(function () {
             $('#logState').attr('src', '/images/login.png');
         }
     }
-});
+}
+

@@ -1,6 +1,5 @@
-$.ready = function() {
-    $('#convertBT').click(function() {
+function buttonListen() {
+    $('#convertBT').click(function () {
         alert('hi');
     });
-    
 }
