@@ -1,9 +1,10 @@
 
 var express = require('express');
 var router = express.Router();
-var User = require('./User');
+var User = require('../../routes/User');
 var path = require('path');
 var http = require('http');
+var session = require('express-session');
 
 router.post('/', function (req, res, next) {
     var username = req.body.login_username;
@@ -15,14 +16,15 @@ router.post('/', function (req, res, next) {
             console.log(err);
         }
         if (user) {
-            user.login = true;
             user.update(function (err, updatelogin) {
                 if (err)
                     console.log(err);
+                else {
+                    session.user = username;
+                }
             });
-
-            res.json({'loged': true});
         }
+        //为了方便测试，这里设置如果用户不存在，则在数据库中添加用户，以后会设计register页面
         else if (!user) {
             newuser.username = username;
             newuser.password = password;
@@ -31,7 +33,6 @@ router.post('/', function (req, res, next) {
                     console.log(err);
                 }
             });
-            res.json({'loged': false});
         }
     });
 });
