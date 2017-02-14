@@ -5,6 +5,7 @@ $(document).ready(function () {
     let domArr = [];
     let curPos = 0;
     let unCorCount = 0;
+    let totalCount = 0;
 
     let startTime = new Date().getTime();
     let typingStarted = false;
@@ -33,6 +34,8 @@ $(document).ready(function () {
     }
 
     function backCaret() {
+        if (curPos == 0)
+            return;
         $(domArr[curPos]).removeClass('curChar correct incorrect fadeBgc');
         $(domArr[--curPos]).removeClass('correct incorrect fadeBgc');
         $(domArr[curPos].addClass('curChar'));
@@ -56,6 +59,7 @@ $(document).ready(function () {
                 startWpfCal();
             }
 
+            ++ totalCount;
             check(String.fromCharCode(event.charCode));
             forwardCaret();
             isFinished();
@@ -77,7 +81,7 @@ $(document).ready(function () {
 
         let elapsed = Math.floor((new Date().getTime() - startTime) / 100) / 10; // why not /1000
         // alert(elapsed);
-        let wpf = Math.floor(((curPos + 1) / 5 - unCorCount) / (elapsed / 60));
+        let wpf = Math.floor((totalCount / 5 - unCorCount) / (elapsed / 60));
         if (wpf < 0) {
             wpf = 0;
         }
