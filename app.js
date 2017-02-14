@@ -2,14 +2,24 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
+var index = require('./server/gets/index');
 var typing = require('./routes/typing');
-var login = require('./routes/login');
+var login = require('./server/posts/login');
 var wikipedia = require('node-wikipedia');
-var dbs = require('./routes/db');
+var dbs = require('./server/gets/db');
+var user = require('./routes/User');
+var session = require('express-session');
 
 var app = express();
 
+//session
+app.get('/dashboard',function(req,res){
+  if(!req.session.user){
+    res.send('please login in first!')
+    return res.status(401).send();
+  }
+  return res.status(200).send('Welcome to super-secret API');
+});
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -33,7 +43,7 @@ app.use('/', index);
 app.use('/typing', typing);
 app.use('/login', login);
 app.use('/dbs',dbs);
-
+app.use(session({secret:"forever321",resave:false,saveUninitialized:true}));
 
 
 // catch 404 and forward to error handler
