@@ -1,4 +1,3 @@
-
 var express = require('express');
 var router = express.Router();
 var User = require('./User');
@@ -8,7 +7,7 @@ var http = require('http');
 router.post('/', function (req, res, next) {
     var username = req.body.login_username;
     var password = req.body.login_password;
-    console.log(username + ':'+password);
+    console.log(username + ':' + password);
     var newuser = new User();
     User.findOne({username: username, password: password}, function (err, user) {
         if (err) {

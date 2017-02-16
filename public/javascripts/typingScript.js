@@ -59,13 +59,12 @@ $(document).ready(function () {
                 startWpfCal();
             }
 
-            ++ totalCount;
+            ++totalCount;
             check(String.fromCharCode(event.charCode));
             forwardCaret();
             isFinished();
         });
     }
-
 
     function backSpaceKeyHandler() {
         $(document).on("keydown", function (key) {

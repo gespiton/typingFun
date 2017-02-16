@@ -7,70 +7,88 @@
 
 @keyframes fadeout
   0%
-    color: rgba(0,258,120,1)
-    // background-color: rgba(black,0.05)
+    color: green
+    text-shadow: none
+
+  // background-color: rgba(black,0.05)
   20%
-    color: rgba(0,128,150,0.75)
+    color: rgba(0, 128, 150, 0.75)
+
   100%
     background-color: inherit
 
-.curChar
-  /*position:sticky;
-  position: relative
-  // color: rgba(250, 230, 110, 1) !important
-  // text-shadow: 0px 0px 2px rgba(103, 100, 130, 1)
-  /*background-color: cyan;
-  // font-size: 20px !important
+$rgba-primary-0: rgba(150, 124, 181, 1)
+$BackGround: #E2F7FB
+$stage-bg: rgba(203, 237, 244, 0.5)
+$inactive-char: rgba(180, 180, 180, 0.5)
+$active-char: black
 
-  // transform: translateY(-1px)
-  animation: caret ease-in-out 0.5s alternate infinite
+.typingPage
+  background-color: $BackGround
 
-.fadeBgc
-  animation: fadeout ease-in-out 8s
+  .typing.main
+    .curChar
+      /*position:sticky;
+      position: relative
 
-.char
-  overflow: hidden
+      // color: rgba(250, 230, 110, 1) !important
+      // text-shadow: 0px 0px 2px rgba(103, 100, 130, 1)
+      /*background-color: cyan;
+      // font-size: 20px !important
 
-  height: 30px
-  color: rgba(128, 128, 128, 0.5)
-  /*text-shadow: 1px 1px 0px gray;
-  display: inline-block
-  border-width: 0px 2px 0 2px
-  // border-radius: 5px
-  border-style: solid
-  border-color: transparent
+      // transform: translateY(-1px)
+      animation: caret ease-in-out 0.5s alternate infinite
 
-  font-size: 20px
+    .fadeBgc
+      animation: fadeout ease-in-out 8s
 
-  transition: all 0.1s ease-in-out
-  white-space: pre
-  /*padding: 0 1px 0 1px;
+    .char
+      overflow: hidden
+      height: 30px
+      color: $inactive-char
 
-.correct
-  color: #2c3e50
-  text-shadow: 0px 0px 1px #27ae60
+      /*text-shadow: 1px 1px 0px gray;
+      display: inline-block
+      border-width: 0px 2px 0 2px
 
-.incorrect
-  /*background-color: pink;
-  color: #e74c3c
-  text-shadow: 0px 0px 3px red
+      // border-radius: 5px
+      border-style: solid
+      border-color: transparent
+      font-size: 20px
+      transition: all 0.1s ease-in-out
+      white-space: pre
 
-.passin
-  display: none
+    /*padding: 0 1px 0 1px;
 
-#stage
-  margin: 0 auto
-  /*background-color: black;
-  width: 75%
+    .correct
+      color: $active-char
+      text-shadow: 0px 0px 1px gray
 
-#wpfContainer
-  position: fixed
-  left: 20px
-  bottom: 20px
-  span
-    font-size: 30px
-    color: gray
+    .incorrect
+      /*background-color: pink;
+      color: #e74c3c
+      text-shadow: 0px 0px 3px red
 
-#wpf
-  color: #27ae60 !important
-  text-shadow: 0 0 8px gray
+    .passin
+      display: none
+
+    margin: auto
+
+    #stage
+      background-color: $stage-bg
+      margin: 0 auto
+      border: 2px solid
+      width: 70%
+
+  #wpfContainer
+    position: fixed
+    left: 20px
+    bottom: 20px
+
+    span
+      font-size: 30px
+      color: gray
+
+    #wpf
+      color: #27ae60 !important
+      text-shadow: 0 0 8px gray

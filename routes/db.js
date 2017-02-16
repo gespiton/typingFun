@@ -7,23 +7,22 @@ const express = require('express');
 const book = require('./book.js');
 const dbs = express.Router();
 
-dbs.get('/',function (req,res) {
+dbs.get('/', function (req, res) {
     res.render('CustomArticle.jade');
 });
 
-dbs.post('/',function(req,res){
+dbs.post('/', function (req, res) {
     console.log(req.body);
 
     let title = req.body.title;
     let content = req.body.content;
-    res.send(title+"\n"+content);
+    res.send(title + "\n" + content);
 
     let newbook = new book();
     newbook.chapter = chapter;
     newbook.content = content;
-    newbook.save(function (err,savebook) {
-        if(err)
-        {
+    newbook.save(function (err, savebook) {
+        if (err) {
             console.log(err);
             return res.status(500).send();
         }

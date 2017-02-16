@@ -31,63 +31,61 @@
 
 @keyframes fadeout {
   0% {
-    color: #00ff78; }
+    color: green;
+    text-shadow: none; }
   20% {
     color: rgba(0, 128, 150, 0.75); }
   100% {
     background-color: inherit; } }
 
-.curChar {
-  /*position:sticky; */
-  position: relative;
-  /*background-color: cyan; */
-  animation: caret ease-in-out 0.5s alternate infinite; }
-
-.fadeBgc {
-  animation: fadeout ease-in-out 8s; }
-
-.char {
-  overflow: hidden;
-  height: 30px;
-  color: rgba(128, 128, 128, 0.5);
-  /*text-shadow: 1px 1px 0px gray; */
-  display: inline-block;
-  border-width: 0px 2px 0 2px;
-  border-style: solid;
-  border-color: transparent;
-  font-size: 20px;
-  transition: all 0.1s ease-in-out;
-  white-space: pre;
-  /*padding: 0 1px 0 1px; */ }
-
-.correct {
-  color: #2c3e50;
-  text-shadow: 0px 0px 1px #27ae60; }
-
-.incorrect {
-  /*background-color: pink; */
-  color: #e74c3c;
-  text-shadow: 0px 0px 3px red; }
-
-.passin {
-  display: none; }
-
-#stage {
-  margin: 0 auto;
-  /*background-color: black; */
-  width: 75%; }
-
-#wpfContainer {
-  position: fixed;
-  left: 20px;
-  bottom: 20px; }
-  #wpfContainer span {
-    font-size: 30px;
-    color: gray; }
-
-#wpf {
-  color: #27ae60 !important;
-  text-shadow: 0 0 8px gray; }
+.typingPage {
+  background-color: #E2F7FB; }
+  .typingPage .typing.main {
+    /*padding: 0 1px 0 1px; */
+    margin: auto; }
+    .typingPage .typing.main .curChar {
+      /*position:sticky; */
+      position: relative;
+      /*background-color: cyan; */
+      animation: caret ease-in-out 0.5s alternate infinite; }
+    .typingPage .typing.main .fadeBgc {
+      animation: fadeout ease-in-out 8s; }
+    .typingPage .typing.main .char {
+      overflow: hidden;
+      height: 30px;
+      color: rgba(180, 180, 180, 0.5);
+      /*text-shadow: 1px 1px 0px gray; */
+      display: inline-block;
+      border-width: 0px 2px 0 2px;
+      border-style: solid;
+      border-color: transparent;
+      font-size: 20px;
+      transition: all 0.1s ease-in-out;
+      white-space: pre; }
+    .typingPage .typing.main .correct {
+      color: black;
+      text-shadow: 0px 0px 1px gray; }
+    .typingPage .typing.main .incorrect {
+      /*background-color: pink; */
+      color: #e74c3c;
+      text-shadow: 0px 0px 3px red; }
+    .typingPage .typing.main .passin {
+      display: none; }
+    .typingPage .typing.main #stage {
+      background-color: rgba(203, 237, 244, 0.5);
+      margin: 0 auto;
+      border: 2px solid;
+      width: 70%; }
+  .typingPage #wpfContainer {
+    position: fixed;
+    left: 20px;
+    bottom: 20px; }
+    .typingPage #wpfContainer span {
+      font-size: 30px;
+      color: gray; }
+    .typingPage #wpfContainer #wpf {
+      color: #27ae60 !important;
+      text-shadow: 0 0 8px gray; }
 
 header.myHeader {
   position: fixed;
