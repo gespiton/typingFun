@@ -55,9 +55,7 @@
       /*text-shadow: 1px 1px 0px gray; */
       display: inline-block;
       font-family: 'fira_sansextralight_italic';
-      border-width: 0px 0px 2px 0px;
-      border-style: solid;
-      border-color: transparent;
+      padding: 0 2px 0 2px;
       font-size: 20px;
       transition: all 0.1s ease-in-out;
       white-space: pre; }
@@ -80,13 +78,11 @@
       padding: 20px 100px;
       background-color: rgba(200, 200, 200, 0.3);
       margin: 0 auto;
-      border: 2px solid;
       width: 70%; }
       .typingPage .typing.main #stage #caret {
         position: fixed;
         background-color: rgba(0, 0, 0, 0.8);
-        animation: caret ease-in-out 1.0s alternate infinite;
-        border-radius: 5px; }
+        border-radius: 2px; }
   .typingPage #wpfContainer {
     position: fixed;
     left: 20px;

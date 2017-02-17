@@ -45,7 +45,7 @@ $(document).ready(function () {
         $('#caret').animate({
             "left": xOffset,
             "top": yOffset,
-            width: newWidth,
+            width: newWidth+4,
             height: newHeight
         }, 50);
         console.log(xOffset + " : " + yOffset);
