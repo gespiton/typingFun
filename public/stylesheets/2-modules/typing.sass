@@ -1,10 +1,12 @@
+$caretback-color: rgba(200,200,200,1)
 @keyframes caret
   0%
-    border-left-color: black
+    background: linear-gradient(to right,$caretback-color,transparent)
 
+  50%
+    background-color: transparent
   100%
-    border-left-color: transparent
-
+    background-color: $caretback-color
 @keyframes fadeout
   0%
     color: green
@@ -18,8 +20,8 @@
     background-color: inherit
 
 $rgba-primary-0: rgba(150, 124, 181, 1)
-$BackGround: #E2F7FB
-$stage-bg: rgba(203, 237, 244, 0.5)
+$BackGround: #ffffff
+$stage-bg: rgba(243, 237, 244, 0.5)
 $inactive-char: rgba(180, 180, 180, 0.5)
 $active-char: black
 
@@ -27,31 +29,22 @@ $active-char: black
   background-color: $BackGround
 
   .typing.main
-    .curChar
-      /*position:sticky;
-      position: relative
-
-      // color: rgba(250, 230, 110, 1) !important
-      // text-shadow: 0px 0px 2px rgba(103, 100, 130, 1)
-      /*background-color: cyan;
-      // font-size: 20px !important
-
-      // transform: translateY(-1px)
-      animation: caret ease-in-out 0.5s alternate infinite
-
     .fadeBgc
       animation: fadeout ease-in-out 8s
 
     .char
-      overflow: hidden
-      height: 30px
+      // overflow: hidden
+      // height: 30px
       color: $inactive-char
 
       /*text-shadow: 1px 1px 0px gray;
       display: inline-block
-      border-width: 0px 2px 0 2px
+      font-family: 'fira_sansextralight_italic'
+      // font-style: italic
 
       // border-radius: 5px
+
+      border-width: 0px 0px 2px 0px
       border-style: solid
       border-color: transparent
       font-size: 20px
@@ -59,6 +52,17 @@ $active-char: black
       white-space: pre
 
     /*padding: 0 1px 0 1px;
+    .curChar
+      /*position:sticky;
+      position: relative
+      // color: cyan
+
+      // color: rgba(250, 230, 110, 1) !important
+      // text-shadow: 0px 0px 8px rgba(253, 200, 230, 1)
+      // font-size: 20px !important
+      transition: all 0.1s ease-in-out
+      // transform: translateY(-1px)
+      animation: caret ease-in-out 1.5s alternate infinite
 
     .correct
       color: $active-char
@@ -75,19 +79,22 @@ $active-char: black
     margin: auto
 
     #stage
+      padding: 20px 100px
       background-color: $stage-bg
       margin: 0 auto
       border: 2px solid
       width: 70%
-
+    #caret
+      display: fixed
+      background-color: black
   #wpfContainer
     position: fixed
     left: 20px
     bottom: 20px
 
-    span
-      font-size: 30px
-      color: gray
+    // span
+    //   font-size: 30px
+    //   color: gray
 
     #wpf
       color: #27ae60 !important

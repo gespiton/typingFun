@@ -6,28 +6,36 @@
   font-family: 'Fira Sans';
   font-style: normal;
   font-weight: 400;
-  src: local("Fira Sans"), local("FiraSans-Regular"), url(http://fonts.gstatic.com/s/firasans/v5/EjsrzDkQUQCDwsBtLpcVQZBw1xU1rKptJj_0jans920.woff2) format("woff2");
+  src: local("Fira Sans"), local("FiraSans-Regular"), url("http://fonts.gstatic.com/s/firasans/v5/EjsrzDkQUQCDwsBtLpcVQZBw1xU1rKptJj_0jans920.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; }
 
 @font-face {
   font-family: 'Fira Sans';
   font-style: normal;
   font-weight: 700;
-  src: local("Fira Sans Bold"), local("FiraSans-Bold"), url(http://fonts.gstatic.com/s/firasans/v5/DugPdSljmOTocZOR2CItOhampu5_7CjHW5spxoeN3Vs.woff2) format("woff2");
+  src: local("Fira Sans Bold"), local("FiraSans-Bold"), url("http://fonts.gstatic.com/s/firasans/v5/DugPdSljmOTocZOR2CItOhampu5_7CjHW5spxoeN3Vs.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; }
 
 @font-face {
   font-family: 'Fira Mono';
   font-style: normal;
   font-weight: 400;
-  src: local("Fira Mono"), local("FiraMono"), url(http://fonts.gstatic.com/s/firamono/v3/SlRWfq1zeqXiYWAN-lnG-pBw1xU1rKptJj_0jans920.woff2) format("woff2");
+  src: local("Fira Mono"), local("FiraMono"), url("http://fonts.gstatic.com/s/firamono/v3/SlRWfq1zeqXiYWAN-lnG-pBw1xU1rKptJj_0jans920.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; }
+
+@font-face {
+  font-family: 'fira_sansextralight_italic';
+  src: url("/font-files/firasans-extralightitalic-webfont.woff2") format("woff2"), url("/font-files/firasans-extralightitalic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
 
 @keyframes caret {
   0% {
-    border-left-color: black; }
+    background: linear-gradient(to right, #c8c8c8, transparent); }
+  50% {
+    background-color: transparent; }
   100% {
-    border-left-color: transparent; } }
+    background-color: #c8c8c8; } }
 
 @keyframes fadeout {
   0% {
@@ -39,29 +47,28 @@
     background-color: inherit; } }
 
 .typingPage {
-  background-color: #E2F7FB; }
+  background-color: #ffffff; }
   .typingPage .typing.main {
     /*padding: 0 1px 0 1px; */
     margin: auto; }
-    .typingPage .typing.main .curChar {
-      /*position:sticky; */
-      position: relative;
-      /*background-color: cyan; */
-      animation: caret ease-in-out 0.5s alternate infinite; }
     .typingPage .typing.main .fadeBgc {
       animation: fadeout ease-in-out 8s; }
     .typingPage .typing.main .char {
-      overflow: hidden;
-      height: 30px;
       color: rgba(180, 180, 180, 0.5);
       /*text-shadow: 1px 1px 0px gray; */
       display: inline-block;
-      border-width: 0px 2px 0 2px;
+      font-family: 'fira_sansextralight_italic';
+      border-width: 0px 0px 2px 0px;
       border-style: solid;
       border-color: transparent;
       font-size: 20px;
       transition: all 0.1s ease-in-out;
       white-space: pre; }
+    .typingPage .typing.main .curChar {
+      /*position:sticky; */
+      position: relative;
+      transition: all 0.1s ease-in-out;
+      animation: caret ease-in-out 1.5s alternate infinite; }
     .typingPage .typing.main .correct {
       color: black;
       text-shadow: 0px 0px 1px gray; }
@@ -72,17 +79,18 @@
     .typingPage .typing.main .passin {
       display: none; }
     .typingPage .typing.main #stage {
-      background-color: rgba(203, 237, 244, 0.5);
+      padding: 20px 100px;
+      background-color: rgba(243, 237, 244, 0.5);
       margin: 0 auto;
       border: 2px solid;
       width: 70%; }
+    .typingPage .typing.main #caret {
+      display: fixed;
+      background-color: black; }
   .typingPage #wpfContainer {
     position: fixed;
     left: 20px;
     bottom: 20px; }
-    .typingPage #wpfContainer span {
-      font-size: 30px;
-      color: gray; }
     .typingPage #wpfContainer #wpf {
       color: #27ae60 !important;
       text-shadow: 0 0 8px gray; }
