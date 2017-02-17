@@ -1,29 +1,24 @@
-$caretback-color: rgba(200,200,200,1)
+$caretback-color: rgba(200, 200, 200, 1)
 @keyframes caret
-  0%
-    background: linear-gradient(to right,$caretback-color,transparent)
-
   50%
     background-color: transparent
-  100%
-    background-color: $caretback-color
+
 @keyframes fadeout
   0%
-    color: green
+    color: #66638E
     text-shadow: none
-
-  // background-color: rgba(black,0.05)
+    background-color: rgba(#66638E, 0.2)
   20%
-    color: rgba(0, 128, 150, 0.75)
+    color: #363377
 
   100%
     background-color: inherit
 
 $rgba-primary-0: rgba(150, 124, 181, 1)
 $BackGround: #ffffff
-$stage-bg: rgba(243, 237, 244, 0.5)
+$stage-bg: rgba(200, 200, 200, 0.3)
 $inactive-char: rgba(180, 180, 180, 0.5)
-$active-char: black
+$active-char: #050147
 
 .typingPage
   background-color: $BackGround
@@ -55,14 +50,14 @@ $active-char: black
     .curChar
       /*position:sticky;
       position: relative
-      // color: cyan
+      color: white
 
       // color: rgba(250, 230, 110, 1) !important
       // text-shadow: 0px 0px 8px rgba(253, 200, 230, 1)
       // font-size: 20px !important
       transition: all 0.1s ease-in-out
-      // transform: translateY(-1px)
-      animation: caret ease-in-out 1.5s alternate infinite
+    // transform: translateY(-1px)
+    // animation: caret ease-in-out 1.5s alternate infinite
 
     .correct
       color: $active-char
@@ -79,22 +74,26 @@ $active-char: black
     margin: auto
 
     #stage
+      position: relative
       padding: 20px 100px
       background-color: $stage-bg
       margin: 0 auto
       border: 2px solid
       width: 70%
-    #caret
-      display: fixed
-      background-color: black
+      #caret
+        position: fixed
+        background-color: rgba(black, 0.8)
+        animation: caret ease-in-out 1.0s alternate infinite
+        border-radius: 5px
+
   #wpfContainer
     position: fixed
     left: 20px
     bottom: 20px
 
-    // span
-    //   font-size: 30px
-    //   color: gray
+    span
+      font-size: 30px
+      color: gray
 
     #wpf
       color: #27ae60 !important

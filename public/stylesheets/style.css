@@ -30,19 +30,16 @@
   font-style: normal; }
 
 @keyframes caret {
-  0% {
-    background: linear-gradient(to right, #c8c8c8, transparent); }
   50% {
-    background-color: transparent; }
-  100% {
-    background-color: #c8c8c8; } }
+    background-color: transparent; } }
 
 @keyframes fadeout {
   0% {
-    color: green;
-    text-shadow: none; }
+    color: #66638E;
+    text-shadow: none;
+    background-color: rgba(102, 99, 142, 0.2); }
   20% {
-    color: rgba(0, 128, 150, 0.75); }
+    color: #363377; }
   100% {
     background-color: inherit; } }
 
@@ -67,10 +64,10 @@
     .typingPage .typing.main .curChar {
       /*position:sticky; */
       position: relative;
-      transition: all 0.1s ease-in-out;
-      animation: caret ease-in-out 1.5s alternate infinite; }
+      color: white;
+      transition: all 0.1s ease-in-out; }
     .typingPage .typing.main .correct {
-      color: black;
+      color: #050147;
       text-shadow: 0px 0px 1px gray; }
     .typingPage .typing.main .incorrect {
       /*background-color: pink; */
@@ -79,18 +76,24 @@
     .typingPage .typing.main .passin {
       display: none; }
     .typingPage .typing.main #stage {
+      position: relative;
       padding: 20px 100px;
-      background-color: rgba(243, 237, 244, 0.5);
+      background-color: rgba(200, 200, 200, 0.3);
       margin: 0 auto;
       border: 2px solid;
       width: 70%; }
-    .typingPage .typing.main #caret {
-      display: fixed;
-      background-color: black; }
+      .typingPage .typing.main #stage #caret {
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.8);
+        animation: caret ease-in-out 1.0s alternate infinite;
+        border-radius: 5px; }
   .typingPage #wpfContainer {
     position: fixed;
     left: 20px;
     bottom: 20px; }
+    .typingPage #wpfContainer span {
+      font-size: 30px;
+      color: gray; }
     .typingPage #wpfContainer #wpf {
       color: #27ae60 !important;
       text-shadow: 0 0 8px gray; }

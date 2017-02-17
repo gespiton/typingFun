@@ -10,11 +10,18 @@ $(document).ready(function () {
     let startTime = new Date().getTime();
     let typingStarted = false;
     let intervalID;
-
     fillStage();
     setFirstChar();
     onKeyPressed();
     backSpaceKeyHandler();
+    moveCaret();
+
+
+    const first = domArr[0];
+    let xOri = first[0].getBoundingClientRect().left;
+    console.log(xOri);
+    let yOri = first[0].getBoundingClientRect().top;
+    console.log(yOri);
 
     let length = domArr.length;
 
@@ -28,9 +35,26 @@ $(document).ready(function () {
         typingStarted = true;
     }
 
+    function moveCaret() {
+        const next = $(domArr[curPos]);
+        const xOffset = next[0].getBoundingClientRect().left;
+        const yOffset = next[0].getBoundingClientRect().top;
+        const newWidth = next.width();
+        console.log(newWidth);
+        const newHeight = next.height();
+        $('#caret').animate({
+            "left": xOffset,
+            "top": yOffset,
+            width: newWidth,
+            height: newHeight
+        }, 50);
+        console.log(xOffset + " : " + yOffset);
+    }
+
     function forwardCaret() {
         $(domArr[++curPos]).addClass('curChar');
         $(domArr[curPos - 1]).removeClass('curChar');
+        moveCaret();
     }
 
     function backCaret() {
@@ -39,7 +63,7 @@ $(document).ready(function () {
         $(domArr[curPos]).removeClass('curChar correct incorrect fadeBgc');
         $(domArr[--curPos]).removeClass('correct incorrect fadeBgc');
         $(domArr[curPos].addClass('curChar'));
-
+        moveCaret();
     }
 
     function isFinished() {
@@ -116,4 +140,6 @@ $(document).ready(function () {
             wrongChar();
         }
     }
+
+
 });
