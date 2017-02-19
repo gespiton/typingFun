@@ -4,8 +4,6 @@
 
 $(document).ready(function () {
     loginFunc();
-    buttonListen();
-
 
     // turn off wpf calc when log in
     $('#logState').on('click', function () {

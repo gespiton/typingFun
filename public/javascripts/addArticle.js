@@ -3,3 +3,4 @@ function buttonListen() {
         alert('hi');
     });
 }
+buttonListen();
