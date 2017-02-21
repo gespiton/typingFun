@@ -17,7 +17,7 @@ function loginFunc() {
                 var $lg_password = $('#login_password').val();
                 $.post('login', {'login_username': $lg_username, 'login_password': $lg_password}, function (result) {
                         changeIcon(result.loged);
-
+                        console.log('posted');
                         if (result.loged == false) {
                             msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Login error");
                         } else {
@@ -105,12 +105,6 @@ function loginFunc() {
         }, $msgShowTime);
     }
 
-    function changeIcon(loged) {
-        if (loged) {
-            $('#logState').attr('src', '/images/loged.png');
-        } else {
-            $('#logState').attr('src', '/images/login.png');
-        }
-    }
+
 }
 

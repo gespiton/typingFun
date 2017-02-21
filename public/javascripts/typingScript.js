@@ -1,5 +1,6 @@
 //noinspection JSUnresolvedFunction
 $(document).ready(function () {
+    // alert('typing ready');
     let text = $('.passin').text();
     let textArray = text.split('');
     let domArr = [];
@@ -15,7 +16,8 @@ $(document).ready(function () {
     onKeyPressed();
     backSpaceKeyHandler();
     moveCaret();
-
+    // setInterval(wheelEvent, 1);
+    $(document).on('scroll', wheelEvent);
 
     const first = domArr[0];
     let xOri = first[0].getBoundingClientRect().left;
@@ -45,7 +47,7 @@ $(document).ready(function () {
         $('#caret').animate({
             "left": xOffset,
             "top": yOffset,
-            width: newWidth+4,
+            width: newWidth + 4,
             height: newHeight
         }, 50);
         console.log(xOffset + " : " + yOffset);
@@ -139,6 +141,16 @@ $(document).ready(function () {
         } else {
             wrongChar();
         }
+    }
+
+    function wheelEvent() {
+        $(document).on('scroll',function () {
+
+        });
+        const next = $(domArr[curPos]);
+        const yOffset = next[0].getBoundingClientRect().top;
+        $('#caret').css({top: yOffset});
+        console.log($('#stage').scrollTop());
     }
 
 

@@ -1,13 +1,14 @@
 extends layout
 block variables
-	-	var page = 'typingPage'
+    -    var page = 'typingPage'
+    -  var logged = {log}
 block content
-	.typing.main
-		p.passin= text
-		#stage
-			#caret
+    .typing.main
+        p.passin= text
+        #stage
+            #caret
 
-	#wpfContainer
-		span WPF:
-		span#wpf
-	script(type='text/javascript', src='/javascripts/typingScript.js')
+    #wpfContainer
+        span WPF:
+        span#wpf
+    script(type='text/javascript', src='/javascripts/typingScript.js')

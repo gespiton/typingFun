@@ -1,16 +1,25 @@
-var express = require('express');
-var router = express.Router();
-var User = require('../../routes/User');
-var path = require('path');
-var http = require('http');
-var session = require('express-session');
+const express = require('express');
+const router = express.Router();
+const User = require('../../routes/User');
+const session = require('express-session');
 
 router.post('/', function (req, res, next) {
-    var username = req.body.login_username;
-    var password = req.body.login_password;
-    console.log(username + ':'+password);
-    var newuser = new User();
+    if (req.body.verify) {
+        if (req.session.view) {
+            req.session.view++;
+            console.log(req.session.view + ' time visit');
+            return res.json({loged: true});
+        } else
+            return res.json({loged: false});
+    }
+
+    let username = req.body.login_username;
+    let password = req.body.login_password;
+    console.log(username + ':' + password);
+    let newuser = new User();
+
     User.findOne({username: username, password: password}, function (err, user) {
+        console.log('in');
         if (err) {
             console.log(err);
         }
@@ -19,7 +28,10 @@ router.post('/', function (req, res, next) {
                 if (err)
                     console.log(err);
                 else {
-                    session.user = username;
+                    req.session.user = username;
+                    req.session.view = 1;
+                    console.log('after add ' + req.session.view);
+                    res.json({loged: true});  // got to have some response here
                 }
             });
         }
@@ -32,6 +44,7 @@ router.post('/', function (req, res, next) {
                     console.log(err);
                 }
             });
+            res.json({loged: false});
         }
     });
 });

@@ -1,7 +1,5 @@
-let express = require('express');
-let router = express.Router();
-
-/* GET home page. */
+const express = require('express');
+const router = express.Router();
 
 router.get('/', function (req, res, next) {
     res.render('typing', {text: fetchText()})
