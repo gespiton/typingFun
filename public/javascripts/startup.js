@@ -10,7 +10,7 @@ $(document).ready(function () {
         $(document).off('keypress');
     });
 
-
+    addNavClickEvent();
     // don't know why, but it seems that delay is necessary,
     // otherwise I get 400 error
     setTimeout(getLogState, 10);
@@ -18,15 +18,16 @@ $(document).ready(function () {
 
 function getLogState() {
     $.post('login', {'verify': true}, function (result) {
-            changeIcon(result.loged);
+            changeUserState(result.loged, result.username);
             console.log('posted');
             console.log(result.loged);
         }
     );
 }
-function changeIcon(loged) {
+function changeUserState(loged, name) {
     if (loged) {
         $('#logState').attr('src', '/images/loged.png');
+        $('#username').text(name);
     } else {
         $('#logState').attr('src', '/images/login.png');
     }

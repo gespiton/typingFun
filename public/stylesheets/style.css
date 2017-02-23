@@ -106,7 +106,7 @@ header.myHeader {
     margin: 5px 10px;
     display: inline-block;
     color: #28774F;
-    font-family: Italianno;
+    font-family: Italianno, serif;
     text-shadow: 0 0 3px white;
     font-size: 30px;
     pointer-events: none; }
@@ -131,12 +131,27 @@ header.myHeader {
           border-radius: 5px;
           background-color: gray;
           color: white;
-          transition: all 0.1s ease-in; }
-  header.myHeader #logState {
+          transition: all 0.2s ease-in; }
+      header.myHeader nav ul .navSelect a {
+        color: hotpink; }
+  header.myHeader .username {
     margin-left: auto;
-    padding: 5px 5px;
-    height: 55px;
-    width: 55px; }
+    margin-right: 20px; }
+  header.myHeader .user {
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(224, 255, 255, 0.5); }
+    header.myHeader .user #username {
+      font-size: 30px;
+      margin: auto 10px;
+      color: lightcyan;
+      text-shadow: 0 0 4px gray;
+      font-family: Fira Sans, serif; }
+    header.myHeader .user #logState {
+      padding: 5px 5px;
+      height: 55px;
+      width: 55px; }
 
 .holder {
   height: 80px; }

@@ -1,15 +1,15 @@
 doctype html
 block variables
 html
-	head
-		title= title
-		link(rel='stylesheet', href='/stylesheets/style.css')
-		link(rel = 'stylesheet' href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
-		link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
-		script(src = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")
-		script(src = '/javascripts/bootstrap.js')
-	body(class = '#{page}')
-		include header
-		block content
-
-		script(src = '/javascripts/startup.js')
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel = 'stylesheet' href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+        link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
+        script(src = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")
+        script(src = '/javascripts/bootstrap.js')
+    body(class = '#{page}')
+        include header
+        block content
+        script(src='/javascripts/nav.js')
+        script(src = '/javascripts/startup.js')

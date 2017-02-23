@@ -11,7 +11,7 @@ header.myHeader
     margin: 5px 10px
     display: inline-block
     color: #28774F
-    font-family: Italianno
+    font-family: Italianno, serif
     text-shadow: 0 0 3px white
     font-size: 30px
     pointer-events: none
@@ -36,15 +36,36 @@ header.myHeader
           background-color: gray
           color: white
 
-          transition: all 0.1s ease-in
+          transition: all 0.2s ease-in
+
+      .navSelect
+        //background-color: #fff
+        a
+          color: hotpink
 
     display: flex
     flex-direction: row
-  #logState
+  .username
     margin-left: auto
-    padding: 5px 5px
-    height: 55px
-    width: 55px
+    margin-right: 20px
+
+  .user
+    margin-left: auto
+    display: flex
+    flex-direction: row
+    background-color: rgba(lightcyan,0.5)
+    #username
+      font-size: 30px
+      margin: auto 10px
+
+      color: lightcyan
+      text-shadow: 0 0 4px gray
+      font-family: Fira Sans, serif
+
+    #logState
+      padding: 5px 5px
+      height: 55px
+      width: 55px
 
 .holder
   height: 80px

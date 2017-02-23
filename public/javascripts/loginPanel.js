@@ -16,7 +16,7 @@ function loginFunc() {
                 var $lg_username = $('#login_username').val();
                 var $lg_password = $('#login_password').val();
                 $.post('login', {'login_username': $lg_username, 'login_password': $lg_password}, function (result) {
-                        changeIcon(result.loged);
+                        changeUserState(result.loged);
                         console.log('posted');
                         if (result.loged == false) {
                             msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Login error");
