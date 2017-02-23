@@ -101,13 +101,13 @@ header.myHeader {
   height: 60px;
   width: 100%;
   z-index: 10;
-  background-color: rgba(0, 100, 100, 0.3); }
+  background-color: rgba(171, 171, 171, 0.8); }
   header.myHeader .lable {
     margin: 5px 10px;
     display: inline-block;
-    color: black;
+    color: #28774F;
     font-family: Italianno;
-    text-shadow: 0 0 3px blue;
+    text-shadow: 0 0 3px white;
     font-size: 30px;
     pointer-events: none; }
   header.myHeader nav {
