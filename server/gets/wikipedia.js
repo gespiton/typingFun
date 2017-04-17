@@ -5,7 +5,7 @@ var wikipedia = require("node-wikipedia");
 var bodyParser = require("body-parser");
 var cheerio = require('cheerio');
 var fs = require('fs');
-var str = fs.readFileSync('./js.html');
+var str = fs.readFileSync('./sample.html');
 var Str = str.toString();
 $ = cheerio.load(Str);
 console.log($('p').text());

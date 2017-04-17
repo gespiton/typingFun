@@ -13,11 +13,8 @@ dbs.get('/', function (req, res) {
 
 dbs.post('/', function (req, res) {
     console.log(req.body);
-
     let title = req.body.title;
     let content = req.body.content;
-    res.send(title + "\n" + content);
-
     let newbook = new book();
     newbook.chapter = chapter;
     newbook.content = content;
@@ -28,6 +25,7 @@ dbs.post('/', function (req, res) {
         }
         return res.status(200).send();
     });
+    res.send(title + "\n" + content);
 });
 
 module.exports = dbs;

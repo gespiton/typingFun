@@ -1,9 +1,9 @@
 /**
  * Created by liliz on 2017/2/14.
  */
-var session = require('express-session');
-var checkLogin = function(){
-    if(session.user == 0){
+const session = require('express-session');
+const checkLogin = function () {
+    if (session.user == 0) {
         console.log('please login first');
     }
     else

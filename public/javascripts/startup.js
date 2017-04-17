@@ -19,8 +19,8 @@ $(document).ready(function () {
 function getLogState() {
     $.post('login', {'verify': true}, function (result) {
             changeUserState(result.loged, result.username);
-            console.log('posted');
-            console.log(result.loged);
+            // console.log('posted');
+            // console.log(result.loged);
         }
     );
 }

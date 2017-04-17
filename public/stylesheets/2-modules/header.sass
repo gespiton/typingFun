@@ -3,10 +3,10 @@ header.myHeader
   position: fixed
   display: flex
   flex-direction: row
-  height: 60px
+  height: 80px
   width: 100%
   z-index: 10
-  background-color: rgba(#ABABAB, 0.8)
+  background-color: transparent
   .lable
     margin: 5px 10px
     display: inline-block
@@ -15,55 +15,34 @@ header.myHeader
     text-shadow: 0 0 3px white
     font-size: 30px
     pointer-events: none
-  nav
-    ul
-      list-style: none
-      margin: 0
-      padding: 0 10px
-      display: flex
-      flex-direction: row
-      li
-        padding: 0 10px
-        display: flex
-        justify-content: center
-        flex-direction: column
-        a
-          padding: 0 5px
-          font-size: 25px
-          font-family: Caveat, serif
-
-          border-radius: 5px
-          background-color: gray
-          color: white
-
-          transition: all 0.2s ease-in
-
-      .navSelect
-        //background-color: #fff
-        a
-          color: hotpink
-
     display: flex
     flex-direction: row
-  .username
-    margin-left: auto
-    margin-right: 20px
 
+  nav ul
+    li
+      height: 80px
+      display: block
+      & a
+        display: table-cell
+        font-size: 20px
+        height: 80px
   .user
-    margin-left: auto
+    margin-right: 20px
     display: flex
     flex-direction: row
-    background-color: rgba(lightcyan,0.5)
+    justify-content: center
+    //background-color: rgba(lightcyan,0.5)
+    height: 80px
     #username
       font-size: 30px
       margin: auto 10px
-
       color: lightcyan
       text-shadow: 0 0 4px gray
       font-family: Fira Sans, serif
 
     #logState
       padding: 5px 5px
+      margin: auto 0
       height: 55px
       width: 55px
 

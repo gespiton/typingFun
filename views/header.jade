@@ -1,15 +1,17 @@
 header.myHeader(class="#{special}")
-  .lable typing is FUN
-  nav
-    ul
-      li
-        a.view_profile.btn view profile
-      li
-        a.btn(href = '/typing') type now
-      li
-        a.btn(href = '/dbs') creat article
-  .user
-    label#username tourist
-    img#logState(src='/images/login.png' role="button" data-toggle="modal" data-target="#login-modal")
+  nav.navbar.navbar-default.navbar-fixed-top
+    //.lable typing is FUN
+    .collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li.active
+          a.view_profile.btn(href='/') view profile
+        li
+          a.btn(href = '/typing') type now
+        li
+          a.btn(href = '/dbs') creat article
+      ul.nav.navbar-nav.navbar-right
+        li.user
+          label#username tourist
+          img#logState(src='/images/login.png' role="button" data-toggle="modal" data-target="#login-modal")
 .holder
 include form

@@ -2,12 +2,12 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 
-const index = require('./server/gets/index');
-const typing = require('./server/gets/typing');
-const login = require('./server/posts/login');
+const index = require('./routes/index');
+const typing = require('./routes/typing');
+const dbs = require('./routes/addArticle');
+const login = require('./routes/login');
 const wikipedia = require('node-wikipedia');
-const dbs = require('./server/gets/db');
-const user = require('./routes/User');
+const user = require('./database/User');
 const session = require('express-session');
 
 const app = express();
@@ -43,7 +43,7 @@ app.use(
 );
 
 app.use((req, res, next) => {
-    console.log('user ' + req.session.user);
+    console.log('user ' + req.session.id);
     next();
 });
 
