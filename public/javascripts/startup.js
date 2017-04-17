@@ -12,7 +12,30 @@ $(document).ready(function () {
 
     addNavClickEvent();
     /* ---- particles.js config ---- */
+    particle();
 
+    // don't know why, but it seems that delay is necessary,
+    // otherwise I get 400 error
+    setTimeout(getLogState, 10);
+});
+
+function getLogState() {
+    $.post('login', {'verify': true}, function (result) {
+            changeUserState(result.loged, result.username);
+            // console.log('posted');
+            // console.log(result.loged);
+        }
+    );
+}
+function changeUserState(loged, name) {
+    if (loged) {
+        $('#logState').attr('src', '/images/loged.png');
+        $('#username').text(name);
+    } else {
+        $('#logState').attr('src', '/images/login.png');
+    }
+}
+function particle() {
     particlesJS("particles-js", {
         "particles": {
             "number": {
@@ -23,7 +46,7 @@ $(document).ready(function () {
                 }
             },
             "color": {
-                "value": "#ffffff"
+                "value": "#aaa"
             },
             "shape": {
                 "type": "circle",
@@ -63,7 +86,7 @@ $(document).ready(function () {
             "line_linked": {
                 "enable": true,
                 "distance": 150,
-                "color": "#ffffff",
+                "color": "#aaa",
                 "opacity": 0.4,
                 "width": 1
             },
@@ -123,45 +146,4 @@ $(document).ready(function () {
         },
         "retina_detect": true
     });
-
-
-    /* ---- stats.js config ---- */
-
-    var count_particles, stats, update;
-    stats = new Stats;
-    stats.setMode(0);
-    stats.domElement.style.position = 'absolute';
-    stats.domElement.style.left = '0px';
-    stats.domElement.style.top = '0px';
-    document.body.appendChild(stats.domElement);
-    count_particles = document.querySelector('.js-count-particles');
-    update = function () {
-        stats.begin();
-        stats.end();
-        if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
-            count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
-        }
-        requestAnimationFrame(update);
-    };
-    requestAnimationFrame(update);
-    // don't know why, but it seems that delay is necessary,
-    // otherwise I get 400 error
-    setTimeout(getLogState, 10);
-});
-
-function getLogState() {
-    $.post('login', {'verify': true}, function (result) {
-            changeUserState(result.loged, result.username);
-            // console.log('posted');
-            // console.log(result.loged);
-        }
-    );
-}
-function changeUserState(loged, name) {
-    if (loged) {
-        $('#logState').attr('src', '/images/loged.png');
-        $('#username').text(name);
-    } else {
-        $('#logState').attr('src', '/images/login.png');
-    }
 }
