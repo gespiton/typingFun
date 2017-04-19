@@ -11,6 +11,7 @@ $(document).ready(function () {
     let startTime = new Date().getTime();
     let typingStarted = false;
     let intervalID;
+    let powerMode = true;
     fillStage();
     setFirstChar();
     onKeyPressed();
@@ -19,14 +20,7 @@ $(document).ready(function () {
     // setInterval(wheelEvent, 1);
     $(document).on('scroll', wheelEvent);
 
-    const first = domArr[0];
-    let xOri = first[0].getBoundingClientRect().left;
-    console.log(xOri);
-    let yOri = first[0].getBoundingClientRect().top;
-    console.log(yOri);
-
     let length = domArr.length;
-
 
     function setFirstChar() {
         $(domArr[0]).addClass('curChar');
@@ -41,16 +35,17 @@ $(document).ready(function () {
         const next = $(domArr[curPos]);
         const xOffset = next[0].getBoundingClientRect().left;
         const yOffset = next[0].getBoundingClientRect().top;
-        const newWidth = next.width();
-        console.log(newWidth);
+        // const newWidth = next.width();
+        const newWidth = -1;
+        // console.log(newWidth);
         const newHeight = next.height();
         $('#caret').animate({
             "left": xOffset,
             "top": yOffset,
             width: newWidth + 4,
-            height: newHeight
+            height: newHeight - 4
         }, 50);
-        console.log(xOffset + " : " + yOffset);
+        // console.log(xOffset + " : " + yOffset);
     }
 
     function forwardCaret() {
@@ -79,12 +74,11 @@ $(document).ready(function () {
         $(document).on("keypress", function (event) {
             // prevent browser shotcut
             // alert(event.hasOwnProperty());
-            event.preventDefault();
 
+            event.preventDefault();
             if (!typingStarted) {
                 startWpfCal();
             }
-
             ++totalCount;
             check(String.fromCharCode(event.charCode));
             forwardCaret();
@@ -138,13 +132,15 @@ $(document).ready(function () {
         // alert($(domArr[curPos]).text());
         if (pressed == $(domArr[curPos]).text()) {
             correctChar();
+            if (powerMode)
+                app.spawnParticles();
         } else {
             wrongChar();
         }
     }
 
     function wheelEvent() {
-        $(document).on('scroll',function () {
+        $(document).on('scroll', function () {
 
         });
         const next = $(domArr[curPos]);

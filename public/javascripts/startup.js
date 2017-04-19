@@ -11,12 +11,13 @@ $(document).ready(function () {
     });
 
     addNavClickEvent();
-    /* ---- particles.js config ---- */
+    // /* ---- particles.js config ---- */
     particle();
-
     // don't know why, but it seems that delay is necessary,
     // otherwise I get 400 error
     setTimeout(getLogState, 10);
+    console.log($('caret').text());
+    $.getScript('/javascripts/powerMode.js');
 });
 
 function getLogState() {
@@ -39,14 +40,14 @@ function particle() {
     particlesJS("particles-js", {
         "particles": {
             "number": {
-                "value": 380,
+                "value": 30,
                 "density": {
                     "enable": true,
                     "value_area": 800
                 }
             },
             "color": {
-                "value": "#aaa"
+                "value": "#9b7bea"
             },
             "shape": {
                 "type": "circle",
@@ -85,22 +86,22 @@ function particle() {
             },
             "line_linked": {
                 "enable": true,
-                "distance": 150,
-                "color": "#aaa",
-                "opacity": 0.4,
-                "width": 1
+                "distance": 175.9296281487406,
+                "color": "#5d7270",
+                "opacity": 0.3998400639744104,
+                "width": 1.4394242303078775
             },
             "move": {
                 "enable": true,
-                "speed": 6,
+                "speed": 2,
                 "direction": "none",
                 "random": false,
                 "straight": false,
-                "out_mode": "out",
+                "out_mode": "bounce",
                 "bounce": false,
                 "attract": {
                     "enable": false,
-                    "rotateX": 600,
+                    "rotateX": 959.616153538585,
                     "rotateY": 1200
                 }
             }
@@ -110,7 +111,7 @@ function particle() {
             "events": {
                 "onhover": {
                     "enable": true,
-                    "mode": "grab"
+                    "mode": "repulse"
                 },
                 "onclick": {
                     "enable": true,
@@ -120,7 +121,7 @@ function particle() {
             },
             "modes": {
                 "grab": {
-                    "distance": 140,
+                    "distance": 400,
                     "line_linked": {
                         "opacity": 1
                     }
@@ -133,7 +134,7 @@ function particle() {
                     "speed": 3
                 },
                 "repulse": {
-                    "distance": 200,
+                    "distance": 113.3942962668978,
                     "duration": 0.4
                 },
                 "push": {

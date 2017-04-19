@@ -3,10 +3,13 @@ block variables
   -  var page = 'typingPage'
   -  var logged = {log}
 block content
-  .typing.main#particles-js
+  .typing.main
+    #particles-js
     p.passin= text
-    #stage
-      #caret
+    #stage-wrap
+      canvas#canvas
+      #stage
+        #caret
 
   #wpfContainer
     span WPF:
