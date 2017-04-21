@@ -1,6 +1,4 @@
-//noinspection JSUnresolvedFunction
-$(document).ready(function () {
-    // alert('typing ready');
+function typeScript() {
     let text = $('.passin').text();
     let textArray = text.split('');
     let domArr = [];
@@ -148,6 +146,5 @@ $(document).ready(function () {
         $('#caret').css({top: yOffset});
         console.log($('#stage').scrollTop());
     }
-
-
-});
+}
+module.exports = typeScript;

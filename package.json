@@ -17,8 +17,5 @@
     "node-sass-middleware": "0.9.8",
     "serve-favicon": "~2.3.0",
     "session": "^0.1.0"
-  },
-  "devDependencies": {
-    "webpack": "^2.4.1"
   }
 }

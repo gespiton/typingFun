@@ -17,7 +17,7 @@ $(document).ready(function () {
     // otherwise I get 400 error
     setTimeout(getLogState, 10);
     console.log($('caret').text());
-    $.getScript('/javascripts/powerMode.js');
+    $.getScript('/js/powerMode.js');
 });
 
 function getLogState() {

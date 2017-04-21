@@ -7,7 +7,7 @@ const fs = require('fs');
 // var formidable = require('formidable');
 const book = require('./../database/book.js');
 const router = express.Router();
-const checkLogin = require('../server/posts/checkLogin');
+// const checkLogin = require('../server/posts/checkLogin');
 router.get('/', function (req, res) {
     res.render('CustomArticle.jade');
 });
