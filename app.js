@@ -2,15 +2,14 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 
-const index = require('./routes/index');
-const typing = require('./routes/typing');
-const dbs = require('./routes/addArticle');
-const login = require('./routes/login');
-const wikipedia = require('node-wikipedia');
-const user = require('./database/User');
+const index = require('./server/routes/index');
+const typing = require('./server/routes/typing');
+const dbs = require('./server/routes/addArticle');
+const login = require('./server/routes/login');
+const user = require('./server/database/User');
 const session = require('express-session');
-
 const app = express();
+const isDev = process.env.NODE_ENV !== 'production';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,8 +28,35 @@ app.use(require('node-sass-middleware')({
     sourceMap: true
 }));
 
+
 // serve files
-app.use(express.static(path.join(__dirname, 'public')));
+if (isDev) {
+    // static assets served by webpack-dev-middleware & webpack-hot-middleware for development
+    console.log('dev mode');
+    const webpack = require('webpack'),
+        webpackDevMiddleware = require('webpack-dev-middleware'),
+        webpackHotMiddleware = require('webpack-hot-middleware'),
+        webpackDevConfig = require('./webpack.config.js');
+
+    const compiler = webpack(webpackDevConfig);
+
+    // attach to the compiler & the server
+    app.use(webpackDevMiddleware(compiler, {
+
+        // public path should be the same with webpack config
+        publicPath: webpackDevConfig.output.publicPath,
+        // noInfo: true,
+        stats: {
+            colors: true
+        }
+    }));
+    app.use(webpackHotMiddleware(compiler, {
+        log: console.log
+    }));
+
+} else {
+    app.use(express.static(path.join(__dirname, 'public')));
+}
 
 app.use(
     session(
@@ -67,7 +93,14 @@ app.use(function (err, req, res, next) {
 
     // render the error page
     res.status(err.status || 500);
-    res.render('error');
+    res.send('error');
 });
 
+// if (isDev) {
+//
+// } else {
+app.listen(3000, function () {
+    console.log('app started on port 3000');
+});
+// }
 module.exports = app;
