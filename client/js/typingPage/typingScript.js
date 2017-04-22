@@ -1,3 +1,5 @@
+// require('../css/font-files/firasans-extralightitalic-webfont.woff2');
+// require('../css/font-files/firasans-extralightitalic-webfont.woff');
 function typeScript() {
     let text = $('.passin').text();
     let textArray = text.split('');

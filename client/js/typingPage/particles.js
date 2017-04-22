@@ -9,9 +9,9 @@
 
 var pJS = function (tag_id, params) {
 
-    var canvas_el = document.querySelector('#' + tag_id + ' > .particles-js-canvas-el');
+    var canvas_el = document.querySelector('#' + tag_id + ' > .powermode-js-canvas-el');
 
-    /* particles.js variables with default values */
+    /* powermode.js variables with default values */
     this.pJS = {
         canvas: {
             el: canvas_el,
@@ -215,7 +215,7 @@ var pJS = function (tag_id, params) {
                     pJS.fn.vendors.densityAutoParticles();
                 }
 
-                /* density particles enabled */
+                /* density powermode enabled */
                 pJS.fn.vendors.densityAutoParticles();
 
             });
@@ -234,7 +234,7 @@ var pJS = function (tag_id, params) {
     };
 
 
-    /* --------- pJS functions - particles ----------- */
+    /* --------- pJS functions - powermode ----------- */
 
     pJS.fn.particle = function (color, opacity, position) {
 
@@ -602,22 +602,22 @@ var pJS = function (tag_id, params) {
                 pJS.fn.modes.repulseParticle(p);
             }
 
-            /* interaction auto between particles */
+            /* interaction auto between powermode */
             if (pJS.particles.line_linked.enable || pJS.particles.move.attract.enable) {
                 for (var j = i + 1; j < pJS.particles.array.length; j++) {
                     var p2 = pJS.particles.array[j];
 
-                    /* link particles */
+                    /* link powermode */
                     if (pJS.particles.line_linked.enable) {
                         pJS.fn.interact.linkParticles(p, p2);
                     }
 
-                    /* attract particles */
+                    /* attract powermode */
                     if (pJS.particles.move.attract.enable) {
                         pJS.fn.interact.attractParticles(p, p2);
                     }
 
-                    /* bounce particles */
+                    /* bounce powermode */
                     if (pJS.particles.move.bounce) {
                         pJS.fn.interact.bounceParticles(p, p2);
                     }
@@ -635,7 +635,7 @@ var pJS = function (tag_id, params) {
         /* clear canvas */
         pJS.canvas.ctx.clearRect(0, 0, pJS.canvas.w, pJS.canvas.h);
 
-        /* update each particles param */
+        /* update each powermode param */
         pJS.fn.particlesUpdate();
 
         /* draw each particle */
@@ -667,7 +667,7 @@ var pJS = function (tag_id, params) {
     };
 
 
-    /* ---------- pJS functions - particles interaction ------------ */
+    /* ---------- pJS functions - powermode interaction ------------ */
 
     pJS.fn.interact.linkParticles = function (p1, p2) {
 
@@ -704,7 +704,7 @@ var pJS = function (tag_id, params) {
 
     pJS.fn.interact.attractParticles = function (p1, p2) {
 
-        /* condensed particles */
+        /* condensed powermode */
         var dx = p1.x - p2.x,
             dy = p1.y - p2.y,
             dist = Math.sqrt(dx * dx + dy * dy);
@@ -1166,10 +1166,10 @@ var pJS = function (tag_id, params) {
                 area = area / (pJS.canvas.pxratio * 2);
             }
 
-            /* calc number of particles based on density area */
+            /* calc number of powermode based on density area */
             var nb_particles = area * pJS.particles.number.value / pJS.particles.number.density.value_area;
 
-            /* add or remove X particles */
+            /* add or remove X powermode */
             var missing_particles = pJS.particles.array.length - nb_particles;
             if (missing_particles < 0) pJS.fn.modes.pushParticles(Math.abs(missing_particles));
             else pJS.fn.modes.removeParticles(missing_particles);
@@ -1367,7 +1367,7 @@ var pJS = function (tag_id, params) {
 
     pJS.fn.vendors.init = function () {
 
-        /* init canvas + particles */
+        /* init canvas + powermode */
         pJS.fn.retinaInit();
         pJS.fn.canvasInit();
         pJS.fn.canvasSize();
@@ -1375,7 +1375,7 @@ var pJS = function (tag_id, params) {
         pJS.fn.particlesCreate();
         pJS.fn.vendors.densityAutoParticles();
 
-        /* particles.line_linked - convert hex colors to rgb */
+        /* powermode.line_linked - convert hex colors to rgb */
         pJS.particles.line_linked.color_rgb_line = hexToRgb(pJS.particles.line_linked.color);
 
     };
@@ -1462,7 +1462,7 @@ function isInArray(value, array) {
 }
 
 
-/* ---------- particles.js functions - start ------------ */
+/* ---------- powermode.js functions - start ------------ */
 
 window.pJSDom = [];
 
@@ -1473,17 +1473,17 @@ window.particlesJS = function (tag_id, params) {
     /* no string id? so it's object params, and set the id with default id */
     if (typeof(tag_id) != 'string') {
         params = tag_id;
-        tag_id = 'particles-js';
+        tag_id = 'powermode-js';
     }
 
     /* no id? set the id to default id */
     if (!tag_id) {
-        tag_id = 'particles-js';
+        tag_id = 'powermode-js';
     }
 
     /* pJS elements */
     var pJS_tag = document.getElementById(tag_id),
-        pJS_canvas_class = 'particles-js-canvas-el',
+        pJS_canvas_class = 'powermode-js-canvas-el',
         exist_canvas = pJS_tag.getElementsByClassName(pJS_canvas_class);
 
     /* remove canvas if exists into the pJS target tag */

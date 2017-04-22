@@ -28,8 +28,8 @@ App = (function () {
         // $('#')
         // test only
         // console.log(this.cursor[0].getBoundingClientRect().left);
-        // this.particles.push(this.createParticle(this.cursor.position().left - this.canvas.position().left, this.cursor.position().top - this.canvas.position().top, 'green'));
-        // this.particles.push(this.createParticle(this.cursor.position().left - this.canvas.position().left, this.cursor.position().top - this.canvas.position().top, 'blue'));
+        // this.powermode.push(this.createParticle(this.cursor.position().left - this.canvas.position().left, this.cursor.position().top - this.canvas.position().top, 'green'));
+        // this.powermode.push(this.createParticle(this.cursor.position().left - this.canvas.position().left, this.cursor.position().top - this.canvas.position().top, 'blue'));
     }
 
     App.prototype.PARTICLE_VELOCITY_RANGE = {
@@ -59,7 +59,7 @@ App = (function () {
             ];
             this.particles[this.particlePointer] = this.createParticle(curPosX, curPoxY, color);
         }
-        // this.particles.push(this.createParticle(this.cursor.position().left - this.canvas.position().left, this.cursor.position().top - this.canvas.position().top, 'blue'));
+        // this.powermode.push(this.createParticle(this.cursor.position().left - this.canvas.position().left, this.cursor.position().top - this.canvas.position().top, 'blue'));
     };
     App.prototype.createParticle = function (x, y, color) {
         return {
@@ -93,7 +93,7 @@ App = (function () {
             this.ctx.fillStyle = "rgba(" + (particle.color.join(", ")) + ", " + particle.alpha + ")";
             this.ctx.fillRect(Math.round(particle.x - this.PARTICLE_SIZE / 2), Math.round(particle.y - this.PARTICLE_SIZE / 2), this.PARTICLE_SIZE, this.PARTICLE_SIZE)
         }
-        // this.particles.forEach(function (particle) {
+        // this.powermode.forEach(function (particle) {
         //
         //
         // })
@@ -101,6 +101,7 @@ App = (function () {
 
     return App;
 })();
-app = new App();
-app.draw();
-// console.log(app.particles);
+module.exports = function () {
+    app = new App();
+    app.draw();
+};

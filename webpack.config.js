@@ -1,41 +1,51 @@
-var webpack = require('webpack');
-var path = require('path');
+const webpack = require('webpack');
+const path = require('path');
 
-var publicPath = 'http://localhost:3000/';
-var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
-
-var devConfig = {
+const publicPath = 'http://localhost:3000/';
+// const hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
+//todo adjust entry according to env variable
+const devConfig = {
     devtool: '#source-map',
     entry: [
-        './public/js/entry.js',
+        './client/js/entry.js',
         'webpack/hot/dev-server',
         'webpack-hot-middleware/client'
-    ]
-    ,
+    ],
     output: {
-        filename: './[name]/bundle.js',
-        path: '/',
+        filename: './js/main.js',
+        path: path.resolve(__dirname, './public'),
         publicPath: publicPath
     },
-    // devtool: 'eval-source-map',
-    // module: {
-    //     rules: [{
-    //         test: /\.(png|jpg)$/,
-    //         use: 'url-loader?limit=8192&context=client&name=[path][name].[ext]'
-    //     }, {
-    //         test: /\.scss$/,
-    //         use: [
-    //             'style-loader',
-    //             'css-loader?sourceMap',
-    //             'resolve-url-loader',
-    //             'sass-loader?sourceMap'
-    //         ]
-    //     }]
-    // },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin()
-    ]
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.s(a|c)ss$/,
+                use: [
+                    {
+                        loader: "style-loader" // creates style nodes from JS strings
+                    },
+                    {
+                        loader: "css-loader" // translates CSS into CommonJS
+                    },
+                    {
+                        loader: "sass-loader?source-map" // compiles Sass to CSS
+                    }
+                ]
+            },
+            {
+                test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+                use: ['file-loader']
+            },
+            {
+                test: /\.(png|jpg)$/,
+                use: ['file-loader?name=./images/[name].[ext]']
+            }
+        ]
+    }
 };
 
 module.exports = devConfig;

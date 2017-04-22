@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "cross-env NODE_ENV=dev node ./app.js"
+    "start": "cross-env NODE_ENV=dev node ./app.js",
+    "deploy": "webpack --config webpack.pro.js && cross-env NODE_ENV=production node app.js"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -19,21 +20,30 @@
     "session": "^0.1.0"
   },
   "devDependencies": {
-    "cross-env": "^4.0.0",
-    "webpack": "^2.4.1",
-    "webpack-dev-middleware": "^1.10.1",
-    "webpack-dev-server": "^2.4.2",
-    "webpack-hot-middleware": "^2.18.0",
     "body-parser": "^1.15.2",
+    "clean-webpack-plugin": "^0.1.16",
     "cookie-parser": "~1.4.3",
+    "cross-env": "^4.0.0",
+    "css-loader": "^0.28.0",
     "debug": "~2.2.0",
     "express": "~4.14.0",
     "express-session": "^1.15.0",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.1",
     "jade": "~1.11.0",
     "mongoose": "^4.8.0",
     "morgan": "~1.7.0",
-    "node-sass-middleware": "0.9.8",
+    "node-sass": "^4.5.2",
+    "node-sass-middleware": "~0.9.8",
+    "resolve-url-loader": "^2.0.2",
+    "sass-loader": "^6.0.3",
     "serve-favicon": "~2.3.0",
-    "session": "^0.1.0"
+    "session": "^0.1.0",
+    "style-loader": "^0.16.1",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.4.1",
+    "webpack-dev-middleware": "^1.10.1",
+    "webpack-dev-server": "^2.4.2",
+    "webpack-hot-middleware": "^2.18.0"
   }
 }

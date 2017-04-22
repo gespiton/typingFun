@@ -2,13 +2,13 @@
  * Created by sher on 2017/1/27 0027.
  */
 function loginFunc() {
-    var $formLogin = $('#login-form');
-    var $formLost = $('#lost-form');
-    var $formRegister = $('#register-form');
-    var $divForms = $('#div-forms');
-    var $modalAnimateTime = 300;
-    var $msgAnimateTime = 150;
-    var $msgShowTime = 2000;
+    const $formLogin = $('#login-form');
+    const $formLost = $('#lost-form');
+    const $formRegister = $('#register-form');
+    const $divForms = $('#div-forms');
+    const $modalAnimateTime = 300;
+    const $msgAnimateTime = 150;
+    const $msgShowTime = 2000;
 
     $("form").submit(function () {
         switch (this.id) {
@@ -105,6 +105,31 @@ function loginFunc() {
         }, $msgShowTime);
     }
 
-
+    $('#logState').on('click', function () {
+        $(document).off('keypress');
+    });
 }
+loginFunc();
+
+function getLogState() {
+    $.post('login', {'verify': true}, function (result) {
+            changeUserState(result.loged, result.username);
+            // console.log('posted');
+            // console.log(result.loged);
+        }
+    );
+}
+
+function changeUserState(loged, name) {
+    if (loged) {
+        $('#logState').attr('src', '/images/loged.png');
+        $('#username').text(name);
+    } else {
+        $('#logState').attr('src', '/images/login.png');
+    }
+}
+module.exports = {
+    getLogState: getLogState,
+    changeUserState: changeUserState
+};
 

@@ -12,7 +12,7 @@ const app = express();
 const isDev = process.env.NODE_ENV !== 'production';
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, './server/views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
@@ -21,12 +21,12 @@ app.set('view engine', 'jade');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(require('node-sass-middleware')({
-    src: path.join(__dirname, 'public'),
-    dest: path.join(__dirname, 'public'),
-    indentedSyntax: true,
-    sourceMap: true
-}));
+// app.use(require('node-sass-middleware')({
+//     src: path.join(__dirname, 'public'),
+//     dest: path.join(__dirname, 'public'),
+//     indentedSyntax: true,
+//     sourceMap: true
+// }));
 
 
 // serve files
@@ -53,6 +53,7 @@ if (isDev) {
     app.use(webpackHotMiddleware(compiler, {
         log: console.log
     }));
+
 
 } else {
     app.use(express.static(path.join(__dirname, 'public')));
@@ -96,11 +97,16 @@ app.use(function (err, req, res, next) {
     res.send('error');
 });
 
-// if (isDev) {
-//
-// } else {
-app.listen(3000, function () {
-    console.log('app started on port 3000');
-});
-// }
+if (isDev) {
+    var http = require('http');
+
+    var server = http.createServer(app);
+    server.listen(3000, function () {
+        console.log('App (dev) is now running on port 3000!');
+    });
+} else {
+    app.listen(3000, function () {
+        console.log('app started on port 3000');
+    });
+}
 module.exports = app;
