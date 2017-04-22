@@ -1,8 +1,8 @@
-jQuery = $ = require('./library/jquery');
+// jQuery = $ = require('./library/jquery');
 require("../css/main.sass");
 require('./library/bootstrap');
-// require('../images/loged.png');  // todo why the hell don't I need it now
-// require('../images/login.png');
+require.context('../images');
+require('./typingPage/statsConfig');
 const typeScript = require('./typingPage/typingScript');
 const powermode = require('./typingPage/powerMode');
 const login = require('./navBar/loginPanel');

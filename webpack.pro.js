@@ -1,5 +1,6 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var path = require('path');
+const webpack = require('webpack');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 var productionConfig = [{
@@ -36,7 +37,11 @@ var productionConfig = [{
         new ExtractTextPlugin({
             filename: 'css/main.css',
             allChunks: true
-        })
+        }),
+        new webpack.ProvidePlugin({
+            $: path.join(__dirname, './client/js/library/jquery.js'),
+            jQuery: path.join(__dirname, './client/js/library/jquery.js')
+        }),
     ]
 }];
 

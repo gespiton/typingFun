@@ -109,12 +109,16 @@ function typeScript() {
     }
 
     function fillStage() {
+        const $stage = $('#stage');
+        // const caret = $('#caret');
+        // $stage.empty();
+        // $stage.append(caret);
         for (let char in textArray) {
             let $charSpan = $('<span>', {
                 class: 'char',
                 text: textArray[char],
             });
-            $('#stage').append($charSpan);
+            $stage.append($charSpan);
             domArr.push($charSpan);
         }
     }

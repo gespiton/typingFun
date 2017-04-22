@@ -18,7 +18,11 @@ const devConfig = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.ProvidePlugin({
+            $: path.join(__dirname, './client/js/library/jquery.js'),
+            jQuery: path.join(__dirname, './client/js/library/jquery.js')
+        }),
     ],
     module: {
         rules: [
@@ -43,6 +47,7 @@ const devConfig = {
             {
                 test: /\.(png|jpg)$/,
                 use: ['file-loader?name=./images/[name].[ext]']
+                // include: [path.resolve(__dirname, './client/images')]
             }
         ]
     }

@@ -33,17 +33,17 @@ App = (function () {
     }
 
     App.prototype.PARTICLE_VELOCITY_RANGE = {
-        x: [-2.5, 2.5],
+        x: [-3.5, 0],
         y: [-7, -3.5]
     };
-    App.prototype.PARTICLE_GRAVITY = 0.12;
+    App.prototype.PARTICLE_GRAVITY = 0.32;
 
     App.prototype.PARTICLE_SIZE = 4;
 
     App.prototype.PARTICLE_ALPHA_FADEOUT = 0.96;
 
-    App.prototype.maxParticleNum = 10;
-    App.prototype.maxSpawnParticleNum = 4;
+    App.prototype.maxParticleNum = 18;
+    App.prototype.maxSpawnParticleNum = 5;
 
     // functions
     App.prototype.spawnParticles = function () {
@@ -53,15 +53,16 @@ App = (function () {
         for (let i = 0; i != this.maxSpawnParticleNum; ++i) {
             this.particlePointer = (i + this.particlePointer) % this.maxParticleNum;
             const color = [
+                Math.round(255 * Math.random() + 50),
                 Math.round(255 * Math.random()),
-                Math.round(255 * Math.random()),
-                Math.round(255 * Math.random())
+                Math.round(255 * Math.random() + 50)
             ];
             this.particles[this.particlePointer] = this.createParticle(curPosX, curPoxY, color);
         }
         // this.powermode.push(this.createParticle(this.cursor.position().left - this.canvas.position().left, this.cursor.position().top - this.canvas.position().top, 'blue'));
     };
     App.prototype.createParticle = function (x, y, color) {
+        console.log('creating particles');
         return {
             x: x,
             y: y + 10,
