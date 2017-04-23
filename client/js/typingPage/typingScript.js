@@ -152,5 +152,15 @@ function typeScript() {
         $('#caret').css({top: yOffset});
         console.log($('#stage').scrollTop());
     }
+
+    let beginWord = 0;
+    TimeTracker = function () {
+        function timeTracker() {
+            this.word = '';
+            this.timeArr = [];
+            [1, 2, 3].map(x => x * 2);
+        }
+
+    }
 }
 module.exports = typeScript;
