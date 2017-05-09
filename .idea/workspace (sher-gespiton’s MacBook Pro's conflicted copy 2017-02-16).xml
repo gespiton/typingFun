@@ -1,0 +1,973 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5f87ab47-7653-4a30-b7d6-a325159d8ccb" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/sher.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/sher.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/runConfigurations/bin_www.xml" afterPath="$PROJECT_DIR$/.idea/runConfigurations/bin_www.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/typingFun.iml" afterPath="$PROJECT_DIR$/.idea/typingFun.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/www" afterPath="$PROJECT_DIR$/bin/www" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/addArticle.js" afterPath="$PROJECT_DIR$/public/javascripts/addArticle.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/bootstrap.js" afterPath="$PROJECT_DIR$/public/javascripts/bootstrap.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/loginPanel.js" afterPath="$PROJECT_DIR$/public/javascripts/loginPanel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/startup.js" afterPath="$PROJECT_DIR$/public/javascripts/startup.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/typingScript.js" afterPath="$PROJECT_DIR$/public/javascripts/typingScript.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/_fonts.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/_fonts.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/_vars.sass" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/_vars.sass" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/_bourbon-deprecated-upcoming.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/_bourbon-deprecated-upcoming.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/_bourbon.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/_bourbon.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_border-color.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_border-color.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_border-radius.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_border-radius.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_border-style.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_border-style.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_border-width.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_border-width.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_buttons.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_buttons.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_clearfix.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_clearfix.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_ellipsis.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_ellipsis.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_font-stacks.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_font-stacks.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_hide-text.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_hide-text.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_margin.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_margin.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_padding.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_padding.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_position.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_position.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_prefixer.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_prefixer.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_retina-image.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_retina-image.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_size.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_size.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_text-inputs.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_text-inputs.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_timing-functions.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_timing-functions.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_triangle.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_triangle.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_word-wrap.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/addons/_word-wrap.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_animation.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_animation.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_appearance.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_appearance.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_backface-visibility.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_backface-visibility.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_background-image.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_background-image.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_background.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_background.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_border-image.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_border-image.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_calc.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_calc.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_columns.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_columns.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_filter.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_filter.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_flex-box.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_flex-box.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_font-face.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_font-face.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_font-feature-settings.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_font-feature-settings.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_hidpi-media-query.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_hidpi-media-query.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_hyphens.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_hyphens.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_image-rendering.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_image-rendering.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_keyframes.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_keyframes.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_linear-gradient.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_linear-gradient.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_perspective.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_perspective.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_placeholder.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_placeholder.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_radial-gradient.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_radial-gradient.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_selection.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_selection.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_text-decoration.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_text-decoration.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_transform.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_transform.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_transition.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_transition.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_user-select.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/css3/_user-select.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_assign-inputs.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_assign-inputs.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_contains-falsy.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_contains-falsy.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_contains.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_contains.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_is-length.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_is-length.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_is-light.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_is-light.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_is-number.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_is-number.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_is-size.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_is-size.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_modular-scale.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_modular-scale.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_px-to-em.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_px-to-em.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_px-to-rem.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_px-to-rem.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_shade.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_shade.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_strip-units.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_strip-units.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_tint.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_tint.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_transition-property-name.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_transition-property-name.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_unpack.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/functions/_unpack.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_convert-units.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_convert-units.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_directional-values.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_directional-values.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_font-source-declaration.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_font-source-declaration.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_gradient-positions-parser.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_gradient-positions-parser.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_linear-angle-parser.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_linear-angle-parser.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_linear-gradient-parser.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_linear-gradient-parser.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_linear-positions-parser.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_linear-positions-parser.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_linear-side-corner-parser.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_linear-side-corner-parser.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_radial-arg-parser.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_radial-arg-parser.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_radial-gradient-parser.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_radial-gradient-parser.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_radial-positions-parser.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_radial-positions-parser.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_render-gradients.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_render-gradients.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_shape-size-stripper.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_shape-size-stripper.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_str-to-num.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/helpers/_str-to-num.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/settings/_asset-pipeline.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/settings/_asset-pipeline.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/settings/_prefixer.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/settings/_prefixer.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/settings/_px-to-em.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/settings/_px-to-em.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/0-tools/normalize.scss" afterPath="$PROJECT_DIR$/public/stylesheets/0-tools/normalize.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/1-base/_body-element.sass" afterPath="$PROJECT_DIR$/public/stylesheets/1-base/_body-element.sass" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/1-base/_example-buttons.sass" afterPath="$PROJECT_DIR$/public/stylesheets/1-base/_example-buttons.sass" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/1-base/_links.sass" afterPath="$PROJECT_DIR$/public/stylesheets/1-base/_links.sass" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/1-base/_selection-colors.sass" afterPath="$PROJECT_DIR$/public/stylesheets/1-base/_selection-colors.sass" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/1-base/_typography.sass" afterPath="$PROJECT_DIR$/public/stylesheets/1-base/_typography.sass" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/2-modules/header.sass" afterPath="$PROJECT_DIR$/public/stylesheets/2-modules/header.sass" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/2-modules/layout.sass" afterPath="$PROJECT_DIR$/public/stylesheets/2-modules/layout.sass" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/2-modules/loginPanel.sass" afterPath="$PROJECT_DIR$/public/stylesheets/2-modules/loginPanel.sass" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/2-modules/newArticle.sass" afterPath="$PROJECT_DIR$/public/stylesheets/2-modules/newArticle.sass" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/2-modules/typing.sass" afterPath="$PROJECT_DIR$/public/stylesheets/2-modules/typing.sass" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/style.css" afterPath="$PROJECT_DIR$/public/stylesheets/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/style.css.map" afterPath="$PROJECT_DIR$/public/stylesheets/style.css.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/style.sass" afterPath="$PROJECT_DIR$/public/stylesheets/style.sass" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/User.js" afterPath="$PROJECT_DIR$/routes/User.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/book.js" afterPath="$PROJECT_DIR$/routes/book.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/db.js" afterPath="$PROJECT_DIR$/routes/db.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/index.js" afterPath="$PROJECT_DIR$/routes/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/js.html" afterPath="$PROJECT_DIR$/routes/js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/login.js" afterPath="$PROJECT_DIR$/routes/login.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/typing.js" afterPath="$PROJECT_DIR$/routes/typing.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/wikipedia.js" afterPath="$PROJECT_DIR$/routes/wikipedia.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/CustomArticle.jade" afterPath="$PROJECT_DIR$/views/CustomArticle.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/error.jade" afterPath="$PROJECT_DIR$/views/error.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/form.jade" afterPath="$PROJECT_DIR$/views/form.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/header.jade" afterPath="$PROJECT_DIR$/views/header.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.jade" afterPath="$PROJECT_DIR$/views/index.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/layout.jade" afterPath="$PROJECT_DIR$/views/layout.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/typing.jade" afterPath="$PROJECT_DIR$/views/typing.jade" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="typingScript.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/javascripts/typingScript.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="350">
+              <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+              <folding>
+                <element signature="e#471#520#0" expanded="false" />
+                <element signature="e#549#637#0" expanded="false" />
+                <element signature="e#667#777#0" expanded="false" />
+                <element signature="e#1078#1197#0" expanded="false" />
+                <element signature="e#1227#1638#0" expanded="false" />
+                <element signature="e#1675#1876#0" expanded="false" />
+                <element signature="e#1740#1762#0" expanded="false" />
+                <element signature="e#1903#2223#0" expanded="false" />
+                <element signature="e#2250#2512#0" expanded="false" />
+                <element signature="e#2541#2600#0" expanded="false" />
+                <element signature="e#2627#2702#0" expanded="false" />
+                <element signature="e#2732#2913#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/db.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="book.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/book.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="11" column="2" lean-forward="false" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wikipedia.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/wikipedia.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="typing.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/typing.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/routes/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="6" column="11" lean-forward="false" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>public</find>
+      <find>bodyParser</find>
+      <find>node</find>
+      <find>node_mo</find>
+      <find>passwd</find>
+      <find>length</find>
+      <find>fillStage</find>
+      <find>alert</find>
+      <find>formidable</find>
+      <find>boots</find>
+      <find>var</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>let</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/routes/index.js" />
+        <option value="$PROJECT_DIR$/routes/users.js" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$APPLICATION_CONFIG_DIR$/javascript/nodejs/7.4.0/core-modules/module.js" />
+        <option value="$PROJECT_DIR$/public/stylesheets/2-modules/typing.sass" />
+        <option value="$PROJECT_DIR$/bin/www" />
+        <option value="$PROJECT_DIR$/routes/typing.js" />
+        <option value="$PROJECT_DIR$/views/CustomArticle" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/public/stylesheets/style.sass" />
+        <option value="$PROJECT_DIR$/public/stylesheets/0-tools/bootstrap.css" />
+        <option value="$PROJECT_DIR$/views/header.jade" />
+        <option value="$PROJECT_DIR$/views/typing.jade" />
+        <option value="$PROJECT_DIR$/routes/login.js" />
+        <option value="$PROJECT_DIR$/routes/User.js" />
+        <option value="$PROJECT_DIR$/public/javascripts/addArticle.js" />
+        <option value="$PROJECT_DIR$/views/layout.jade" />
+        <option value="$PROJECT_DIR$/views/form.jade" />
+        <option value="$PROJECT_DIR$/public/javascripts/startup.js" />
+        <option value="$PROJECT_DIR$/public/javascripts/loginPanel.js" />
+        <option value="$PROJECT_DIR$/public/javascripts/typingScript.js" />
+        <option value="$PROJECT_DIR$/routes/db.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
+    <package-json value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>false</service-enabled>
+    <exe-path />
+    <annotation-enable>false</annotation-enable>
+    <other-services-enabled>false</other-services-enabled>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Assignment issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Bitwise operation issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Code quality toolsJavaScript</id>
+          </State>
+          <State>
+            <id>Code style issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Control flow issuesJavaScript</id>
+          </State>
+          <State>
+            <id>DOM issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Data flow issuesJavaScript</id>
+          </State>
+          <State>
+            <id>ECMAScript 6 migration aidsJavaScript</id>
+          </State>
+          <State>
+            <id>Error handlingJavaScript</id>
+          </State>
+          <State>
+            <id>Flow type checkerJavaScript</id>
+          </State>
+          <State>
+            <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript function metricsJavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript validity issuesJavaScript</id>
+          </State>
+          <State>
+            <id>Naming conventionsJavaScript</id>
+          </State>
+          <State>
+            <id>Node.jsJavaScript</id>
+          </State>
+          <State>
+            <id>Potentially confusing code constructsJavaScript</id>
+          </State>
+          <State>
+            <id>Probable bugsJavaScript</id>
+          </State>
+          <State>
+            <id>TypeScript</id>
+          </State>
+          <State>
+            <id>Unit testingJavaScript</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="typingFun" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="typingFun" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="typingFun" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="typingFun" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="typingFun" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="typingFun" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="routes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="typingFun" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="typingFun" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="typingFun" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="typingFun" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
+    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="7.4.0" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="js.eslint.eslintPackage" value="" />
+    <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="JavaScriptPreferStrict" value="false" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="js.html&#9;FILE&#9;file://C:/Users/10447_000/Dropbox/typingFun/routes/js.html&#10;formidable&#9;null&#9;null" />
+    <property name="FullScreen" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\10447_000\Dropbox\typingFun\public\stylesheets\0-tools\bourbon" />
+      <recent name="E:\express\routes" />
+      <recent name="E:\express\public\images" />
+      <recent name="E:\express\public\javascripts" />
+      <recent name="E:\express\views" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Node.js.bin\www">
+    <configuration default="false" name="login.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="login.js" working-dir="$PROJECT_DIR$/routes">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Node.js.bin\www" />
+      <item index="1" class="java.lang.String" itemvalue="Node.js.login.js" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Node.js.login.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5f87ab47-7653-4a30-b7d6-a325159d8ccb" name="Default" comment="" />
+      <created>1485615603420</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1485615603420</updated>
+      <workItem from="1485615621636" duration="6552000" />
+      <workItem from="1485623137720" duration="11873000" />
+      <workItem from="1485690922979" duration="6174000" />
+      <workItem from="1485744376758" duration="6724000" />
+      <workItem from="1485850117969" duration="6414000" />
+      <workItem from="1486026256526" duration="26625000" />
+      <workItem from="1487169699866" duration="599000" />
+      <workItem from="1487170392697" duration="1463000" />
+      <workItem from="1487219950409" duration="41000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="66465000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18095239" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3276923" sideWeight="0.5058094" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32923076" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21695258" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.3353846" sideWeight="0.49419054" order="2" side_tool="false" content_ui="tabs" x="573" y="337" width="912" height="554" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3276923" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/node_modules/formidable/lib/incoming_form.js</url>
+          <line>81</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="6" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/routes/typing.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/User.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="15" column="47" lean-forward="false" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/typing.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="8" column="10" lean-forward="false" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layout.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/form.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="17" column="21" lean-forward="false" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="24" column="38" lean-forward="false" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/nodejs/7.4.0/core-modules/module.js" />
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/typing.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="18" column="68" lean-forward="false" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/header.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="8" column="10" lean-forward="false" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/form.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1300">
+          <caret line="52" column="14" lean-forward="false" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="38" lean-forward="false" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/www">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/error.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/users.js" />
+    <entry file="file://$PROJECT_DIR$/node_modules/formidable/lib/incoming_form.js" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/nodejs/7.4.0/core-modules/module.js" />
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/2-modules/typing.sass">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="62">
+          <caret line="49" column="16" lean-forward="true" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/CustomArticle.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="2" lean-forward="true" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="34" column="18" lean-forward="false" selection-start-line="34" selection-start-column="15" selection-end-line="34" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/0-tools/bourbon/bootstrap.css.map" />
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/0-tools/bootstrap.css" />
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/0-tools/normalize.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css.map">
+      <provider editor-type-id="sourcemapFileViewerProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/style.sass">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="28" lean-forward="true" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/db.html" />
+    <entry file="file://$PROJECT_DIR$/routes/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/User.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/typing.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="9" column="44" lean-forward="false" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3550">
+          <caret line="146" column="22" lean-forward="true" selection-start-line="146" selection-start-column="22" selection-end-line="146" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="95" column="7" lean-forward="false" selection-start-line="95" selection-start-column="7" selection-end-line="95" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/www">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="542">
+          <caret line="73" column="17" lean-forward="false" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/loginPanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="35" lean-forward="false" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/startup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="6" lean-forward="false" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/form.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/addArticle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="20" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layout.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/header.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/typingScript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+          <folding>
+            <element signature="e#471#520#0" expanded="false" />
+            <element signature="e#549#637#0" expanded="false" />
+            <element signature="e#667#777#0" expanded="false" />
+            <element signature="e#1078#1197#0" expanded="false" />
+            <element signature="e#1227#1638#0" expanded="false" />
+            <element signature="e#1675#1876#0" expanded="false" />
+            <element signature="e#1740#1762#0" expanded="false" />
+            <element signature="e#1903#2223#0" expanded="false" />
+            <element signature="e#2250#2512#0" expanded="false" />
+            <element signature="e#2541#2600#0" expanded="false" />
+            <element signature="e#2627#2702#0" expanded="false" />
+            <element signature="e#2732#2913#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/db.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/book.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" column="2" lean-forward="false" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/wikipedia.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/typing.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/js.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="91" lean-forward="true" selection-start-line="0" selection-start-column="91" selection-end-line="0" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="11" lean-forward="false" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
