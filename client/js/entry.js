@@ -1,19 +1,29 @@
 // jQuery = $ = require('./library/jquery');
 require("../css/main.sass");
-require('./library/bootstrap');
+require('../css/0-tools/bootstrap/js/bootstrap');
 require.context('../images');
-require('./typingPage/statsConfig');
-const typeScript = require('./typingPage/typingScript');
-const powermode = require('./typingPage/powerMode');
+
 const login = require('./navBar/loginPanel');
-require('./typingPage/particles');
-const bg = require('./typingPage/bgParticle');
 $(document).ready(
     function () {
-        bg();
-        typeScript();
-        powermode();
-        setTimeout(login.getLogState, 10);
+        if ($('#typingPage').length > 0) {
+            require('./typingPage/particles');
+            const bg = require('./typingPage/bgParticle');
+            bg();
+            require('./typingPage/statsConfig');
+            const typeScript = require('./typingPage/typingScript');
+            const powermode = require('./typingPage/powerMode');
+            require('./typingPage/particles');
+
+            typeScript();
+            powermode();
+            const $modal = $('#statics-window');
+            $('#statics').find('button').on('click', function () {
+                $.modal.modal('show');
+            });
+
+            setTimeout(login.getLogState, 10);
+        }
     }
 );
 

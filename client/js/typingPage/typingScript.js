@@ -4,8 +4,14 @@ function typeScript() {
     let text = $('.passin').text();
     let textArray = text.split('');
     let domArr = [];
+
+    let timeTracerArr = [];
+    let curTimeTracer;
+    let pauseRecord = false;
+    let timeTracerPos = 0;
+
     let curPos = 0;
-    let unCorCount = 0;
+    let inCorCount = 0;
     let totalCount = 0;
 
     let startTime = new Date().getTime();
@@ -20,7 +26,7 @@ function typeScript() {
     // setInterval(wheelEvent, 1);
     $(document).on('scroll', wheelEvent);
 
-    let length = domArr.length;
+    let length = domArr.length - 1;
 
     function setFirstChar() {
         $(domArr[0]).addClass('curChar');
@@ -64,9 +70,12 @@ function typeScript() {
     }
 
     function isFinished() {
-        if (curPos == length) {
+        if (curPos === length) {
             alert('finished');
             clearInterval(intervalID);
+            $(document).off('keypress');
+            timeTracerArr.map((buf) => console.log(buf.word + ' '));
+            return true;
         }
     }
 
@@ -78,11 +87,14 @@ function typeScript() {
             event.preventDefault();
             if (!typingStarted) {
                 startWpfCal();
+                curTimeTracer = new TimeTracer();
+                timeTracerArr.push(curTimeTracer);
             }
             ++totalCount;
             check(String.fromCharCode(event.charCode));
+            if (isFinished())
+                return;
             forwardCaret();
-            isFinished();
         });
     }
 
@@ -100,7 +112,7 @@ function typeScript() {
 
         let elapsed = Math.floor((new Date().getTime() - startTime) / 100) / 10; // why not /1000
         // alert(elapsed);
-        let wpf = Math.floor((totalCount / 5 - unCorCount) / (elapsed / 60));
+        let wpf = Math.floor((totalCount / 5 - inCorCount) / (elapsed / 60));
         if (wpf < 0) {
             wpf = 0;
         }
@@ -123,23 +135,43 @@ function typeScript() {
         }
     }
 
-    function correctChar() {
-        domArr[curPos].addClass('correct fadeBgc');
+    function updateTimeTracer(pressed) {
+        if (timeTracerPos === curPos) {
+            if (/[a-zA-Z]/.test($(domArr[curPos]).text()))
+                if (pauseRecord) {
+                    curTimeTracer = new TimeTracer();
+                    timeTracerArr.push(curTimeTracer);
+                    curTimeTracer.record(pressed);
+                    pauseRecord = false;
+                } else
+                    curTimeTracer.record(pressed);
+            else {
+                curTimeTracer.finish();
+                pauseRecord = true;
+            }
+            ++timeTracerPos;
+        }
     }
 
-    function wrongChar() {
-        ++unCorCount;
+    function correctChar(pressed) {
+        domArr[curPos].addClass('correct fadeBgc');
+        updateTimeTracer(pressed);
+    }
+
+    function wrongChar(pressed) {
+        ++inCorCount;
         domArr[curPos].addClass('incorrect');
+        updateTimeTracer(pressed);
     }
 
     function check(pressed) {
         // alert($(domArr[curPos]).text());
-        if (pressed == $(domArr[curPos]).text()) {
-            correctChar();
+        if (pressed === $(domArr[curPos]).text()) {
+            correctChar(pressed);
             if (powerMode)
                 app.spawnParticles();
         } else {
-            wrongChar();
+            wrongChar(pressed);
         }
     }
 
@@ -153,14 +185,26 @@ function typeScript() {
         console.log($('#stage').scrollTop());
     }
 
-    let beginWord = 0;
-    TimeTracker = function () {
-        function timeTracker() {
+    const TimeTracer = function () {
+        function TimeTrackerImpl() {
             this.word = '';
             this.timeArr = [];
-            [1, 2, 3].map(x => x * 2);
+            this.startTime = new Date().getTime();
         }
 
-    }
+        TimeTrackerImpl.prototype.addword = function (char) {
+            this.word += char;
+        };
+
+        TimeTrackerImpl.prototype.record = function (char) {
+            this.timeArr.push(new Date().getTime());
+            this.word += char;
+        };
+        TimeTrackerImpl.prototype.finish = function () {
+            console.log(this.word);
+            console.log(this.timeArr);
+        };
+        return TimeTrackerImpl;
+    }();
 }
 module.exports = typeScript;

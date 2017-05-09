@@ -1,4 +1,5 @@
 const canvas = $('#canvas');
+canvas.width($('#stage').width());
 const w = canvas.width();
 const h = canvas.height();
 canvas.attr('width', w);
@@ -15,10 +16,12 @@ App = (function () {
     };
 
     function App() {
+
         this.particles = [];
         this.lastDraw = 0;
         this.draw = bind(this.draw, this);
-        this.canvas = $('#canvas');
+        this.canvas = canvas;
+
         this.canvasH = this.canvas.height();
         this.canvasW = this.canvas.width();
         this.ctx = document.getElementById('canvas').getContext('2d');
@@ -47,10 +50,10 @@ App = (function () {
 
     // functions
     App.prototype.spawnParticles = function () {
-        console.log(this.cursor[0].getBoundingClientRect().left);
+        // console.log(this.cursor[0].getBoundingClientRect().left);
         const curPosX = this.cursor.position().left - this.canvas.position().left;
         const curPoxY = this.cursor.position().top - this.canvas.position().top;
-        for (let i = 0; i != this.maxSpawnParticleNum; ++i) {
+        for (let i = 0; i !== this.maxSpawnParticleNum; ++i) {
             this.particlePointer = (i + this.particlePointer) % this.maxParticleNum;
             const color = [
                 Math.round(255 * Math.random() + 50),
@@ -62,7 +65,7 @@ App = (function () {
         // this.powermode.push(this.createParticle(this.cursor.position().left - this.canvas.position().left, this.cursor.position().top - this.canvas.position().top, 'blue'));
     };
     App.prototype.createParticle = function (x, y, color) {
-        console.log('creating particles');
+        // console.log('creating particles');
         return {
             x: x,
             y: y + 10,

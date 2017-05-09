@@ -20,13 +20,14 @@ $stage-bg: rgba(250, 250, 250, 0.9)
 $inactive-char: rgba(100, 100, 180, 0.5)
 $correct-char: rgba(150, 1000, 171, 0.9)
 
-.typingPage
-  background-color: $BackGround
+#typingPage
+  //background-color: $BackGround
 
   .typing.main
-    .fadeBgc
-    //animation: fadeout ease-in-out 8s
-
+    //.fadeBgc
+    ////animation: fadeout ease-in-out 8s
+    #particles-js
+      transform: translateX(-198px)
     .char
       // overflow: hidden
       // height: 30px
@@ -75,35 +76,33 @@ $correct-char: rgba(150, 1000, 171, 0.9)
     margin: auto
     #stage-wrap
       position: relative
-      margin: 0 auto
-      width: 70%
-      background-color: $stage-bg
+      //background-color: $stage-bg
       #canvas
         position: fixed
-        width: inherit
+        //width: inherit
+        padding: 0
         height: calc(100vh - 80px)
       #stage
         padding: 40px 0
         background-color: $stage-bg
         margin: 0 auto
         //border: 2px solid
-        width: 80%
+        //width: 80%
 
         #caret
           position: fixed
-          background-color: rgba(black, 0.5)
+          background-color: rgba(black, 0.8)
           //animation: caret ease-in-out 1.0s alternate infinite
           border-radius: 2px
 
   #wpfContainer
     position: fixed
-    left: 20px
-    bottom: 20px
-
-    span
-      font-size: 30px
-      color: gray
-
+    left: 10px
+    bottom: 10px
     #wpf
-      color: #27ae60 !important
       text-shadow: 0 0 8px gray
+
+  #statics
+    position: fixed
+    right: 0px
+    top: 40vh

@@ -3,14 +3,30 @@ block variables
   -  var page = 'typingPage'
   -  var logged = {log}
 block content
-  .typing.main
+  .typing.main.container
     #particles-js
     p.passin= text
-    #stage-wrap
-      canvas#canvas
+    #stage-wrap.col-md-10.col-md-offset-1.well
+      canvas#canvas.col-md-10
       #stage
         #caret
 
-  #wpfContainer
-    span WPF:
-    span#wpf
+    .container
+      #wpfContainer.col-md-1
+        label.label.label-default WPF:
+        label.label.label-primary#wpf
+
+    #statics.col-md-1
+      button.btn.btn-info.row.btn-lg.pull-right(type='button' href='#statics-window' data-toggle='modal')
+        span.glyphicon.glyphicon-stats
+
+
+    .modal.fade#statics-window(tabindex=-1)
+      .modal-dialog.modal-lg
+        .modal-content
+          .modal-header
+            h4 hello
+          .modal-body
+            p ...
+          .modal-footer
+            button.btn.btn-success(data-dismiss='modal') close
