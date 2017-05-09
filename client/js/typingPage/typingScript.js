@@ -207,4 +207,5 @@ function typeScript() {
         return TimeTrackerImpl;
     }();
 }
-module.exports = typeScript;
+typeScript();
+// todo press update wpf

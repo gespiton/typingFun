@@ -21,7 +21,8 @@ const devConfig = {
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.ProvidePlugin({
             $: path.join(__dirname, './client/js/library/jquery.js'),
-            jQuery: path.join(__dirname, './client/js/library/jquery.js')
+            jQuery: path.join(__dirname, './client/js/library/jquery.js'),
+            d3: 'd3'
         }),
     ],
     module: {
