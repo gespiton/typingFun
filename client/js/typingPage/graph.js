@@ -8,7 +8,7 @@ function Draw() {
 
     Draw.prototype.draw = function (data, textArr) {
         {
-            console.log(data);
+            console.log(JSON.stringify(data));
             // const w = $(window).width() / 3 * 2;
             if (this.firstDraw) {
                 this.w = $('#indicator').width();
@@ -19,22 +19,30 @@ function Draw() {
                     .attr('height', this.h)
             }
 
+            let yMax = d3.max(data, (d) => d.speed);
+            if (yMax > 100)
+                yMax = 100;
+            const padding = 80;
 
-            d3.scaleLinear().range([this.h, 0])
-                .domain([d3.min(data), d3.max(data)], (d, i) => data[i]);
+            const xScale = d3.scaleLinear()
+                .domain([0, data.length])
+                .range([padding, this.w]);
 
+            const yScale = d3.scaleLinear()
+                .domain([0, yMax])
+                .range([this.h - padding, padding]);
 
-            const yMin = d3.min(data, (d) => d.speed);
-            const yRange = d3.max(data, (d) => d.speed) - yMin;
-            const xOffset = 20;
-            const yOffset = 20;
+            const getX = (d, i) => xScale(i);
+            const getY = d => yScale(d.speed);
 
-            const getX = (d, i) => (this.w - xOffset - 10) / (data.length - 1) * i + xOffset;
-            const getY = (d, i) => this.h - (d.speed - yMin) / yRange * (this.h - yOffset - 10) - yOffset;
-            const lineFun = d3.line()
-                .x(getX)
-                .y(getY);
+            const lineFun = d3.line().x(getX).y(getY).curve(d3.curveCatmullRom.alpha(0.5));
 
+            const getColor = (correct) => {
+                if (correct)
+                    return 'black';
+                else
+                    return 'deeppink';
+            };
 
             console.log(this.h);
 
@@ -53,14 +61,10 @@ function Draw() {
                 .append('circle')
                 .attr('cx', getX)
                 .attr('cy', getY)
-                .attr('r', 5);
+                .attr('r', 3)
+                .attr('fill', d => getColor(d.correct));
 
-            const getColor = (correct) => {
-                if (correct)
-                    return 'green';
-                else
-                    return 'red';
-            };
+
             // draw label
             this.$svg
                 .selectAll('text')
@@ -68,11 +72,15 @@ function Draw() {
                 .enter()
                 .append('text')
                 .text(d => d.text)
-                .attr('x', (d, i) => getX(d, i) - d.text.length * 10)
+                .attr('x', (d, i) => getX(d, i) - d.text.length * 8)
                 .attr('y', getY)
-                .style('fill', (d) => getColor(d.correct))
+                .style('fill', 'gray')
                 .style('font-size', '10px');
 
+            // draw axis
+            this.$svg.append('g')
+                .call(d3.axisLeft(yScale).ticks(10))
+                .attr('transform', 'translate(30)');
             this.firstDraw = false;
         }
 

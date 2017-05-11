@@ -6,7 +6,7 @@ router.get('/', function (req, res, next) {
 });
 
 function fetchText() {
-    let text = "My son starts school today." +
+    let text = "My son starts school today."+
         " It's going to be strange and new to him for a while, and I wish you would sort of treat him gently.";
     // " You see, up to now, he's been king of the roost. He's been boss of the backyard. I have always been around to repair his wounds, and to soothe his feelings. ";
     // "But now--things are going to be different. This morning, he's going to walk down the front steps, wave his hand and start on his great adventure that will probably include wars and tragedy and sorrow. To live his life in the world he has to live in will require faith and love and courage. So, W" +

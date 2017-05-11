@@ -40,7 +40,7 @@ function typeScript() {
             this.cal = function () {
                 let speed = this.timeArr.length / (this.timeArr[this.timeArr.length - 1] - this.timeArr[0])
                 if (isFinite(speed))
-                    return speed;
+                    return speed * 1000;
                 else
                     return 0;
             }
