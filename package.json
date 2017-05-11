@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=dev node ./app.js",
-    "deploy": "./node_modules/webpack/bin/webpack.js --config webpack.pro.js && cross-env NODE_ENV=production node app.js"
+    "deploy": "./node_modules/webpack/bin/webpack.js --config webpack.pro.js && cross-env NODE_ENV=deploy node app.js"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -26,6 +26,10 @@
     "cookie-parser": "~1.4.3",
     "cross-env": "^4.0.0",
     "css-loader": "^0.28.0",
+    "d3-array": "latest",
+    "d3-scale": "latest",
+    "d3-selection": "latest",
+    "d3-transition": "latest",
     "debug": "~2.2.0",
     "express": "~4.14.0",
     "express-session": "^1.15.0",
@@ -46,9 +50,6 @@
     "webpack-dev-middleware": "^1.10.1",
     "webpack-dev-server": "^2.4.2",
     "webpack-hot-middleware": "^2.18.0",
-    "d3-selection": "latest",
-    "d3-scale": "latest",
-    "d3-array": "latest",
-    "d3-transition": "latest"
+    "webpack-module-hot-accept": "^1.0.5"
   }
 }

@@ -23,4 +23,3 @@ $statics.find('button').on('click', function () {
 $modal.on('shown.bs.modal', function () {
     Draw.draw(app.getSpeedArr(), app.text.split(' '));
 });
-module.hot.accept();

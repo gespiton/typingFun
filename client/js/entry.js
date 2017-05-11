@@ -12,5 +12,3 @@ $(document).ready(
         setTimeout(login.getLogState, 10);
     }
 );
-
-module.hot.accept();

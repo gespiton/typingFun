@@ -80,4 +80,3 @@ function Draw() {
     return new Draw();
 }
 module.exports = Draw();
-module.hot.accept();

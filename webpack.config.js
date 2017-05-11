@@ -49,6 +49,10 @@ const devConfig = {
                 test: /\.(png|jpg)$/,
                 use: ['file-loader?name=./images/[name].[ext]']
                 // include: [path.resolve(__dirname, './client/images')]
+            },
+            {
+                test: /\.js$/,
+                use: ['webpack-module-hot-accept']
             }
         ]
     }
