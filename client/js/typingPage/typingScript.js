@@ -1,44 +1,90 @@
 // require('../css/font-files/firasans-extralightitalic-webfont.woff2');
 // require('../css/font-files/firasans-extralightitalic-webfont.woff');
 function typeScript() {
-    let text = $('.passin').text();
-    let textArray = text.split('');
-    let domArr = [];
+    function App() {
+        // const bind = function (fn, me) {
+        //     return function () {
+        //         return fn.apply(me, arguments);
+        //     };
+        // };
+        this.text = $('.passin').text();
+        this.textArray = this.text.split('');
+        this.domArr = [];
 
-    let timeTracerArr = [];
-    let curTimeTracer;
-    let pauseRecord = false;
-    let timeTracerPos = 0;
+        this.timeTracerArr = [];
+        this.curTimeTracer = 0;
+        this.pauseRecord = false;
+        this.timeTracerPos = 0;
 
-    let curPos = 0;
-    let inCorCount = 0;
-    let totalCount = 0;
+        this.curPos = 0;
+        this.inCorCount = 0;
+        this.totalCount = 0;
 
-    let startTime = new Date().getTime();
-    let typingStarted = false;
-    let intervalID;
-    let powerMode = true;
-    fillStage();
-    setFirstChar();
-    onKeyPressed();
-    backSpaceKeyHandler();
-    moveCaret();
-    // setInterval(wheelEvent, 1);
-    $(document).on('scroll', wheelEvent);
+        this.typingStarted = false;
+        this.intervalID = 0;
+        this.powerMode = true;
+        this.keyPressed = this.keyPressed.bind(this);
+        this.keydown = this.keydown.bind(this);
+        this.updateWpf = this.updateWpf.bind(this);
+        this.start = this.start.bind(this);
 
-    let length = domArr.length - 1;
 
-    function setFirstChar() {
-        $(domArr[0]).addClass('curChar');
     }
 
-    function startWpfCal() {
-        intervalID = setInterval(updateWpf, 1000);
-        typingStarted = true;
-    }
+    const TimeTracer = function () {
+        function TimeTracer() {
+            this.word = '';
+            this.timeArr = [];
+            this.startTime = new Date().getTime();
+            this.correct = true;
+            this.cal = function () {
+                let speed = this.timeArr.length / (this.timeArr[this.timeArr.length - 1] - this.timeArr[0])
+                if (isFinite(speed))
+                    return speed;
+                else
+                    return 0;
+            }
+        }
 
-    function moveCaret() {
-        const next = $(domArr[curPos]);
+        TimeTracer.prototype.addword = function (char) {
+            this.word += char;
+        };
+
+        TimeTracer.prototype.record = function (char) {
+            this.timeArr.push(new Date().getTime());
+            this.word += char;
+        };
+        TimeTracer.prototype.finish = function () {
+            console.log(this.word);
+            console.log(this.timeArr);
+        };
+        TimeTracer.prototype.setWrong = function () {
+            console.log('set wrong');
+            this.correct = false;
+        };
+
+        TimeTracer.prototype.calcSpeed = function () {
+            return {
+                speed: this.cal(),
+                text: this.word,
+                correct: this.correct
+            };
+        };
+        return TimeTracer;
+    }();
+
+    App.prototype.setFirstChar = function () {
+        $(this.domArr[0]).addClass('curChar');
+    };
+
+    App.prototype.startWpfCal = function () {
+        this.startTime = new Date().getTime();
+        this.intervalID = setInterval(this.updateWpf, 1000);
+        this.typingStarted = true;
+    };
+
+    App.prototype.moveCaret = function () {
+        const next = $(this.domArr[this.curPos]);
         const xOffset = next[0].getBoundingClientRect().left;
         const yOffset = next[0].getBoundingClientRect().top;
         // const newWidth = next.width();
@@ -52,160 +98,158 @@ function typeScript() {
             height: newHeight - 4
         }, 50);
         // console.log(xOffset + " : " + yOffset);
-    }
+    };
 
-    function forwardCaret() {
-        $(domArr[++curPos]).addClass('curChar');
-        $(domArr[curPos - 1]).removeClass('curChar');
-        moveCaret();
-    }
+    App.prototype.forwardCaret = function () {
+        $(this.domArr[++this.curPos]).addClass('curChar');
+        $(this.domArr[this.curPos - 1]).removeClass('curChar');
+        this.moveCaret();
+    };
 
-    function backCaret() {
-        if (curPos == 0)
+    App.prototype.backCaret = function () {
+        if (this.curPos === 0)
             return;
-        $(domArr[curPos]).removeClass('curChar correct incorrect fadeBgc');
-        $(domArr[--curPos]).removeClass('correct incorrect fadeBgc');
-        $(domArr[curPos].addClass('curChar'));
-        moveCaret();
-    }
+        $(this.domArr[this.curPos]).removeClass('curChar correct incorrect fadeBgc');
+        $(this.domArr[--this.curPos]).removeClass('correct incorrect fadeBgc');
+        $(this.domArr[this.curPos].addClass('curChar'));
+        this.moveCaret();
+    };
 
-    function isFinished() {
-        if (curPos === length) {
+    App.prototype.isFinished = function () {
+        if (this.curPos === this.length) {
             alert('finished');
-            clearInterval(intervalID);
+            clearInterval(this.intervalID);
             $(document).off('keypress');
-            timeTracerArr.map((buf) => console.log(buf.word + ' '));
+            this.timeTracerArr.map((buf) => console.log(buf.word + ' '));
+            $('#statics-window').modal('show');
             return true;
         }
-    }
+    };
 
-    function onKeyPressed() {
-        $(document).on("keypress", function (event) {
-            // prevent browser shotcut
-            // alert(event.hasOwnProperty());
+    App.prototype.keyPressed = function (event) {
+        // prevent browser shotcut
+        // alert(event.hasOwnProperty());
+        event.preventDefault();
+        if (!this.typingStarted) {
+            this.startWpfCal();
+            this.curTimeTracer = new TimeTracer();
+            this.timeTracerArr.push(this.curTimeTracer);
+        }
+        ++this.totalCount;
+        this.check(String.fromCharCode(event.charCode));
+        if (this.isFinished())
+            return;
+        this.forwardCaret();
+    };
 
-            event.preventDefault();
-            if (!typingStarted) {
-                startWpfCal();
-                curTimeTracer = new TimeTracer();
-                timeTracerArr.push(curTimeTracer);
-            }
-            ++totalCount;
-            check(String.fromCharCode(event.charCode));
-            if (isFinished())
-                return;
-            forwardCaret();
-        });
-    }
+    App.prototype.keydown = function (key) {
+        // alert(key.keyCode);
+        // 8
+        if (key.keyCode === 8) {
+            this.backCaret();
+        }
+    };
 
-    function backSpaceKeyHandler() {
-        $(document).on("keydown", function (key) {
-            // alert(key.keyCode);
-            // 8
-            if (key.keyCode == 8) {
-                backCaret();
-            }
-        });
-    }
+    App.prototype.updateWpf = function () {
 
-    function updateWpf() {
-
-        let elapsed = Math.floor((new Date().getTime() - startTime) / 100) / 10; // why not /1000
+        console.log(this.startTime);
+        let elapsed = Math.floor((new Date().getTime() - this.startTime) / 100) / 10; // why not /1000
         // alert(elapsed);
-        let wpf = Math.floor((totalCount / 5 - inCorCount) / (elapsed / 60));
+        let wpf = Math.floor((this.totalCount / 5 - this.inCorCount) / (elapsed / 60));
         if (wpf < 0) {
             wpf = 0;
         }
 
         $('#wpf').text(Math.floor((wpf)).toString());
-    }
+    };
 
-    function fillStage() {
+    App.prototype.fillStage = function () {
         const $stage = $('#stage');
         // const caret = $('#caret');
         // $stage.empty();
         // $stage.append(caret);
-        for (let char in textArray) {
+        for (let char in this.textArray) {
             let $charSpan = $('<span>', {
                 class: 'char',
-                text: textArray[char],
+                text: this.textArray[char],
             });
             $stage.append($charSpan);
-            domArr.push($charSpan);
+            this.domArr.push($charSpan);
         }
-    }
+        this.length = this.domArr.length - 1;
+    };
 
-    function updateTimeTracer(pressed) {
-        if (timeTracerPos === curPos) {
-            if (/[a-zA-Z]/.test($(domArr[curPos]).text()))
-                if (pauseRecord) {
-                    curTimeTracer = new TimeTracer();
-                    timeTracerArr.push(curTimeTracer);
-                    curTimeTracer.record(pressed);
-                    pauseRecord = false;
+    App.prototype.updateTimeTracer = function (pressed) {
+        if (this.timeTracerPos === this.curPos) {
+            if (/[a-zA-Z']/.test($(this.domArr[this.curPos]).text()))
+                if (this.pauseRecord) {
+                    this.curTimeTracer = new TimeTracer();
+                    this.timeTracerArr.push(this.curTimeTracer);
+                    this.curTimeTracer.record(pressed);
+                    this.pauseRecord = false;
                 } else
-                    curTimeTracer.record(pressed);
+                    this.curTimeTracer.record(pressed);
             else {
-                curTimeTracer.finish();
-                pauseRecord = true;
+                this.curTimeTracer.finish();
+                this.pauseRecord = true;
             }
-            ++timeTracerPos;
+            ++this.timeTracerPos;
         }
-    }
+    };
 
-    function correctChar(pressed) {
-        domArr[curPos].addClass('correct fadeBgc');
-        updateTimeTracer(pressed);
-    }
+    App.prototype.correctChar = function (pressed) {
+        this.domArr[this.curPos].addClass('correct fadeBgc');
+        this.updateTimeTracer(pressed);
+    };
 
-    function wrongChar(pressed) {
-        ++inCorCount;
-        domArr[curPos].addClass('incorrect');
-        updateTimeTracer(pressed);
-    }
+    App.prototype.wrongChar = function (pressed) {
+        ++this.inCorCount;
+        this.domArr[this.curPos].addClass('incorrect');
+        this.updateTimeTracer(pressed);
+        this.curTimeTracer.setWrong();
+    };
 
-    function check(pressed) {
-        // alert($(domArr[curPos]).text());
-        if (pressed === $(domArr[curPos]).text()) {
-            correctChar(pressed);
-            if (powerMode)
+    App.prototype.check = function (pressed) {
+        // alert($(this.domArr[this.curPos]).text());
+        if (pressed === $(this.domArr[this.curPos]).text()) {
+            this.correctChar(pressed);
+            if (this.powerMode)
                 app.spawnParticles();
         } else {
-            wrongChar(pressed);
+            this.wrongChar(pressed);
         }
-    }
+    };
 
-    function wheelEvent() {
+    App.prototype.wheelEvent = function () {
         $(document).on('scroll', function () {
-
+            const next = $(this.domArr[this.curPos]);
+            const yOffset = next[0].getBoundingClientRect().top;
+            $('#caret').css({top: yOffset});
+            console.log($('#stage').scrollTop());
         });
-        const next = $(domArr[curPos]);
-        const yOffset = next[0].getBoundingClientRect().top;
-        $('#caret').css({top: yOffset});
-        console.log($('#stage').scrollTop());
-    }
+    };
 
-    const TimeTracer = function () {
-        function TimeTrackerImpl() {
-            this.word = '';
-            this.timeArr = [];
-            this.startTime = new Date().getTime();
-        }
+    App.prototype.start = function () {
+        $(document).on('scroll', this.wheelEvent);
+        this.fillStage();
+        this.setFirstChar();
+        $(document).on("keypress", this.keyPressed);
+        $(document).on("keydown", this.keydown);
+        this.moveCaret();
+    };
 
-        TimeTrackerImpl.prototype.addword = function (char) {
-            this.word += char;
-        };
+    App.prototype.getSpeedArr = function () {
+        let arr = [];
+        console.log(this.timeTracerArr);
+        this.timeTracerArr.forEach((o) => {
+            if (o.word.length > 1)
+                arr.push(o.calcSpeed());
+        });
+        return arr;
+    };
 
-        TimeTrackerImpl.prototype.record = function (char) {
-            this.timeArr.push(new Date().getTime());
-            this.word += char;
-        };
-        TimeTrackerImpl.prototype.finish = function () {
-            console.log(this.word);
-            console.log(this.timeArr);
-        };
-        return TimeTrackerImpl;
-    }();
+    return new App();
 }
-typeScript();
+module.exports = typeScript();
 // todo press update wpf
+// todo wheel event
