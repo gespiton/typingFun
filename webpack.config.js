@@ -3,7 +3,6 @@ const path = require('path');
 
 const publicPath = 'http://localhost:3000/';
 // const hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
-//todo adjust entry according to env variable
 const devConfig = {
     devtool: '#source-map',
     entry: [
@@ -21,14 +20,13 @@ const devConfig = {
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.ProvidePlugin({
             $: path.join(__dirname, './client/js/library/jquery.js'),
-            jQuery: path.join(__dirname, './client/js/library/jquery.js'),
-            d3: 'd3'
-        }),
+            jQuery: path.join(__dirname, './client/js/library/jquery.js')
+        })
     ],
     module: {
         rules: [
             {
-                test: /\.s(a|c)ss$/,
+                test: /\.s([ac])ss$/,
                 use: [
                     {
                         loader: "style-loader" // creates style nodes from JS strings

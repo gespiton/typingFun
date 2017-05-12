@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=dev node ./app.js",
-    "deploy": "./node_modules/webpack/bin/webpack.js --config webpack.pro.js && cross-env NODE_ENV=deploy node app.js"
+    "deploy": "./node_modules/webpack/bin/webpack.js --config webpack.pro.js"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -21,6 +21,10 @@
     "session": "^0.1.0"
   },
   "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-remove-strict-mode": "0.0.2",
+    "babel-preset-env": "^1.4.0",
     "body-parser": "^1.15.2",
     "clean-webpack-plugin": "^0.1.16",
     "cookie-parser": "~1.4.3",
@@ -46,7 +50,7 @@
     "session": "^0.1.0",
     "style-loader": "^0.16.1",
     "url-loader": "^0.5.8",
-    "webpack": "^2.4.1",
+    "webpack": "^2.5.1",
     "webpack-dev-middleware": "^1.10.1",
     "webpack-dev-server": "^2.4.2",
     "webpack-hot-middleware": "^2.18.0",

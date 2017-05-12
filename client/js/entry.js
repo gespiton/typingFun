@@ -1,4 +1,3 @@
-// jQuery = $ = require('./library/jquery');
 require("../css/main.sass");
 require('../css/0-tools/bootstrap/js/bootstrap');
 require.context('../images');
@@ -11,4 +10,5 @@ $(document).ready(
         }
         setTimeout(login.getLogState, 10);
     }
+
 );

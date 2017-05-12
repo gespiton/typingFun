@@ -1,12 +1,11 @@
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
 const webpack = require('webpack');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-var productionConfig = [{
+const productionConfig = [{
     entry: {
         main: './client/js/entry.js',
-        // css: './client/css/main.sass'
     },
     output: {
         filename: 'js/[name].js',
@@ -20,15 +19,26 @@ var productionConfig = [{
                 use: 'file-loader?name=/images/[name].[ext]'
             },
             {
-                test: /\.s(c|a)ss$/,
+                test: /\.s([ca])ss$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: ['css-loader', 'sass-loader?sourceMap']
+                    use: ['css-loader', 'sass-loader']
                 })
             },
             {
                 test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
                 use: ['file-loader?name=css/font-files/[name].[ext]']
+            },
+            {
+                test: /\.js$/,
+                exclude: /(node_modules)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['env'],
+                        plugins: ["transform-remove-strict-mode"]
+                    }
+                }
             }
         ]
     },
@@ -40,9 +50,11 @@ var productionConfig = [{
         }),
         new webpack.ProvidePlugin({
             $: path.join(__dirname, './client/js/library/jquery.js'),
-            jQuery: path.join(__dirname, './client/js/library/jquery.js'),
-            d3: 'd3'
+            jQuery: path.join(__dirname, './client/js/library/jquery.js')
         }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {warnings: false}
+        })
     ]
 }];
 
