@@ -110,4 +110,4 @@ function particle() {
         "retina_detect": true
     });
 }
-module.exports = particle;
+export default particle()

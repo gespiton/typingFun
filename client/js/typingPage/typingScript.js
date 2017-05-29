@@ -1,5 +1,6 @@
 // require('../css/font-files/firasans-extralightitalic-webfont.woff2');
 // require('../css/font-files/firasans-extralightitalic-webfont.woff');
+import powerMode from "./powerMode";
 function typeScript() {
     App.prototype.init = function (text) {
         this.text = text;
@@ -26,7 +27,7 @@ function typeScript() {
         //         return fn.apply(me, arguments);
         //     };
         // };
-        this.init(text = 'select your article');
+        this.init('select your article');
         this.keyPressed = this.keyPressed.bind(this);
         this.keydown = this.keydown.bind(this);
         this.updateWpf = this.updateWpf.bind(this);
@@ -59,11 +60,11 @@ function typeScript() {
             this.word += char;
         };
         TimeTracer.prototype.finish = function () {
-            console.log(this.word);
-            console.log(this.timeArr);
+            // console.log(this.word);
+            // console.log(this.timeArr);
         };
         TimeTracer.prototype.setWrong = function () {
-            console.log('set wrong');
+            // console.log('set wrong');
             this.correct = false;
         };
 
@@ -154,7 +155,7 @@ function typeScript() {
 
     App.prototype.updateWpf = function () {
 
-        console.log(this.startTime);
+        // console.log(this.startTime);
         let elapsed = Math.floor((new Date().getTime() - this.startTime) / 100) / 10; // why not /1000
         // alert(elapsed);
         let wpf = Math.floor((this.totalCount / 5 - this.inCorCount) / (elapsed / 60));
@@ -216,7 +217,7 @@ function typeScript() {
         if (pressed === $(this.domArr[this.curPos]).text()) {
             this.correctChar(pressed);
             if (this.powerMode)
-                app.spawnParticles();
+                powerMode.spawnParticles();
         } else {
             this.wrongChar(pressed);
         }
@@ -245,7 +246,7 @@ function typeScript() {
 
     App.prototype.getSpeedArr = function () {
         let arr = [];
-        console.log(this.timeTracerArr);
+        // console.log(this.timeTracerArr);
         this.timeTracerArr.forEach((o) => {
             if (o.word.length > 1)
                 arr.push(o.calcSpeed());
@@ -264,6 +265,6 @@ function typeScript() {
     };
     return new App();
 }
-module.exports = typeScript();
+export default typeScript();
 // todo press update wpf
 // todo wheel event

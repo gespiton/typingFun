@@ -8,7 +8,7 @@ canvas.attr('height', h);
 // const ctx = document.getElementById('canvas').getContext('2d');
 // ctx.fillRect(10, 10, 100, 100);
 
-App = (function () {
+const App = (function () {
     const bind = function (fn, me) {
         return function () {
             return fn.apply(me, arguments);
@@ -105,7 +105,6 @@ App = (function () {
 
     return App;
 })();
-module.exports = function () {
-    app = new App();
-    app.draw();
-};
+const app = new App();
+app.draw();
+export default app;

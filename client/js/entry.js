@@ -1,7 +1,7 @@
-require("../css/main.sass");
-require('../css/0-tools/bootstrap/js/bootstrap');
+import "../css/main.sass";
+import "../css/0-tools/bootstrap/js/bootstrap";
+import login from "./navBar/loginPanel";
 require.context('../images');
-const login = require('./navBar/loginPanel');
 $(document).ready(
     function () {
         if ($('#typingPage').length > 0) {
@@ -9,5 +9,4 @@ $(document).ready(
         }
         setTimeout(login.getLogState, 10);
     }
-
 );

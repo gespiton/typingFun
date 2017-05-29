@@ -1,15 +1,13 @@
 /**
  * Created by sher on 9/5/2017.
  */
-require('./particles');
-require('./bgParticle')();
-// require('./statsConfig');
-require('./powerMode')();
-require('./particles');
-const app = require('./typingScript');
-const Draw = require('./graph');
-require('../../../node_modules/bootstrap-treeview/dist/bootstrap-treeview.min.css');
-require('../library/bootstrap-treeview');
+import "./particles";
+import "./bgParticle";
+import app from "./typingScript";
+import Draw from "./graph";
+import "../../../node_modules/bootstrap-treeview/dist/bootstrap-treeview.min.css";
+import "../library/bootstrap-treeview";
+require('./statsConfig');
 //start typing
 app.start();
 
@@ -31,7 +29,7 @@ $('#selector-toggler').on('click', function () {
 
 
 function loadArticle(href) {
-    $.post('/typing/getArticle', {id: href}, function (result,state) {
+    $.post('/typing/getArticle', {id: href}, function (result, state) {
         app.reload(result);
     })
 }
