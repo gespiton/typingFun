@@ -1,16 +1,11 @@
 // require('../css/font-files/firasans-extralightitalic-webfont.woff2');
 // require('../css/font-files/firasans-extralightitalic-webfont.woff');
 function typeScript() {
-    function App() {
-        // const bind = function (fn, me) {
-        //     return function () {
-        //         return fn.apply(me, arguments);
-        //     };
-        // };
-        this.text = $('.passin').text();
-        this.textArray = this.text.split('');
+    App.prototype.init = function (text) {
+        this.text = text;
+        this.textArray = text.split('');
         this.domArr = [];
-
+        this.articleId = 'none';
         this.timeTracerArr = [];
         this.curTimeTracer = 0;
         this.pauseRecord = false;
@@ -23,12 +18,21 @@ function typeScript() {
         this.typingStarted = false;
         this.intervalID = 0;
         this.powerMode = true;
+    };
+
+    function App() {
+        // const bind = function (fn, me) {
+        //     return function () {
+        //         return fn.apply(me, arguments);
+        //     };
+        // };
+        this.init(text = 'select your article');
         this.keyPressed = this.keyPressed.bind(this);
         this.keydown = this.keydown.bind(this);
         this.updateWpf = this.updateWpf.bind(this);
         this.start = this.start.bind(this);
-
-
+        this.reload = this.reload.bind(this);
+        this.wheelEvent = this.wheelEvent.bind(this);
     }
 
     const TimeTracer = function () {
@@ -117,10 +121,8 @@ function typeScript() {
 
     App.prototype.isFinished = function () {
         if (this.curPos === this.length) {
-            alert('finished');
             clearInterval(this.intervalID);
             $(document).off('keypress');
-            this.timeTracerArr.map((buf) => console.log(buf.word + ' '));
             $('#statics-window').modal('show');
             return true;
         }
@@ -165,9 +167,9 @@ function typeScript() {
 
     App.prototype.fillStage = function () {
         const $stage = $('#stage');
-        // const caret = $('#caret');
-        // $stage.empty();
-        // $stage.append(caret);
+        const caret = $('#caret');
+        $stage.empty();
+        $stage.append(caret);
         for (let char in this.textArray) {
             let $charSpan = $('<span>', {
                 class: 'char',
@@ -221,20 +223,23 @@ function typeScript() {
     };
 
     App.prototype.wheelEvent = function () {
-        $(document).on('scroll', function () {
+        $(document).on('scroll', () => {
             const next = $(this.domArr[this.curPos]);
             const yOffset = next[0].getBoundingClientRect().top;
             $('#caret').css({top: yOffset});
-            console.log($('#stage').scrollTop());
         });
     };
 
-    App.prototype.start = function () {
+    App.prototype.wireEvent = function () {
         $(document).on('scroll', this.wheelEvent);
-        this.fillStage();
-        this.setFirstChar();
         $(document).on("keypress", this.keyPressed);
         $(document).on("keydown", this.keydown);
+    };
+
+    App.prototype.start = function () {
+        this.wireEvent();
+        this.fillStage();
+        this.setFirstChar();
         this.moveCaret();
     };
 
@@ -246,6 +251,16 @@ function typeScript() {
                 arr.push(o.calcSpeed());
         });
         return arr;
+    };
+
+    App.prototype.reload = function (article) {
+        clearInterval(this.intervalID);
+        $(document).off('keypress');
+        $(document).off("keypress", this.keyPressed);
+        $(document).off("keydown", this.keydown);
+        this.init(article.text);
+        this.start();
+        this.articleId = article.articleId;
     };
     return new App();
 }

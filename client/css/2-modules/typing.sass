@@ -122,7 +122,7 @@ $correct-char: rgba(150, 1000, 171, 0.9)
 
     #selector
       position: relative
-      height: 100%
+      height: calc(100% - 80px)
       margin: 0
       padding: 0
       overflow: scroll
@@ -134,6 +134,8 @@ $correct-char: rgba(150, 1000, 171, 0.9)
       top: 40vh
       button
         margin: 0 !important
+        //&:focus
+        //  outline: none
 
   #statics
     position: fixed

@@ -30,16 +30,22 @@ $('#selector-toggler').on('click', function () {
 });
 
 
+function loadArticle(href) {
+    $.post('/typing/getArticle', {id: href}, function (result,state) {
+        app.reload(result);
+    })
+}
 $.get('/typing/getArticleData', function (result) {
     const $tree = $('#tree');
     $tree.treeview({data: result});
-    console.log($tree.children());
-    for (let obj in $tree.childNodes) {
-        console.log(obj.text());
-    }
+    $tree.treeview('collapseAll', {silent: true});
+    $tree.on('nodeSelected', function (event, data) {
+        if (data.href) {
+            loadArticle(data.href);
+            $('#selector-wraper').toggleClass('active');
+        }
+    });
 });
 
 
-$('#tree').on('nodeSelected', function (event, data) {
-    alert(data);
-});
+

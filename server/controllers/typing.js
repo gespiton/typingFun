@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+const Article = require('../models/article');
 function main(req, res) {
     res.render('typing', {text: fetchText()})
 }
@@ -13,19 +15,12 @@ function fetchText() {
     return text;
 }
 
-
-// function buildArticle(article) {
-//     if(article.)
-// }
-
 function Node(text) {
     this.text = text;
     this.nodes = [];
 }
 
 function getArticleData(req, res) {
-    const mongoose = require('mongoose');
-    const Article = require('../models/article');
     Article.find({}, function (err, result) {
         if (err)
             throw err;
@@ -41,43 +36,34 @@ function getArticleData(req, res) {
         res.json(resArr);
         // res.json([{text:"ha",href:"112233",nodes:[]}]);
     });
-    // res.json([
-    //     {
-    //         text: "Parent 1",
-    //         nodes: [
-    //             {
-    //                 text: "Child 1",
-    //                 nodes: [
-    //                     {
-    //                         text: "Grandchild 1"
-    //                     },
-    //                     {
-    //                         text: "Grandchild 2"
-    //                     }
-    //                 ]
-    //             },
-    //             {
-    //                 text: "Child 2"
-    //             }
-    //         ]
-    //     },
-    //     {
-    //         text: "Parent 2"
-    //     },
-    //     {
-    //         text: "Parent 3"
-    //     },
-    //     {
-    //         text: "Parent 4"
-    //     },
-    //     {
-    //         text: "Parent 5"
-    //     }
-    // ]);
+}
+
+function getArticle(req, res) {
+
+    Article.findOne(
+        {"sub._id": mongoose.Types.ObjectId(req.body.id)},
+        {"sub.$": true},
+        function (err, article) {
+            console.log(err);
+            if (err) {
+                console.log(err);
+                res.json({});
+                return;
+            }
+            // console.log(article.sub);
+            res.json(
+                {
+                    text: article.sub[0].text,
+                    charNum: article.sub[0].charNum,
+                    articleId: article._id
+                }
+            );
+        });
 }
 module.exports = {
     actionList: [
         {action: 'get', func: main, url: '/'},
-        {action: 'get', func: getArticleData, url: '/getArticleData'}
+        {action: 'get', func: getArticleData, url: '/getArticleData'},
+        {action: 'post', func: getArticle, url: '/getArticle'}
     ]
 };

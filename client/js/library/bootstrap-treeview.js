@@ -510,8 +510,6 @@
 
 		var _this = this;
 		$.each(nodes, function addNodes(id, node) {
-
-		    console.log(node);
 			var treeItem = $(_this.template.item)
 				.addClass('node-' + _this.elementId)
 				.addClass(node.state.checked ? 'node-checked' : '')
