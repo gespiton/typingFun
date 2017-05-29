@@ -247,7 +247,6 @@ function typeScript() {
         });
         return arr;
     };
-
     return new App();
 }
 module.exports = typeScript();

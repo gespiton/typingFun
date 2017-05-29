@@ -4,14 +4,13 @@
 //visit by /dbs,you can add chapters to database
 const express = require('express');
 const fs = require('fs');
-// var formidable = require('formidable');
-const book = require('./../database/book.js');
-const router = express.Router();
-// const checkLogin = require('../server/posts/checkLogin');
-router.get('/', function (req, res) {
+const book = require('../models/article.js');
+
+function main(req, res) {
     res.render('CustomArticle.jade');
-});
-router.post('/', function (req, res) {
+}
+
+function add(req, res) {
     console.log(req.body);
     const chapter = req.body.chapter;
     const content = req.body.content;
@@ -27,6 +26,11 @@ router.post('/', function (req, res) {
         }
         return res.status(200).send();
     });
-});
+}
 
-module.exports = router;
+module.exports = {
+    actionList: [
+        {action: 'get', url: '/', func: main},
+        {action: 'post', url: '/add', func: add}
+    ]
+};

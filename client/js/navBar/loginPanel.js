@@ -13,26 +13,25 @@ function loginFunc() {
     $("form").submit(function () {
         switch (this.id) {
             case "login-form":
-                var $lg_username = $('#login_username').val();
-                var $lg_password = $('#login_password').val();
+                const $lg_username = $('#login_username').val();
+                const $lg_password = $('#login_password').val();
                 $.post('login', {'login_username': $lg_username, 'login_password': $lg_password}, function (result) {
                         changeUserState(result.loged);
-                        console.log('posted');
-                        if (result.loged == false) {
+                        if (result.loged === false) {
                             msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Login error");
                         } else {
                             msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK");
                             setTimeout(function () {
                                 $('#closeBT').click();
-                            }, 1000);
+                            }, 500);
                         }
                     }
                 );
                 return false;
                 break;
             case "lost-form":
-                var $ls_email = $('#lost_email').val();
-                if ($ls_email == "ERROR") {
+                const $ls_email = $('#lost_email').val();
+                if ($ls_email === "ERROR") {
                     msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'), "error", "glyphicon-remove", "Send error");
                 } else {
                     msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'), "success", "glyphicon-ok", "Send OK");
@@ -40,14 +39,21 @@ function loginFunc() {
                 return false;
                 break;
             case "register-form":
-                var $rg_username = $('#register_username').val();
-                var $rg_email = $('#register_email').val();
-                var $rg_password = $('#register_password').val();
-                if ($rg_username == "ERROR") {
-                    msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "error", "glyphicon-remove", "Register error");
-                } else {
-                    msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "success", "glyphicon-ok", "Register OK");
-                }
+                const $rg_username = $('#register_username').val();
+                const $rg_email = $('#register_email').val();
+                const $rg_password = $('#register_password').val();
+                $.post('/login/register', {'rg_username': $rg_username, 'rg_password': $rg_password, 'rg_email': $rg_email},
+                    function (result) {
+                        changeUserState(result.success);
+                        if (result.success) {
+                            msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), 'success', 'glyphicon-ok', 'register success');
+                        } else {
+                            msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "error", "glyphicon-remove", result.msg);
+                            setTimeout(function () {
+                                $('#closeBT').click();
+                            }, 900);
+                        }
+                    });
                 return false;
                 break;
             default:
@@ -112,7 +118,7 @@ function loginFunc() {
 loginFunc();
 
 function getLogState() {
-    $.post('login', {'verify': true}, function (result) {
+    $.post('/login/verify', function (result) {
             changeUserState(result.loged, result.username);
             // console.log('posted');
             // console.log(result.loged);

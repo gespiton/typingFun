@@ -26,6 +26,15 @@ const devConfig = {
     module: {
         rules: [
             {
+                test: /\.css$/,
+                use: [
+                    {loader: "style-loader"},
+                    {
+                        loader: "css-loader" // translates CSS into CommonJS
+                    }
+                ]
+            },
+            {
                 test: /\.s([ac])ss$/,
                 use: [
                     {
@@ -39,12 +48,13 @@ const devConfig = {
                     }
                 ]
             },
+
             {
                 test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
                 use: ['file-loader']
             },
             {
-                test: /\.(png|jpg)$/,
+                test: /\.(png|jpg|gif)$/,
                 use: ['file-loader?name=./images/[name].[ext]']
                 // include: [path.resolve(__dirname, './client/images')]
             },

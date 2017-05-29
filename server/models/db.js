@@ -4,7 +4,7 @@
 
 //visit by /dbs,you can add chapters to database
 const express = require('express');
-const book = require('./book.js');
+const book = require('./article.js');
 const dbs = express.Router();
 
 dbs.get('/', function (req, res) {

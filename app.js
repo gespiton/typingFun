@@ -1,15 +1,11 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-
 const index = require('./server/routes/index');
-const typing = require('./server/routes/typing');
-const dbs = require('./server/routes/addArticle');
-const login = require('./server/routes/login');
-const user = require('./server/database/User');
 const session = require('express-session');
 const app = express();
 const isDev = process.env.NODE_ENV !== 'production';
+const mongoose = require('mongoose');
 
 // view engine setup
 app.set('views', path.join(__dirname, './server/views'));
@@ -21,13 +17,13 @@ app.set('view engine', 'jade');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-// app.use(require('node-sass-middleware')({
-//     src: path.join(__dirname, 'public'),
-//     dest: path.join(__dirname, 'public'),
-//     indentedSyntax: true,
-//     sourceMap: true
-// }));
 
+//
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://127.0.0.1:27017/typingFun', function (err, db) {
+    if (err) throw err;
+    else console.log('connected to db');
+});
 
 // serve files
 if (isDev) {
@@ -69,15 +65,7 @@ app.use(
     )
 );
 
-app.use((req, res, next) => {
-    console.log('user ' + req.session.id);
-    next();
-});
-
 app.use('/', index);
-app.use('/typing', typing);
-app.use('/login', login);
-app.use('/dbs', dbs);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -98,9 +86,8 @@ app.use(function (err, req, res, next) {
 });
 
 if (isDev) {
-    var http = require('http');
-
-    var server = http.createServer(app);
+    const http = require('http');
+    const server = http.createServer(app);
     server.listen(3000, function () {
         console.log('App (dev) is now running on port 3000!');
     });
