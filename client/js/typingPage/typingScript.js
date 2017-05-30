@@ -259,6 +259,7 @@ function typeScript() {
         $(document).off('keypress');
         $(document).off("keypress", this.keyPressed);
         $(document).off("keydown", this.keydown);
+        $(document).off('scroll');
         this.init(article.text);
         this.start();
         this.articleId = article.articleId;

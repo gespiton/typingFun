@@ -6,6 +6,7 @@ const session = require('express-session');
 const app = express();
 const isDev = process.env.NODE_ENV !== 'production';
 const mongoose = require('mongoose');
+const compression = require('compression');
 
 // view engine setup
 app.set('views', path.join(__dirname, './server/views'));
@@ -17,6 +18,7 @@ app.set('view engine', 'jade');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(compression());
 
 //
 mongoose.Promise = global.Promise;
