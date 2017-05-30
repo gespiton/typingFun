@@ -15,6 +15,15 @@ const productionConfig = [{
     module: {
         rules: [
             {
+                test: /\.css$/,
+                use: [
+                    {loader: "style-loader"},
+                    {
+                        loader: "css-loader" // translates CSS into CommonJS
+                    }
+                ]
+            },
+            {
                 test: /\.(png|jpg)$/,
                 use: 'file-loader?name=/images/[name].[ext]'
             },
