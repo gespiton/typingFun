@@ -1,0 +1,10 @@
+doctype html
+//block variables
+html
+  head
+    title= title
+    link(rel='stylesheet', type='text/css', href='/css/main.css')
+  body(id=page)
+    include ../header
+    block content
+    script(src = '/js/main.js')

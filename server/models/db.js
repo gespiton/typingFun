@@ -8,7 +8,7 @@ const book = require('./article.js');
 const dbs = express.Router();
 
 dbs.get('/', function (req, res) {
-    res.render('CustomArticle.jade');
+    res.render('CustomArticle.pug');
 });
 
 dbs.post('/', function (req, res) {

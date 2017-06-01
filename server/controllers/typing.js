@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Article = require('../models/article');
 function main(req, res) {
-    res.render('typing', {text: fetchText()})
+    res.render('typing', {text: fetchText(), page: 'typingPage', title: "typing"})
 }
 function fetchText() {
     let text = "My son starts school today." +
@@ -40,6 +40,7 @@ function getArticleData(req, res) {
 
 function getArticle(req, res) {
 
+    //todo body parser
     Article.findOne(
         {"sub._id": mongoose.Types.ObjectId(req.body.id)},
         {"sub.$": true},

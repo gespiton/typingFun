@@ -7,7 +7,7 @@ const fs = require('fs');
 const book = require('../models/article.js');
 
 function main(req, res) {
-    res.render('CustomArticle.jade');
+    res.render('CustomArticle.pug', {title: "add", page: "addArticle"});
 }
 
 function add(req, res) {
