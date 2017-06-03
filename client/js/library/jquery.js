@@ -9112,7 +9112,7 @@ jQuery.extend( {
 			jqXHR.setRequestHeader( "Content-Type", s.contentType );
 		}
 
-		// Set the Accepts navBar for the server, depending on the dataType
+		// Set the Accepts navBar for the web, depending on the dataType
 		jqXHR.setRequestHeader(
 			"Accept",
 			s.dataTypes[ 0 ] && s.accepts[ s.dataTypes[ 0 ] ] ?

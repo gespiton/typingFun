@@ -1,0 +1,37 @@
+extends layout/default
+block content
+  .typing.main.container
+    #particles-js
+    p.passin= text
+    #stage-wrap.col-md-10.col-md-offset-1.well
+      canvas#canvas.col-md-10
+      #stage
+        #caret
+
+    .container
+      #wpfContainer.col-md-1
+        label.label.label-default WPF:
+        label.label.label-primary#wpf
+
+    #selector-wraper.active
+      #selector
+        #tree
+
+      #selector-toggler
+        button.btn.btn-default.row.btn-sm.pull-left(type='button' )
+          span.glyphicon.glyphicon-stats
+
+    #statics.col-md-1
+      button.btn.btn-info.row.btn-lg.pull-right(type='button' )
+        span.glyphicon.glyphicon-stats
+
+    .modal.fade#statics-window(tabindex=-1)
+      .modal-dialog.modal-lg
+        .modal-content
+          .modal-header
+            h4 hello
+          .modal-body
+            #indicator.col-md-12
+            svg
+          .modal-footer
+            button.btn.btn-success(data-dismiss='modal') close

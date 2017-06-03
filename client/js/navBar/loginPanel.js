@@ -15,7 +15,7 @@ function loginFunc() {
             case "login-form":
                 const $lg_username = $('#login_username').val();
                 const $lg_password = $('#login_password').val();
-                $.post('login', {'login_username': $lg_username, 'login_password': $lg_password}, function (result) {
+                $.post('login', {'email': $lg_username, 'password': $lg_password}, function (result) {
                         changeUserState(result.loged);
                         if (result.loged === false) {
                             msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Login error");

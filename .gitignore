@@ -154,5 +154,5 @@ jspm_packages
 
 
 # End of https://www.gitignore.io/api/windows,macos,node
-server/gets/addArticle.js
-server/gets/addArticle.js
+web/gets/addArticle.js
+web/gets/addArticle.js

@@ -2024,7 +2024,7 @@ FancytreeNode.prototype = /** @lends FancytreeNode# */{
 	/** Call fn(node) for all child nodes and recursively load lazy children.<br>
 	 * <b>Note:</b> If you need this method, you probably should consider to review
 	 * your architecture! Recursivley loading nodes is a perfect way for lazy
-	 * programmers to flood the server with requests ;-)
+	 * programmers to flood the web with requests ;-)
 	 *
 	 * @param {function} [fn] optional callback function.
 	 *     Return false to stop iteration, return "skip" to skip this node and
@@ -3113,7 +3113,7 @@ $.extend(Fancytree.prototype,
 			ajax = $.extend({}, ctx.options.ajax, source);
 			node._requestId = requestId;
 			if(ajax.debugDelay){
-				// simulate a slow server
+				// simulate a slow web
 				delay = ajax.debugDelay;
 				if($.isArray(delay)){ // random delay range [min..max]
 					delay = delay[0] + Math.random() * (delay[1] - delay[0]);
@@ -4485,7 +4485,7 @@ $.widget("ui.fancytree",
 		ajax: {
 			type: "GET",
 			cache: false, // false: Append random '_' argument to the request url to prevent caching.
-//          timeout: 0, // >0: Make sure we get an ajax error if server is unreachable
+//          timeout: 0, // >0: Make sure we get an ajax error if web is unreachable
 			dataType: "json" // Expect json format and pass json object to callbacks.
 		},  //
 		aria: true,
