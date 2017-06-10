@@ -4,6 +4,7 @@ const typing = require('../controllers/typing');
 const home = require('../controllers/home');
 const login = require('../controllers/login');
 const addArticle = require('../controllers/addArticle');
+const gamePage = require('../controllers/gamePage');
 const passport = require('passport');
 
 function addRoute(controller, urlBase) {
@@ -18,5 +19,6 @@ addRoute(typing, '/typing');
 addRoute(home, '/');
 login(router);
 addRoute(addArticle, '/dbs');
+addRoute(gamePage, '/game');
 
 module.exports = router;

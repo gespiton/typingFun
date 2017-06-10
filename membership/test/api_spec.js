@@ -1,18 +1,15 @@
 const Registration = require('../lib/registration');
-const db = require('mongoose');
 const User = require('../models/user');
 const assert = require('assert');
 const should = require('should');
 const Memb = require('../index');
+const db = require('mongoose');
+
 
 describe('api test', function () {
   const memb = new Memb();
   before(function (done) {
-    db.connect('mongodb://127.0.0.1:27017/typingFun',
-      function (err, db) {
-        if (err) throw err;
-        done();
-      });
+    require('./connectTestDB')(done);
   });
 
   describe('test registration', function () {

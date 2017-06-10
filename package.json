@@ -28,6 +28,7 @@
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-remove-strict-mode": "0.0.2",
     "babel-preset-env": "^1.4.0",
+    "bezier-easing": "^2.0.3",
     "body-parser": "^1.15.2",
     "bootstrap-treeview": "^1.2.0",
     "clean-webpack-plugin": "^0.1.16",

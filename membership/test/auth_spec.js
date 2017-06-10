@@ -9,8 +9,16 @@ const should = require('should');
 describe('Authentication', function () {
   const registration = new Registration();
   let auth = new Auth();
+
+  function authenticateUserGetResult(user, done) {
+    auth.authenticate(user, function (err, res) {
+      if (err) throw err;
+      done(res);
+    })
+  }
+
   before(function (done) {
-    db.connect('mongodb://127.0.0.1:27017/typingFun',
+    require('./connectTestDB')(
       function (err, db) {
         if (err) throw err;
         User.collection.drop(
@@ -34,11 +42,13 @@ describe('Authentication', function () {
   describe('a valid login', function () {
     let authResult = {};
     before(function (done) {
-      auth.authenticate({email: '123@me.com', password: 'freedom'}, function (err, res) {
-        assert.ok(err === null, err);
-        authResult = res;
-        done();
-      })
+      authenticateUserGetResult(
+        {email: '123@me.com', password: 'freedom'},
+        function (res) {
+          authResult = res;
+          done();
+        }
+      );
     });
 
     it('is successful', () => authResult.success.should.equal(true));
@@ -46,10 +56,14 @@ describe('Authentication', function () {
     it('updates the user stats', () => authResult.user.status.should.equal('online'));
   });
 
+  describe('user doesnt exist', function () {
+
+  });
+
   after(function (done) {
     db.disconnect(function (err) {
       if (err) throw err;
       done();
-    })
+    });
   })
 });

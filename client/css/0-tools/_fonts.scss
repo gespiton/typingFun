@@ -35,12 +35,17 @@
   font-style: normal;
 }
 
-
 @font-face {
   font-family: 'fira san italic';
   src: url('./fonts/FiraSans-Italic.otf') format('otf');
   font-weight: normal;
   font-style: normal;
+}
+
+@font-face {
+  font-family: Open;
+  src: url("./fonts/opendyslexicmono.woff2") format('woff2');
+  font-weight: normal;
 }
 
 //@import url( 'https://fonts.googleapis.com/css?family=Italianno');

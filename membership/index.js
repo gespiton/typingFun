@@ -24,5 +24,4 @@ const MemberShip = function () {
 
   return self;
 };
-
 module.exports = MemberShip;

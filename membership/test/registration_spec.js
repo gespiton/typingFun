@@ -17,14 +17,10 @@ describe("registration", function () {
         });
     });
   };
-  before(connectDB);
+  before(function (done) {
+    require('./connectTestDB')(done)
+  });
 
-  function connectDB(done) {
-    db.connect('mongodb://127.0.0.1:27017/typingFun', function (err, db) {
-      if (err) throw err;
-      done();
-    });
-  }
 
   describe("a valid application", function () {
     let regResult = {};

@@ -39,7 +39,7 @@ function saveBook() {
     saved.save();
     console.log(saved.sub[1]);
 }
-// saveBook();
+saveBook();
 // let res = Article.find(function (err,result) {
 //     console.log(result[result.length-1]);
 // });

@@ -85,7 +85,7 @@ const App = (function () {
     App.prototype.drawParticles = function () {
         this.ctx.clearRect(0, 0, this.canvasW, this.canvasH);
 
-        for (let i = 0; i != this.particles.length; ++i) {
+        for (let i = 0; i !== this.particles.length; ++i) {
             const particle = this.particles[i];
             if (!particle || particle.alpha <= 0.1) {
                 continue;
