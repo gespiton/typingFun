@@ -23,19 +23,6 @@ function init(ctx, $canvas) {
       ctx.font = `${args.size}px Open`;
       ctx.fillStyle = this.fillStyle;
       ctx.fillText(this.text, args.x, args.y);
-      // this.strokeText(this.text,
-      //   {
-      //     color: "rgba(200,0,0,0.3)",
-      //     lineWidth: 20
-      //   },
-      //   {x: 700, y: 550});
-      //
-      // this.strokeText(this.text,
-      //   {
-      //     color: "rgba(200,0,0,0.3)",
-      //     lineWidth: 2
-      //   },
-      //   {x: 700, y: 550});
     }
   }
   class Word {
@@ -80,7 +67,7 @@ function init(ctx, $canvas) {
         char.draw({x: posX, y: $canvas.height() / 2, size: this.size});
         posX += this.size/7*4;
       });
-      this.updateInfo();
+      this.updateSteps();
     }
 
     grow() {
@@ -91,7 +78,7 @@ function init(ctx, $canvas) {
       this.step -= 2;
     }
 
-    updateInfo() {
+    updateSteps() {
       if (this.step >= this.totalSteps) {
         this.action = this.shrink;
       }

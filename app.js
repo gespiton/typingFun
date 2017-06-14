@@ -12,14 +12,14 @@ const passport = require('passport'),
   Memb = require('./membership/index');
 
 
-const memb = new Memb();
+const memberShip = new Memb();
 passport.use(new LocalStrategy(
   {
     usernameField: 'email',
     passwordField: 'password'
   },
   function (email, password, done) {
-    memb.authenticate(email, password, function (err, authRes) {
+    memberShip.authenticate(email, password, function (err, authRes) {
       // console.log(authRes);
       if (err) return done(err);
       if (authRes.success) {
@@ -38,7 +38,7 @@ passport.serializeUser(function (user, done) {
 
 passport.deserializeUser(function (id, done) {
   console.log('deserialize called');
-  memb.findUserById(id, function (err, user) {
+  memberShip.findUserById(id, function (err, user) {
     done(err, user);
   });
 });
@@ -54,7 +54,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(compression());
 
-//
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://127.0.0.1:27017/typingFun', function (err, db) {
   if (err) throw err;
@@ -106,7 +105,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(function (req, res, next) {
-  console.log(req.url);
+  res.locals.user = req.user;
   next();
 });
 app.use('/', mainRoute);

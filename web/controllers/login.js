@@ -8,11 +8,14 @@ const Memb = require('../../membership');
 function main(router) {
   router.route('/login')
     .post(function (req, res, next) {
+      function authenticateSuccess(user, info) {
+        return user && info.success;
+      }
+
       passport.authenticate('local', function (err, user, info) {
         if (err) console.log(err);
-        if (user && info.success) {
+        if (authenticateSuccess(user, info)) {
           req.logIn(user, function (err) {
-            console.log('login user');
             if (err) {
               return next(err);
             }
@@ -43,7 +46,7 @@ function main(router) {
           }
         }
       )
-    })
+    });
 }
 
 module.exports = main;

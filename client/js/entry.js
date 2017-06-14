@@ -19,6 +19,5 @@ $(document).ready(
     if ($curPage === 'gamePage') {
       gamePage();
     }
-    setTimeout(login.getLogState, 10);
   }
 );

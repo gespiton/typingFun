@@ -13,7 +13,8 @@ header.myHeader(class="#{special}")
           a.btn(href = '/game') Gaming!
       ul.nav.navbar-nav.navbar-right
         li.user
-          label#username tourist
-          img#logState(src='/images/login.png' role="button" data-toggle="modal" data-target="#login-modal")
+          label#username #{user ? user.username : 'tourist'}
+          - var url = user?'/images/logged.png':'/images/login.png'
+          img#logState( src = url role="button" data-toggle="modal" data-target="#login-modal")
 .holder
 include form

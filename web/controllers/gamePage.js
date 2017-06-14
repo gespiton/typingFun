@@ -1,5 +1,6 @@
 function get(req, res) {
-  res.render('gamePage',{title: "gaming", page: "gamePage"});
+  console.log('in game controller', res.locals.user);
+  res.render('gamePage', {title: "gaming", page: "gamePage"});
 }
 
 module.exports = {

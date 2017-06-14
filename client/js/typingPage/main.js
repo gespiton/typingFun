@@ -16,33 +16,34 @@ const $modal = $('#statics-window');
 const $statics = $('#statics');
 
 $statics.find('button').on('click', function () {
-    $modal.modal('show');
+  $modal.modal('show');
 });
 
 $modal.on('shown.bs.modal', function () {
-    Draw.draw(app.getSpeedArr(), app.text.split(' '));
+  Draw.draw(app.getSpeedArr(), app.text.split(' '));
 });
 
 $('#selector-toggler').on('click', function () {
-    $('#selector-wraper').toggleClass('active');
+  $('#selector-wraper').toggleClass('active');
 });
 
 
-function loadArticle(href) {
-    $.post('/typing/getArticle', {id: href}, function (result, state) {
-        app.reload(result);
-    })
+function fetchText_reload(href) {
+  $.post('/typing/getArticle', {id: href}, function updateStage(result, state) {
+    app.reload(result);
+  })
 }
+
 $.get('/typing/getArticleData', function (result) {
-    const $tree = $('#tree');
-    $tree.treeview({data: result});
-    $tree.treeview('collapseAll', {silent: true});
-    $tree.on('nodeSelected', function (event, data) {
-        if (data.href) {
-            loadArticle(data.href);
-            $('#selector-wraper').toggleClass('active');
-        }
-    });
+  const $tree = $('#tree');
+  $tree.treeview({data: result});
+  $tree.treeview('collapseAll', {silent: true});
+  $tree.on('nodeSelected', function reloadText(event, data) {
+    if (data.href) {
+      fetchText_reload(data.href);
+      $('#selector-wraper').toggleClass('active');
+    }
+  });
 });
 
 
