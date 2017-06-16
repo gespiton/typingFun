@@ -1,4 +1,5 @@
 import main from "./manager";
+require('../typingPage/statsConfig');
 const App = function () {
   main({
     container: $('#screen')[0],
