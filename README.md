@@ -1,7 +1,4 @@
 # typingFun
-enjoy type, and learning as the same time
-1. automatic search for article, and then enjoy typing
+enjoy typing
 
-#if chose the exercise mode
-2. typing analysis(which combination of words you type slowest, something like that)
-3. generate exercise for you unfamiliar words
+I like typing, that's why I wrote this webapp, it's underdevelop, and I'd like to share it with you
