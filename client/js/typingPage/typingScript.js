@@ -77,6 +77,8 @@ function typeScript() {
     return TimeTracer;
   }();
 
+  const $caret = $('#caret');
+  $caret.css({width: 3});
 
   App.prototype.moveCaret = function () {
     const next = $(this.domArr[this.curPos]);
@@ -91,16 +93,19 @@ function typeScript() {
     const xOffset = next[0].getBoundingClientRect().left;
     const yOffset = next[0].getBoundingClientRect().top;
     // const newWidth = next.width();
-    const newWidth = -1;
     // console.log(newWidth);
     const newHeight = next.height();
-    $('#caret').animate({
+    // $caret.css({
+    //   left: xOffset,
+    //   top: yOffset,
+    //   width: 3,
+    //   height: newHeight - 4
+    // });
+    $caret.animate({
       "left": xOffset,
       "top": yOffset,
-      width: newWidth + 4,
       height: newHeight - 4
-    }, 50);
-    // console.log(xOffset + " : " + yOffset);
+    }, 30);
   };
 
   App.prototype.forwardCaret = function () {
@@ -122,9 +127,6 @@ function typeScript() {
     this.moveCaret();
   };
 
-  App.prototype.isFinished = function () {
-    return this.curPos - 1 === this.length
-  };
 
   App.prototype.decideMode = function () {
     const notRecording = () => this.curTimeTracer === null;
@@ -166,11 +168,12 @@ function typeScript() {
 
     this.decideMode();
     this.pressKeyAction();
-    if (this.isFinished()) {
+    if (isFinished()) {
       clearInterval(this.intervalID);
       $(document).off('keypress');
       $(document).off('keydown');
       $('#statics-window').modal('show');
+      me.finishTyping();
     }
 
     function startWpfCal() {
@@ -191,6 +194,26 @@ function typeScript() {
         $('#wpf').text(Math.floor((wpf)).toString());
       }
     }
+
+    function isFinished() {
+      return me.curPos - 1 === me.length
+    }
+  };
+
+  App.prototype.finishTyping = function () {
+    const $tree = $('#tree');
+    const href = $tree.treeview('getSelected')[0].href;
+    const timeTracerArr = this.timeTracerArr;
+    console.log(JSON.stringify(timeTracerArr));
+    $.post("/typing/recordResult",
+      {
+        articleId: href,
+        adata: JSON.stringify(timeTracerArr),
+      },
+      function (data) {
+        console.log('success');
+        console.log(data);
+      });
   };
 
   App.prototype.keyMode = {
@@ -226,8 +249,6 @@ function typeScript() {
   };
 
   App.prototype.updateTimeTracer = function (pressed) {
-
-
     this.curTimeTracer.record(pressed, this.getCurChar());
 
     if (reachWordEnd.call(this)) {
@@ -262,6 +283,7 @@ function typeScript() {
     function correctChar() {
       me.domArr[me.curPos].addClass('correct fadeBgc');
     }
+
     function wrongChar() {
       ++me.unCorrectCharCount;
       me.domArr[me.curPos].addClass('incorrect');

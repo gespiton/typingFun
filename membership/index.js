@@ -5,8 +5,6 @@ const MemberShip = function () {
   const self = this;
   self.authenticate = function (email, password, next) {
     const auth = new Auth();
-    // auth.on('success', (authRes) => authRes);
-    // auth.on('fail', (authRes) => authRes);
     auth.authenticate({email: email, password: password}, next);
   };
 

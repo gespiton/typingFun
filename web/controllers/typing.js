@@ -5,7 +5,6 @@ function main(req, res) {
   res.render('typing', {page: 'typingPage', title: "typing"})
 }
 
-
 function getAllArticleData(req, res) {
   class Node {
     constructor(text) {
@@ -17,7 +16,6 @@ function getAllArticleData(req, res) {
   Article.find({}, function (err, result) {
     if (err) throw err;
     let resArr = [];
-
     result.forEach(doc => {
       let node = new Node(doc.name);
       let counter = 1;
@@ -52,10 +50,17 @@ function getArticleById(req, res) {
       );
     });
 }
+
+function recordTypingResult(req, res) {
+  console.log(req.body);
+  console.log('request received');
+  res.json({success: true});
+}
 module.exports = {
   actionList: [
     {action: 'get', func: main, url: '/'},
     {action: 'get', func: getAllArticleData, url: '/getArticleData'},
-    {action: 'post', func: getArticleById, url: '/getArticle'}
+    {action: 'post', func: getArticleById, url: '/getArticle'},
+    {action: 'post', func: recordTypingResult, url: '/recordResult'}
   ]
 };
