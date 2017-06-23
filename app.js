@@ -47,8 +47,8 @@ app.set('views', path.join(__dirname, './web/views'));
 app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-//app.use(logger('dev'));
+//typing.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+//typing.use(logger('dev'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -136,7 +136,7 @@ if (isDev) {
   });
 } else {
   app.listen(3000, function () {
-    console.log('app started on port 3000');
+    console.log('typing started on port 3000');
   });
 }
 module.exports = app;

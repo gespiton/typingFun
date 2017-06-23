@@ -118,10 +118,6 @@ function loginFunc() {
       $iconTag.removeClass($iconClass + " " + $divClass);
     }, $msgShowTime);
   }
-
-  // $('#logState').on('click', function () {
-  //   $(document).off('keypress');
-  // });
 }
 loginFunc();
 

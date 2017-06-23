@@ -51,16 +51,10 @@ function getArticleById(req, res) {
     });
 }
 
-function recordTypingResult(req, res) {
-  console.log(req.body);
-  console.log('request received');
-  res.json({success: true});
-}
 module.exports = {
   actionList: [
     {action: 'get', func: main, url: '/'},
     {action: 'get', func: getAllArticleData, url: '/getArticleData'},
-    {action: 'post', func: getArticleById, url: '/getArticle'},
-    {action: 'post', func: recordTypingResult, url: '/recordResult'}
+    {action: 'post', func: getArticleById, url: '/getArticle'}
   ]
 };

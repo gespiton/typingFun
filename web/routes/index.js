@@ -6,6 +6,7 @@ const login = require('../controllers/login');
 const addArticle = require('../controllers/addArticle');
 const gamePage = require('../controllers/gamePage');
 const passport = require('passport');
+const record = require('../controllers/recordManage');
 
 function addRoute(controller, urlBase) {
   controller.actionList.forEach(c => {
@@ -20,5 +21,6 @@ addRoute(home, '/');
 login(router);
 addRoute(addArticle, '/dbs');
 addRoute(gamePage, '/game');
+addRoute(record, '/record');
 
 module.exports = router;

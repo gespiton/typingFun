@@ -202,16 +202,16 @@ function typeScript() {
 
   App.prototype.finishTyping = function () {
     const $tree = $('#tree');
+    if ($tree.treeview('getSelected').length === 0) return;
     const href = $tree.treeview('getSelected')[0].href;
     const timeTracerArr = this.timeTracerArr;
     console.log(JSON.stringify(timeTracerArr));
-    $.post("/typing/recordResult",
+    $.post("/record/save",
       {
         articleId: href,
-        adata: JSON.stringify(timeTracerArr),
+        data: JSON.stringify(timeTracerArr),
       },
       function (data) {
-        console.log('success');
         console.log(data);
       });
   };
@@ -324,19 +324,19 @@ function typeScript() {
       $('').on('scroll', wheelEvent);
       $(document).on("keypress", me.keyPressed);
       $(document).on("keydown", me.keydown);
+      loginPanelEvent();
 
       function loginPanelEvent() {
         const $loginModel = $('#login-modal');
         $loginModel.on('focus', () => {
-          console.log(isTypingPaused);
-          that.pauseTyping();
+          console.log('isTypingPaused', isTypingPaused);
+          me.pauseTyping();
         });
         $loginModel.on('focusout', () => {
+          if ($loginModel.hasClass('in')) return;
           me.resumeTyping();
         });
       }
-
-      loginPanelEvent();
     }
 
     function wheelEvent() {
@@ -360,7 +360,7 @@ function typeScript() {
 
   App.prototype.reload = function (article) {
     clearInterval(this.intervalID);
-    $(document).off('keypress');
+    // $(document).off('keypress');
     $(document).off("keypress", this.keyPressed);
     $(document).off("keydown", this.keydown);
     $(document).off('scroll');
@@ -372,7 +372,8 @@ function typeScript() {
   let isTypingPaused = false;
   App.prototype.pauseTyping = function () {
     if (!isTypingPaused) {
-      $(document).off('keypress');
+      console.log('pauseTyping');
+      $(document).off("keypress");
       $(document).off('keydown');
       isTypingPaused = true;
     }
@@ -380,6 +381,7 @@ function typeScript() {
 
   App.prototype.resumeTyping = function () {
     if (isTypingPaused) {
+      console.log('continueTyping');
       $(document).on('keypress', this.keyPressed);
       $(document).on('keydown', this.keydown);
       isTypingPaused = false;
