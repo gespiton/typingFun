@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const mainRoute = require('./web/routes/index');
+const mainRoute = require('./server/routes/index');
 const session = require('express-session');
 const app = express();
 const isDev = process.env.NODE_ENV !== 'production';
@@ -43,7 +43,7 @@ passport.deserializeUser(function (id, done) {
   });
 });
 // view engine setup
-app.set('views', path.join(__dirname, './web/views'));
+app.set('views', path.join(__dirname, './server/views'));
 app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public

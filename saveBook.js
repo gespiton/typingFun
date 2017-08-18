@@ -2,7 +2,7 @@
  * Created by sher on 27/5/2017.
  */
 const mongoose = require('mongoose');
-const Article = require('./web/models/article');
+const Article = require('./server/models/article');
 const fs = require('fs');
 
 mongoose.Promise = global.Promise;
