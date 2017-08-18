@@ -5,13 +5,20 @@ const publicPath = 'http://localhost:3000/';
 // const hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 const devConfig = {
   devtool: '#source-map',
-  entry: [
-    './client/js/entry.js',
-    'webpack/hot/dev-server',
-    'webpack-hot-middleware/client'
-  ],
+  entry: {
+    main: [
+      './client/js/entry.js',
+      'webpack/hot/dev-server',
+      'webpack-hot-middleware/client',
+    ],
+    typingPage: [
+      './client/app/typingPage/index.jsx',
+      'webpack/hot/dev-server',
+      'webpack-hot-middleware/client',
+    ]
+  },
   output: {
-    filename: './js/main.js',
+    filename: './js/[name].js',
     path: path.resolve(__dirname, './public'),
     publicPath: publicPath
   },
@@ -61,6 +68,16 @@ const devConfig = {
       {
         test: /\.js$/,
         use: ['webpack-module-hot-accept']
+      },
+      {
+        test: /\.jsx$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env', 'react']
+          }
+        }
       }
     ]
   }

@@ -6,6 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const productionConfig = [{
   entry: {
     main: './client/js/entry.js',
+    typingPage: './client/app/typingPage/index.jsx'
   },
   output: {
     filename: 'js/[name].js',
@@ -44,8 +45,17 @@ const productionConfig = [{
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env'],
-            plugins: ["transform-remove-strict-mode"]
+            presets: ['env']
+          }
+        }
+      },
+      {
+        test: /\.jsx$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env', 'react']
           }
         }
       }
