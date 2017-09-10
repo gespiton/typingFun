@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Article = require('../models/article');
 
 function main(req, res) {
-  res.render('typing', {page: 'typingPage', title: "typing"})
+  res.render('typing', {page: 'typingPage', title: "typing"});
 }
 
 function getAllArticleData(req, res) {
@@ -31,24 +31,24 @@ function getArticleById(req, res) {
 
   //todo body parser
   Article.findOne(
-    {"sub._id": mongoose.Types.ObjectId(req.body.id)},
-    {"sub.$": true},
-    function (err, article) {
-      console.log(err);
-      if (err) {
+      {"sub._id": mongoose.Types.ObjectId(req.body.id)},
+      {"sub.$": true},
+      function (err, article) {
         console.log(err);
-        res.json({});
-        return;
-      }
-      // console.log(article.sub);
-      res.json(
-        {
-          text: article.sub[0].text,
-          charNum: article.sub[0].charNum,
-          articleId: article._id
+        if (err) {
+          console.log(err);
+          res.json({});
+          return;
         }
-      );
-    });
+        // console.log(article.sub);
+        res.json(
+            {
+              text: article.sub[0].text,
+              charNum: article.sub[0].charNum,
+              articleId: article._id
+            }
+        );
+      });
 }
 
 module.exports = {

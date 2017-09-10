@@ -8,27 +8,27 @@ const isDev = process.env.NODE_ENV !== 'production';
 const mongoose = require('mongoose');
 const compression = require('compression');
 const passport = require('passport'),
-  LocalStrategy = require('passport-local'),
-  Memb = require('./membership/index');
+    LocalStrategy = require('passport-local'),
+    Memb = require('./membership/index');
 
 
 const memberShip = new Memb();
 passport.use(new LocalStrategy(
-  {
-    usernameField: 'email',
-    passwordField: 'password'
-  },
-  function (email, password, done) {
-    memberShip.authenticate(email, password, function (err, authRes) {
-      // console.log(authRes);
-      if (err) return done(err);
-      if (authRes.success) {
-        return done(null, authRes.user, authRes);
-      } else {
-        return done(null, null, authRes);
-      }
-    });
-  }
+    {
+      usernameField: 'email',
+      passwordField: 'password'
+    },
+    function (email, password, done) {
+      memberShip.authenticate(email, password, function (err, authRes) {
+        // console.log(authRes);
+        if (err) return done(err);
+        if (authRes.success) {
+          return done(null, authRes.user, authRes);
+        } else {
+          return done(null, null, authRes);
+        }
+      });
+    }
 ));
 
 passport.serializeUser(function (user, done) {
@@ -65,9 +65,9 @@ if (isDev) {
   // static assets served by webpack-dev-middleware & webpack-hot-middleware for development
   console.log('dev mode');
   const webpack = require('webpack'),
-    webpackDevMiddleware = require('webpack-dev-middleware'),
-    webpackHotMiddleware = require('webpack-hot-middleware'),
-    webpackDevConfig = require('./webpack.config.js');
+      webpackDevMiddleware = require('webpack-dev-middleware'),
+      webpackHotMiddleware = require('webpack-hot-middleware'),
+      webpackDevConfig = require('./webpack.config.js');
 
   const compiler = webpack(webpackDevConfig);
 
@@ -92,13 +92,13 @@ if (isDev) {
 
 
 app.use(
-  session(
-    {
-      secret: "forever321",
-      resave: false,
-      saveUninitialized: true
-    }
-  )
+    session(
+        {
+          secret: "forever321",
+          resave: false,
+          saveUninitialized: true
+        }
+    )
 );
 
 app.use(passport.initialize());
@@ -108,7 +108,9 @@ app.use(function (req, res, next) {
   res.locals.user = req.user;
   next();
 });
-app.use('/', mainRoute);
+app.use('*', function (req, res) {
+  res.sendFile(path.join(__dirname, './app/index.html'));
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

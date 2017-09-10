@@ -7,12 +7,7 @@ const devConfig = {
   devtool: '#source-map',
   entry: {
     main: [
-      './client/js/entry.js',
-      'webpack/hot/dev-server',
-      'webpack-hot-middleware/client',
-    ],
-    typingPage: [
-      './client/app/typingPage/index.jsx',
+      './app/index.js',
       'webpack/hot/dev-server',
       'webpack-hot-middleware/client',
     ]
@@ -26,8 +21,8 @@ const devConfig = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.ProvidePlugin({
-      $: path.join(__dirname, './client/js/library/jquery.js'),
-      jQuery: path.join(__dirname, './client/js/library/jquery.js')
+      $: 'jquery',
+      jQuery: 'jquery'
     })
   ],
   module: {
@@ -67,17 +62,28 @@ const devConfig = {
       },
       {
         test: /\.js$/,
-        use: ['webpack-module-hot-accept']
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['env', 'react', 'react-hmre'],
+              plugins: ['transform-class-properties']
+            }
+          }
+        ]
       },
       {
         test: /\.jsx$/,
         exclude: /(node_modules)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env', 'react']
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['env', 'react', 'react-hmre'],
+              plugins: ['transform-class-properties']
+            }
           }
-        }
+        ]
       }
     ]
   }
