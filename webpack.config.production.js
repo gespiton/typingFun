@@ -2,6 +2,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+
+const GLOBALS = {
+  'process.env.NODE_ENV': JSON.stringify('production')
+};
 
 const productionConfig = {
   devtool: '#source-map',
@@ -23,7 +28,7 @@ const productionConfig = {
         test: /\.s([ca])ss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
+          use: ['sass-loader']
         })
       },
       {
@@ -50,6 +55,7 @@ const productionConfig = {
       filename: 'css/main.css',
       allChunks: true
     }),
+    new webpack.DefinePlugin(GLOBALS),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'
@@ -57,7 +63,8 @@ const productionConfig = {
     new webpack.optimize.UglifyJsPlugin({
       compress: {warnings: false},
       sourceMap: true
-    })
+    }),
+    new HardSourceWebpackPlugin()
   ]
 };
 
