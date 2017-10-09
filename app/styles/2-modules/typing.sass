@@ -1,4 +1,3 @@
-$caretback-color: rgba(200, 200, 200, 1)
 @keyframes caret
   50%
     background-color: transparent
@@ -14,24 +13,30 @@ $caretback-color: rgba(200, 200, 200, 1)
   100%
     background-color: inherit
 
-$selector-width: 250px
+$caret-back-color: rgba(black, 0.6)
 $rgba-primary-0: rgba(150, 124, 181, 1)
-$BackGround: #ffffff
-$stage-bg: rgba(250, 250, 250, 0.9)
-$inactive-char: rgba(100, 100, 180, 0.5)
-$correct-char: rgba(150, 1000, 171, 0.9)
+$back-ground-color: #ffffff
+$stage-bg-color: #f6f5f9
+$inactive-char-color: rgba(100, 100, 180, 0.5)
+$correct-char-color: #28213d
 
+$selector-width: 250px
 //background-color: $BackGround
 
 .typing.main
   //.fadeBgc
   ////animation: fadeout ease-in-out 8s
+  background-color: $stage-bg-color
+  border-radius: 10px
+
+  transition: 0.3s all ease
+
   #particles-js
     transform: translateX(-198px)
   .char
     // overflow: hidden
     // height: 30px
-    color: $inactive-char
+    color: $inactive-char-color
 
     /*text-shadow: 1px 1px 0px gray;
     display: inline-block
@@ -64,8 +69,8 @@ $correct-char: rgba(150, 1000, 171, 0.9)
   // animation: caret ease-in-out 1.5s alternate infinite
 
   .correct
-    color: $correct-char
-    text-shadow: 0px 0px 1px gray
+    color: $correct-char-color
+    text-shadow: 0 0 2px #5e5d61
 
   .incorrect
     /*background-color: pink;
@@ -86,18 +91,19 @@ $correct-char: rgba(150, 1000, 171, 0.9)
       height: calc(100vh - 80px)
     #stage
       padding: 40px 0
-      background-color: $stage-bg
       margin: 0 auto
       //border: 2px solid
       //width: 80%
 
       #caret
         position: fixed
-        background-color: rgba(blue, 0.6)
+        background-color: $caret-back-color
         animation: caret ease-in-out 1.0s alternate infinite
         border-radius: 2px
         transition: all 0.2s
-
+  &:focus
+    outline: none
+    box-shadow: 0 10px 50px silver
 #selector-wraper
   position: fixed
   height: 100%
@@ -129,8 +135,6 @@ $correct-char: rgba(150, 1000, 171, 0.9)
     top: 40vh
     button
       margin: 0 !important
-//&:focus
-//  outline: none
 
 #statics
   position: fixed

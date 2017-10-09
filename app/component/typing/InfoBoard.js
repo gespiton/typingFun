@@ -1,5 +1,7 @@
 import * as React from "react";
 import {connect} from "react-redux";
+import {toggleChart} from "../../redux/actions/stageStatus";
+// import {dispatch} from "redux";
 
 const InfoBoard = props => {
   return (
@@ -10,12 +12,19 @@ const InfoBoard = props => {
         <span id="value">
           {props.wpf}
         </span>
-        <span className="btn btn-info" id="chart">
+        <span className="btn btn-info" id="chart"
+              onClick={
+                function () {
+                  props.toggleChart(true);
+                }
+              }
+        >
           chart
         </span>
       </div>
   );
 };
+
 
 const mapStateToProps = state => {
   return {
@@ -23,10 +32,12 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-
+    toggleChart: showIt => {
+      dispatch(toggleChart(showIt));
+    }
   };
 };
 
-export default connect(mapStateToProps)(InfoBoard);
+export default connect(mapStateToProps, mapDispatchToProps)(InfoBoard);

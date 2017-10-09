@@ -83,10 +83,12 @@ class Stage extends React.Component {
               <Cursor ref={elem => this.cursor = elem}/>
             </div>
           </div>
-          <DataVisualizer ref={elem => {
-            console.log(elem);
-            this.visualizer = elem;
-          }}/>
+          <DataVisualizer
+              ref={elem => {
+                console.log(elem);
+                this.visualizer = elem;
+              }}
+          />
         </div>
     );
   }
@@ -201,7 +203,6 @@ class Stage extends React.Component {
 
   compelete() {
     toastr.info('type complete');
-    // this.visualizer.show();
 
     // in order to let div and svg load before call refreshData
     // setTimeout(() => this.visualizer.refreshData(this.context.store.getState().typeResult), 0);

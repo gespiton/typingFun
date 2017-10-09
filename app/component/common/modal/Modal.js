@@ -60,6 +60,7 @@ export default class Modal extends React.Component {
   }
 
   hide() {
+    (this.state.beforeHiding || this.state.beforeHiding());
     this.setState({isVisible: false});
   }
 

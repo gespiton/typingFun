@@ -3,6 +3,7 @@ import React from "react";
 import parser from './lib/typeDataParser';
 import Drawer from './lib/graph';
 import {connect} from "react-redux";
+import {toggleChart} from "../../redux/actions/stageStatus";
 
 class Visualizer extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class Visualizer extends React.Component {
 
   render() {
     return (
-        <MyModal ref={elem => this.modal = elem}>
+        <MyModal ref={elem => this.modal = elem} beforeHiding={this.beforeHiding}>
           <h2 className="">typing result</h2>
           <div id="indicator" ref={elem => this.indicator = elem}/>
           <svg ref={elem => this.svg = elem}/>
@@ -34,7 +35,13 @@ class Visualizer extends React.Component {
     setTimeout(() => this.refreshData(this.context.store.getState().typeResult), 0);
   }
 
+  beforeHiding() {
+    console.log("before hiding");
+    this.hideChart();
+  }
+
   hide() {
+    this.beforeHiding();
     this.modal.hide();
   }
 
@@ -56,4 +63,13 @@ const mapStateToProps = state => {
   return {showChart: state.stageState.showChart};
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    hideChart: () => {
+      console.log("inside hide chart: ", this);
+      dispatch(toggleChart(false));
+    }
+  };
+
+};
 export default connect(mapStateToProps, null, null, {withRef: true})(Visualizer);
