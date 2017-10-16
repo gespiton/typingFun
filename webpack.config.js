@@ -1,7 +1,12 @@
 const webpack = require('webpack');
 const path = require('path');
+const localIp = require('./utility/getLocalIp');
+if (localIp.length !== 1) {
+  throw 'get local ip error!';
+}
 
-const publicPath = 'http://localhost:3000/';
+const publicPath = 'http://' + localIp[0] + ':3000/';
+console.log('public address: ', publicPath);
 // const hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 const devConfig = {
   devtool: '#source-map',
