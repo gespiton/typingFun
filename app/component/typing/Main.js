@@ -31,15 +31,8 @@ toastr.options = {
 const text = `Once when I was six I saw a magnificent picture in a book about the jungle, called True Stories. It showed a boa constrictor swallowing a wild beast. Here is a copy of the picture.
 
 	In the book it said: "Boa constrictors swallow their prey whole, without chewing. Afterward they are no longer able to move, and they sleep for six months they need for digestion."
-	In those days I thought a lot about jungle adventures, and eventually managed to make my first drawing, with a colored pencil. My drawing Number One looked like this:
 	I showed the grown-ups my masterpiece, and I asked them if my drawing scared them.
-	They answered, "Why should anyone be scared of a hat?"
 	My drawing was not a picture of a hat. It was a picture of a boa constrictor digesting an elephant. Then I drew the inside of the boa constrictor, so the grown-ups could understand. They always need explanations.
-	My drawing Number Two looked like this:
-	The grown-ups advised me to put away my drawings of boa constrictors, outside or inside, and apply myself instead to geography, history, arithmetic, and grammar. That is why I gave up, at the age of six, a magnificent career as an artist. I had been discouraged by the failure of my drawing Number One and of my drawing Number Two.
-	Grown-ups never understand anything by themselves, and it is exhausting for children to have to explain over and over again.
-	So then I had to choose another career. I learned to pilot airplanes. I have flown almost everywhere in the world. And, as a matter of fact, geography has been a big help to me. I could tell China from Arizona at first glance, which is very useful if you get lost during the night.
-	So I have met, in the course of my life, lots of serious people. I have spent lots of time with grownups. I have seen them at close range... which hasn't improved my opinion of them.
 	Whenever I encountered a grown-up who seemed to be intelligent, I would experiment on him with my drawing Number One, which I have always kept. I wanted to see if he really understood anything.
 	But he would always answer, "That's a hat." Then I wouldn't talk about boa constrictors or jungles or stars. I would put myself on his level and talk about bridge and golf and politics and neckties. And my grown-up was glad to know such a reasonable person.`;
 const text2 = "tthis is not good";
@@ -60,8 +53,8 @@ class Stage extends React.Component {
   }
 
   componentDidMount() {
-    console.log('mounted');
     const rect = (ReactDOM.findDOMNode(this.cursor)).getBoundingClientRect();
+    console.log("origin pos: ", rect);
     this.cursorOriPos = {
       left: rect.left,
       top: rect.top
@@ -143,7 +136,9 @@ class Stage extends React.Component {
   moveCursor(args) {
     const nextChar = this.childrenTable[this.curPos + args.dir];
     const nextDom = (ReactDOM.findDOMNode(nextChar).getBoundingClientRect());
-    const curRect = (ReactDOM.findDOMNode(this.cursor)).getBoundingClientRect();
+    console.log("cursor: ", ReactDOM.findDOMNode(this.cursor).getBoundingClientRect());
+    console.log(nextDom);
+    const curRect = ReactDOM.findDOMNode(this.cursor).getBoundingClientRect();
 
     const transX = nextDom.left - this.cursorOriPos.left;
     const transY = nextDom.top - this.cursorOriPos.top;
@@ -175,10 +170,11 @@ class Stage extends React.Component {
     this.state.toggleChart(true);
     // this.visualizer.wrappedInstance.refreshData(this.context.store.getState().typeResult);
   }
+
   render() {
     return (
         <div
-            className="typing main container"
+            className="typing main"
             tabIndex="0"
             onKeyPress={this.keyPressed}
             onKeyDown={this.keyDown}
@@ -201,7 +197,6 @@ class Stage extends React.Component {
           </div>
           <DataVisualizer
               ref={elem => {
-                console.log(elem);
                 this.visualizer = elem;
               }}
           />
@@ -214,7 +209,6 @@ class Stage extends React.Component {
 Stage.contextTypes = {store: React.PropTypes.object};
 
 const mapStateToProps = state => {
-  console.log('map called');
   return {typeResult: state.typeResult};
 };
 

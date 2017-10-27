@@ -32,7 +32,6 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-hmre": "^1.1.1",
     "bezier-easing": "^2.0.3",
-    "bootstrap-treeview": "^1.2.0",
     "clean-webpack-plugin": "^0.1.16",
     "cross-env": "^4.0.0",
     "css-loader": "^0.28.0",

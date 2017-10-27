@@ -8,7 +8,6 @@ import {toggleChart} from "../../redux/actions/stageStatus";
 class Visualizer extends React.Component {
   constructor(props) {
     super(props);
-    console.log('showChart: ', props.showChart);
     this.drawer = new Drawer();
   }
 
@@ -36,7 +35,6 @@ class Visualizer extends React.Component {
   }
 
   beforeHiding() {
-    console.log("before hiding");
     this.hideChart();
   }
 
@@ -66,7 +64,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     hideChart: () => {
-      console.log("inside hide chart: ", this);
       dispatch(toggleChart(false));
     }
   };

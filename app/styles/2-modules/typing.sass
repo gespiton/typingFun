@@ -24,15 +24,13 @@ $selector-width: 250px
 //background-color: $BackGround
 
 .typing.main
-  //.fadeBgc
-  ////animation: fadeout ease-in-out 8s
   background-color: $stage-bg-color
   border-radius: 10px
+  width: 83%
 
   transition: 0.3s all ease
 
-  #particles-js
-    transform: translateX(-198px)
+  margin: auto
   .char
     // overflow: hidden
     // height: 30px
@@ -50,11 +48,8 @@ $selector-width: 250px
     //border-color: transparent
     padding: 0 1px 0 1px
     font-size: 30px
-    //transition: all 0.1s ease-in-out
+    transition: all 0.3s ease-in-out
     white-space: pre
-  //transition: all 0.1s ease-in-out
-
-  /*padding: 0 1px 0 1px;
   .curChar
     /*position:sticky;
     position: relative
@@ -62,27 +57,18 @@ $selector-width: 250px
     //background-color: #333
     border-radius: 2px
 
-  // color: rgba(250, 230, 110, 1) !important
-  // text-shadow: 0px 0px 8px rgba(253, 200, 230, 1)
-  // font-size: 20px !important
-  // transform: translateY(-1px)
-  // animation: caret ease-in-out 1.5s alternate infinite
-
   .correct
     color: $correct-char-color
     text-shadow: 0 0 2px #5e5d61
 
   .incorrect
     /*background-color: pink;
-    color: #e74c3c
+    color: #ff9999
     text-shadow: 0px 0px 3px red
-
-  .passin
-    display: none
-
-  margin: auto
   #stage-wrap
     position: relative
+    width: 80%
+    margin: auto
     //background-color: $stage-bg
     #canvas
       position: fixed
@@ -104,6 +90,7 @@ $selector-width: 250px
   &:focus
     outline: none
     box-shadow: 0 10px 50px silver
+
 #selector-wraper
   position: fixed
   height: 100%
