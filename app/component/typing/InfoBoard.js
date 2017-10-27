@@ -5,7 +5,7 @@ import {toggleChart} from "../../redux/actions/stageStatus";
 
 const InfoBoard = props => {
   return (
-      <div id="wpf-container" className="col-md-1">
+      <div id="wpf-container" className="-1">
         <span id="wpf">
          wpf:
         </span>

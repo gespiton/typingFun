@@ -59,44 +59,6 @@ class Stage extends React.Component {
     this.keyDown = this.keyDown.bind(this);
   }
 
-  render() {
-    return (
-        <div
-            className="typing main container"
-            tabIndex="0"
-            onKeyPress={this.keyPressed}
-            onKeyDown={this.keyDown}
-            ref={elem => this.stage = elem}
-        >
-          <InfoBoard>
-            children
-          </InfoBoard>
-          <div
-              id="stage-wrap"
-              className="col-md-10 col-md-offset-1"
-          >
-            <canvas id="canvas" className="col-md-10"/>
-            <div
-                id="stage"
-            >
-              {this.Children}
-              <Cursor ref={elem => this.cursor = elem}/>
-            </div>
-          </div>
-          <DataVisualizer
-              ref={elem => {
-                console.log(elem);
-                this.visualizer = elem;
-              }}
-          />
-        </div>
-    );
-  }
-
-  focusStage() {
-    this.stage.focus();
-  }
-
   componentDidMount() {
     console.log('mounted');
     const rect = (ReactDOM.findDOMNode(this.cursor)).getBoundingClientRect();
@@ -108,6 +70,10 @@ class Stage extends React.Component {
     this.focusStage();
     this.powerMode = new PowerMode();
     this.powerMode.draw();
+  }
+
+  focusStage() {
+    this.stage.focus();
   }
 
   genTextArr() {
@@ -209,6 +175,39 @@ class Stage extends React.Component {
     this.state.toggleChart(true);
     // this.visualizer.wrappedInstance.refreshData(this.context.store.getState().typeResult);
   }
+  render() {
+    return (
+        <div
+            className="typing main container"
+            tabIndex="0"
+            onKeyPress={this.keyPressed}
+            onKeyDown={this.keyDown}
+            ref={elem => this.stage = elem}
+        >
+          <InfoBoard>
+            children
+          </InfoBoard>
+          <div
+              id="stage-wrap"
+              className="col-md-10 col-md-offset-1"
+          >
+            <canvas id="canvas" className="col-md-10"/>
+            <div
+                id="stage"
+            >
+              {this.Children}
+              <Cursor ref={elem => this.cursor = elem}/>
+            </div>
+          </div>
+          <DataVisualizer
+              ref={elem => {
+                console.log(elem);
+                this.visualizer = elem;
+              }}
+          />
+        </div>
+    );
+  }
 }
 
 
@@ -230,4 +229,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Stage);
+export default connect(mapStateToProps, mapDispatchToProps)(Stage);

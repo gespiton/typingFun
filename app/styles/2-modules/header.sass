@@ -7,6 +7,7 @@ header.myHeader
   width: 100%
   z-index: 10
   background-color: transparent
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5)
   .lable
     margin: 5px 10px
     display: inline-block
@@ -18,14 +19,31 @@ header.myHeader
     display: flex
     flex-direction: row
 
-  nav ul
+  nav
+    //display: flex
+    //flex-direction: row
+    //justify-content: space-around
+    width: 100%
+    //color: #000
     li
       height: 80px
-      display: block
-      & a
-        display: table-cell
-        font-size: 20px
-        height: 80px
+      display: flex
+      flex-direction: column
+      justify-content: center
+
+      list-style: none
+      padding: 0 20px
+
+      a
+        display: inline-block
+        font-size: 30px
+
+        color: #1b6d85
+      &.left
+        float: left
+      &.right
+        float: right
+
   .user
     margin-right: 20px
     display: flex
@@ -45,11 +63,11 @@ header.myHeader
       margin: auto 0
       height: 55px
       width: 55px
-  //&:after
-    content: ''
-    display: block
-    height: 160px
-    width: 100%
+//&:after
+  content: ''
+  display: block
+  height: 160px
+  width: 100%
 
 
 .headerHolder

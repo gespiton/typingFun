@@ -8,10 +8,11 @@ const Header = () => (
     <div>
       <header className="myHeader">
         <nav className="navbar navbar-default navbar-fixed-top">
-          <ul className="nav navbar-nav">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/typing">typing</Link></li>
-          </ul>
+          <li className="left"><Link to="/">Home</Link></li>
+          <li className="left"><Link to="/typing">typing</Link></li>
+          <li className="right"><Link to="/register">register</Link></li>
+          <li className="right"><Link to="/login">register</Link></li>
+
         </nav>
       </header>
       <div className="headerHolder"/>

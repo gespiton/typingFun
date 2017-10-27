@@ -44,7 +44,6 @@ passport.deserializeUser(function (id, done) {
 });
 // view engine setup
 app.set('views', path.join(__dirname, './server/views'));
-app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
 //typing.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -108,6 +107,7 @@ app.use(function (req, res, next) {
   res.locals.user = req.user;
   next();
 });
+
 app.use('*', function (req, res) {
   res.sendFile(path.join(__dirname, './app/index.html'));
 });
@@ -141,4 +141,5 @@ if (isDev) {
     console.log('typing started on port 3000');
   });
 }
+
 module.exports = app;
