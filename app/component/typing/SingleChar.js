@@ -19,6 +19,10 @@ class SingleChar extends React.Component {
     );
   }
 
+  setCurrentChar() {
+
+  }
+
   keyPressed(key) {
     const isCorrect = key === this.state.char;
     //todo put function in state, is it best practice?

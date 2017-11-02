@@ -28,7 +28,7 @@ const devConfig = {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'
-    })
+    }),
   ],
   module: {
     rules: [

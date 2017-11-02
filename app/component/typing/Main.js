@@ -35,7 +35,7 @@ const text = `Once when I was six I saw a magnificent picture in a book about th
 	My drawing was not a picture of a hat. It was a picture of a boa constrictor digesting an elephant. Then I drew the inside of the boa constrictor, so the grown-ups could understand. They always need explanations.
 	Whenever I encountered a grown-up who seemed to be intelligent, I would experiment on him with my drawing Number One, which I have always kept. I wanted to see if he really understood anything.
 	But he would always answer, "That's a hat." Then I wouldn't talk about boa constrictors or jungles or stars. I would put myself on his level and talk about bridge and golf and politics and neckties. And my grown-up was glad to know such a reasonable person.`;
-const text2 = "tthis is not good";
+const text2 = "tthis is not good tthis is not goodtthis is not goodtthis is not goodtthis is not goodtthis is not goodtthis is not goodtthis is not goodtthis is not good";
 
 //todo toaster for notification
 
@@ -53,12 +53,6 @@ class Stage extends React.Component {
   }
 
   componentDidMount() {
-    const rect = (ReactDOM.findDOMNode(this.cursor)).getBoundingClientRect();
-    console.log("origin pos: ", rect);
-    this.cursorOriPos = {
-      left: rect.left,
-      top: rect.top
-    };
     this.moveCursor({dir: 0});
     this.focusStage();
     this.powerMode = new PowerMode();
@@ -110,7 +104,7 @@ class Stage extends React.Component {
 
     const isCorrect = this.childrenTable[this.curPos].keyPressed(pressed);
     if (isCorrect) {
-      this.powerMode.spawnParticles();
+      this.powerMode.spawnParticles(this.getCurrentTransform());
     }
 
 
@@ -133,25 +127,14 @@ class Stage extends React.Component {
     }
   }
 
+  getCurrentTransform() {
+    const rect = ReactDOM.findDOMNode(this.childrenTable[this.curPos]).getBoundingClientRect();
+    return {X: rect.x, Y: rect.y};
+  }
+
   moveCursor(args) {
     const nextChar = this.childrenTable[this.curPos + args.dir];
-    const nextDom = (ReactDOM.findDOMNode(nextChar).getBoundingClientRect());
-    console.log("cursor: ", ReactDOM.findDOMNode(this.cursor).getBoundingClientRect());
-    console.log(nextDom);
-    const curRect = ReactDOM.findDOMNode(this.cursor).getBoundingClientRect();
-
-    const transX = nextDom.left - this.cursorOriPos.left;
-    const transY = nextDom.top - this.cursorOriPos.top;
-    const props = {
-      transform: `translate(${transX}px,${transY}px)`,
-      height: nextDom.height,
-      width: nextDom.width
-    };
-
-    this.cursor.setState(() => {
-      return {styles: props};
-    });
-
+    nextChar.setCurrentChar();
     if (args.isBack) {
       this.childrenTable[this.curPos].setState(() => ({classNames: [], typeResult: ''}));
     } else {
@@ -192,7 +175,6 @@ class Stage extends React.Component {
                 id="stage"
             >
               {this.Children}
-              <Cursor ref={elem => this.cursor = elem}/>
             </div>
           </div>
           <DataVisualizer

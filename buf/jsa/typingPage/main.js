@@ -7,6 +7,7 @@ import typing from "./typingScript";
 import Draw from "./graph";
 import "../../../node_modules/bootstrap-treeview/dist/bootstrap-treeview.min.css";
 import "../library/bootstrap-treeview";
+
 require('./statsConfig');
 
 typing.start();

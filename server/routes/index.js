@@ -12,7 +12,6 @@ function addRoute(controller, urlBase) {
   controller.actionList.forEach(c => {
     router[c.action](urlBase + c.url, c.func);
   });
-  console.log(controller.actionList);
 }
 
 

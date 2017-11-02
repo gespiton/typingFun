@@ -1,6 +1,7 @@
 @keyframes caret
   50%
-    background-color: transparent
+    color: black
+    font-weight: bolder
 
 @keyframes fadeout
   0%
@@ -40,6 +41,7 @@ $selector-width: 250px
     display: inline-block
     font-family: 'fira_sansextralight_italic', serif
     // font-style: italic
+    border-bottom: solid transparent
 
     // border-radius: 5px
 
@@ -52,10 +54,13 @@ $selector-width: 250px
     white-space: pre
   .curChar
     /*position:sticky;
+    border-bottom: solid #222
     position: relative
-    //color: white
+    //color: whitse
     //background-color: #333
     border-radius: 2px
+    animation: caret ease-in-out 0.5s alternate infinite
+    transition: all 0.3s ease-in-out
 
   .correct
     color: $correct-char-color
@@ -82,6 +87,8 @@ $selector-width: 250px
       //width: 80%
 
       #caret
+        height: 42px
+
         position: fixed
         background-color: $caret-back-color
         animation: caret ease-in-out 1.0s alternate infinite

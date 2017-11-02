@@ -22,7 +22,6 @@ const App = (function () {
     this.canvasH = this.canvas.height();
     this.canvasW = this.canvas.width();
     this.ctx = document.getElementById('canvas').getContext('2d');
-    this.cursor = $('#caret');
     this.particlePointer = 0;
 
     // $('#')
@@ -46,10 +45,8 @@ const App = (function () {
   App.prototype.maxSpawnParticleNum = 5;
 
   // functions
-  App.prototype.spawnParticles = function () {
-    // console.log(this.cursor[0].getBoundingClientRect().left);
-    const curPosX = this.cursor.position().left - this.canvas.position().left;
-    const curPoxY = this.cursor.position().top - this.canvas.position().top;
+  App.prototype.spawnParticles = function (pos) {
+    console.log(pos);
     for (let i = 0; i !== this.maxSpawnParticleNum; ++i) {
       this.particlePointer = (i + this.particlePointer) % this.maxParticleNum;
       // const color = [
@@ -58,15 +55,14 @@ const App = (function () {
       //   Math.round(255 * Math.random() + 50)
       // ];
       const color = [199, 29, 55];
-      this.particles[this.particlePointer] = this.createParticle(curPosX, curPoxY, color);
+      this.particles[this.particlePointer] = this.createParticle(pos.X, pos.Y, color);
     }
     // this.powermode.push(this.createParticle(this.cursor.position().left - this.canvas.position().left, this.cursor.position().top - this.canvas.position().top, 'blue'));
   };
   App.prototype.createParticle = function (x, y, color) {
-    // console.log('creating particles');
     return {
-      x: x,
-      y: y + 10,
+      x: x - this.canvas.position().left,
+      y: y + 10 - this.canvas.position().top,
       alpha: 1,
       color: color,
       velocity: {
@@ -95,14 +91,9 @@ const App = (function () {
       this.ctx.fillStyle = "rgba(" + (particle.color.join(", ")) + ", " + particle.alpha + ")";
       this.ctx.fillRect(Math.round(particle.x - this.PARTICLE_SIZE / 2), Math.round(particle.y - this.PARTICLE_SIZE / 2), this.PARTICLE_SIZE, this.PARTICLE_SIZE);
     }
-    // this.powermode.forEach(function (particle) {
-    //
-    //
-    // })
   };
 
   return App;
 })();
-// const app = new App();
-// app.draw();
+
 export default App;
