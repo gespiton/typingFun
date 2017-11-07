@@ -16,7 +16,6 @@ class Draw {
 
   draw(data, args) {
     {
-      console.log(JSON.stringify(data));
       let yMax = d3.max(data, (d) => d.speed);
       if (yMax > 100)
         yMax = 100;

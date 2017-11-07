@@ -4,10 +4,18 @@ import {connect} from "react-redux";
 
 class SingleChar extends React.Component {
   constructor(props) {
-    super(props);
+    super();
     props.registerMe(props.pos, this);
     this.state = props;
     this.keyPressed = this.keyPressed.bind(this);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('child update');
+    if (nextState.typeResult !== this.state.typeResult || nextState.classNames !== this.state.classNames) {
+      return true;
+    }
+    return false;
   }
 
   render() {

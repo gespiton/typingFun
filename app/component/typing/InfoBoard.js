@@ -35,6 +35,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
   return {
     toggleChart: showIt => {
+      console.log("toggleChart",showIt);
       dispatch(toggleChart(showIt));
     }
   };

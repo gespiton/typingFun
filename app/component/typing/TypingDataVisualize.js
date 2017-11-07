@@ -1,11 +1,11 @@
 import MyModal from '../common/modal/Modal';
-import React from "react";
+import React, {Component} from "react";
 import parser from './lib/typeDataParser';
 import Drawer from './lib/graph';
 import {connect} from "react-redux";
 import {toggleChart} from "../../redux/actions/stageStatus";
 
-class Visualizer extends React.Component {
+class Visualizer extends Component {
   constructor(props) {
     super(props);
     this.drawer = new Drawer();
@@ -22,6 +22,7 @@ class Visualizer extends React.Component {
   }
 
   componentWillReceiveProps(nextProp) {
+    console.log("recevie", nextProp);
     if (nextProp.showChart) {
       this.show();
     } else {
@@ -58,7 +59,9 @@ class Visualizer extends React.Component {
 Visualizer.contextTypes = {store: React.PropTypes.object};
 
 const mapStateToProps = state => {
-  return {showChart: state.stageState.showChart};
+  return {
+    showChart: state.stageState.showChart,
+  };
 };
 
 const mapDispatchToProps = dispatch => {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import ReactDOM from "react-dom";
 import SingleChar from "./SingleChar";
 import Cursor from "./Cursor";
@@ -29,17 +29,17 @@ toastr.options = {
 };
 
 const text = `Once when I was six I saw a magnificent picture in a book about the jungle, called True Stories. It showed a boa constrictor swallowing a wild beast. Here is a copy of the picture.
+  My drawing was not a picture of a hat. It was a picture of a boa constrictor digesting an elephant. Then I drew the inside of the boa constrictor, so the grown-ups could understand. They always need explanations.
+  Whenever I encountered a grown-up who seemed to be intelligent, I would experiment on him with my drawing Number One, which I have always kept. I wanted to see if he really understood anything.
+  But he would alwak it said: "Boa constrictors swallow their prey whole, without chewing. Afterward they are no longer able to move, and they sleep for six months they need for digestion."
+  I showed the grown-ups my masterpiece, and I asked them if my drawing scared them.
+  My drawing was not a picture of a hat. It was a picture of a boa constrictor digesting an elephant. Then I drew the inside of the boa constrictor, so the grown-ups could understand. They always need explanations.
+  Whenever I encountered a grown-up who seemed to be intelligent, I would experiment on him with my drawing Number One, which I have always kept. I wanted to see if he really understood anything.
+  But he would always answer, "That's a hat." Then I wouldn't talk about boa constrictors or jungles or stars. I would put myself on his level and talk about bridge and golf and politics and neckties. And my grown-up was glad to know such a reasonable person.`;
+const text2 = "tthis is not good tthis is not goodtthis is ";
 
-	In the book it said: "Boa constrictors swallow their prey whole, without chewing. Afterward they are no longer able to move, and they sleep for six months they need for digestion."
-	I showed the grown-ups my masterpiece, and I asked them if my drawing scared them.
-	My drawing was not a picture of a hat. It was a picture of a boa constrictor digesting an elephant. Then I drew the inside of the boa constrictor, so the grown-ups could understand. They always need explanations.
-	Whenever I encountered a grown-up who seemed to be intelligent, I would experiment on him with my drawing Number One, which I have always kept. I wanted to see if he really understood anything.
-	But he would always answer, "That's a hat." Then I wouldn't talk about boa constrictors or jungles or stars. I would put myself on his level and talk about bridge and golf and politics and neckties. And my grown-up was glad to know such a reasonable person.`;
-const text2 = "tthis is not good tthis is not goodtthis is not goodtthis is not goodtthis is not goodtthis is not goodtthis is not goodtthis is not goodtthis is not good";
 
-//todo toaster for notification
-
-class Stage extends React.Component {
+class Stage extends Component {
   constructor(props) {
     super(props);
     this.state = props;
@@ -59,6 +59,10 @@ class Stage extends React.Component {
     this.powerMode.draw();
   }
 
+  shouldComponentUpdate(nextProp, nextState) {
+    return false;
+  }
+
   focusStage() {
     this.stage.focus();
   }
@@ -75,7 +79,7 @@ class Stage extends React.Component {
 
     this.Children = this.textArr.map(
         (char, index) => (
-            <SingleChar key={index} char={char} pos={index} {...props}/>
+            <SingleChar key={index} char={char} pos={index} {...props} />
         )
     );
   }
@@ -133,8 +137,31 @@ class Stage extends React.Component {
   }
 
   moveCursor(args) {
+    // const nextChar = this.childrenTable[this.curPos + args.dir];
+    // nextChar.setCurrentChar();
+    // if (args.isBack) {
+    //   this.childrenTable[this.curPos].setState(() => ({classNames: [], typeResult: ''}));
+    // } else {
+    //   this.childrenTable[this.curPos].setState(() => ({classNames: []}));
+    // }
+    // nextChar.setState(prestate => {
+    //   return {classNames: ['curChar', ...(prestate.classNames || [])]};
+    // });
+
     const nextChar = this.childrenTable[this.curPos + args.dir];
-    nextChar.setCurrentChar();
+    const nextDom = (ReactDOM.findDOMNode(nextChar).getBoundingClientRect());
+
+    const props = {
+      left: nextDom.left,
+      top: nextDom.top,
+      height: nextDom.height,
+      width: nextDom.width
+    };
+
+    this.cursor.setState(() => {
+      return {styles: props};
+    });
+
     if (args.isBack) {
       this.childrenTable[this.curPos].setState(() => ({classNames: [], typeResult: ''}));
     } else {
@@ -144,6 +171,7 @@ class Stage extends React.Component {
       return {classNames: ['curChar', ...(prestate.classNames || [])]};
     });
   }
+
 
   compelete() {
     toastr.info('type complete');
@@ -175,6 +203,7 @@ class Stage extends React.Component {
                 id="stage"
             >
               {this.Children}
+              <Cursor ref={elem => this.cursor = elem}/>
             </div>
           </div>
           <DataVisualizer
