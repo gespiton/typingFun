@@ -1,5 +1,4 @@
 import * as d3 from 'd3';
-import ReactDom from 'react-dom';
 
 class Draw {
   constructor() {
@@ -99,77 +98,7 @@ class Draw {
             .attr('font-size', '15px')
             .call(d3.axisLeft(this.yScale).ticks(10))
             .attr('transform', 'translate(30)');
-        this.firstDraw = false;
-      }
-      else {
-        this.xScale = d3.scaleLinear()
-            .domain([0, data.length])
-            .range([this.padding, this.w]);
-
-        this.yScale = d3.scaleLinear()
-            .domain([0, yMax])
-            .range([this.h - this.padding, this.padding]);
-
-
-        // update & draw line
-        this.$svg
-            .select('path')
-            .attr('d', this.lineFun(data))
-            .style("opacity", 0)
-            .transition()
-            .duration(1000)
-            .style("opacity", 1);
-
-        // update & draw dot
-        const circles = this.$svg.selectAll('circle').data(data);
-
-        circles.transition()
-            .duration(500)
-            .attr('cx', this.getX)
-            .attr('cy', this.getY);
-
-        circles.enter()
-            .append('circle')
-            .attr('cx', this.getX)
-            .attr('cy', this.getY)
-            .attr('fill', d => this.getColor(d.correct))
-            .attr('r', 3)
-            .style("opacity", 0)
-            .transition()
-            .duration(1000)
-            .style("opacity", 1);
-
-
-        // update label
-        const lables = this.$svg.selectAll('text.label').data(data);
-        lables
-            .transition()
-            .duration(500)
-            .attr('x', (d, i) => this.getX(d, i) - d.word.length * 8)
-            .attr('y', this.getY);
-
-        lables.enter()
-            .append('text')
-            .text(d => {
-              return d.word;
-            })
-            .attr('x', (d, i) => this.getX(d, i) - d.word.length * 8)
-            .attr('y', this.getY)
-            .attr('class', 'label')
-            .style('fill', 'gray')
-            .style('font-size', '15px')
-            .style("opacity", 0)
-            .transition()
-            .duration(1000)
-            .style("opacity", 1);
-
-        // update axis
-        $('#yAxis').remove();
-        this.$svg.append('g')
-            .attr('id', 'yAxis')
-            .attr('font-size', '15px')
-            .call(d3.axisLeft(this.yScale).ticks(10))
-            .attr('transform', 'translate(30)');
+        // this.firstDraw = false;
       }
     }
   }

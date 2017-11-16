@@ -115,7 +115,7 @@ class Stage extends Component {
     if (this.curPos < this.childrenTable.length - 1) {
       this.moveCursor({dir: 1});
     } else {
-      this.compelete();
+      this.complete();
     }
 
     this.curPos += 1;
@@ -137,17 +137,6 @@ class Stage extends Component {
   }
 
   moveCursor(args) {
-    // const nextChar = this.childrenTable[this.curPos + args.dir];
-    // nextChar.setCurrentChar();
-    // if (args.isBack) {
-    //   this.childrenTable[this.curPos].setState(() => ({classNames: [], typeResult: ''}));
-    // } else {
-    //   this.childrenTable[this.curPos].setState(() => ({classNames: []}));
-    // }
-    // nextChar.setState(prestate => {
-    //   return {classNames: ['curChar', ...(prestate.classNames || [])]};
-    // });
-
     const nextChar = this.childrenTable[this.curPos + args.dir];
     const nextDom = (ReactDOM.findDOMNode(nextChar).getBoundingClientRect());
 
@@ -173,13 +162,9 @@ class Stage extends Component {
   }
 
 
-  compelete() {
+  complete() {
     toastr.info('type complete');
-
-    // in order to let div and svg load before call refreshData
-    // setTimeout(() => this.visualizer.refreshData(this.context.store.getState().typeResult), 0);
     this.state.toggleChart(true);
-    // this.visualizer.wrappedInstance.refreshData(this.context.store.getState().typeResult);
   }
 
   render() {

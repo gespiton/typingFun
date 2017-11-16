@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const router = express.Router();
 const typing = require('../controllers/typing');
 const home = require('../controllers/home');
@@ -8,18 +9,27 @@ const gamePage = require('../controllers/gamePage');
 const passport = require('passport');
 const record = require('../controllers/recordManage');
 
-function addRoute(controller, urlBase) {
-  controller.actionList.forEach(c => {
-    router[c.action](urlBase + c.url, c.func);
-  });
-}
+// function addRoute(controller, urlBase) {
+//   controller.actionList.forEach(c => {
+//     router[c.action](urlBase + c.url, c.func);
+//   });
+// }
+//
+//
+// addRoute(typing, '/typing');
+// addRoute(home, '/');
+// login(router);
+// addRoute(addArticle, '/dbs');
+// addRoute(gamePage, '/game');
+// addRoute(record, '/record');
 
 
-addRoute(typing, '/typing');
-addRoute(home, '/');
-login(router);
-addRoute(addArticle, '/dbs');
-addRoute(gamePage, '/game');
-addRoute(record, '/record');
+router.post('/typingRecord', record);
 
+
+router.get('*', (req, res) => {
+  "use strict";
+  // res.render('index.html');
+  res.sendFile(path.join(__dirname, '../../app/index.html'));
+});
 module.exports = router;

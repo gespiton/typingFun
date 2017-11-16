@@ -11,7 +11,6 @@ const passport = require('passport'),
     LocalStrategy = require('passport-local'),
     Memb = require('./membership/index');
 
-
 const memberShip = new Memb();
 passport.use(new LocalStrategy(
     {
@@ -43,7 +42,8 @@ passport.deserializeUser(function (id, done) {
   });
 });
 // view engine setup
-app.set('views', path.join(__dirname, './server/views'));
+app.set('views', path.join(__dirname, './app'));
+// app.set('view engine','html');
 
 // uncomment after placing your favicon in /public
 //typing.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -86,7 +86,7 @@ if (isDev) {
 
 
 } else {
-  app.use(express.static(path.join(__dirname, 'public')));
+  app.use(express.static(path.join(__dirname, 'app')));
 }
 
 
@@ -108,9 +108,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use('*', function (req, res) {
-  res.sendFile(path.join(__dirname, './app/index.html'));
-});
+app.use('/', mainRoute);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

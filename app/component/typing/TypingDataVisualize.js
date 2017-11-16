@@ -9,6 +9,8 @@ class Visualizer extends Component {
   constructor(props) {
     super(props);
     this.drawer = new Drawer();
+    this.beforeHiding = this.beforeHiding.bind(this);
+    this.state = props;
   }
 
   render() {
@@ -22,7 +24,6 @@ class Visualizer extends Component {
   }
 
   componentWillReceiveProps(nextProp) {
-    console.log("recevie", nextProp);
     if (nextProp.showChart) {
       this.show();
     } else {
@@ -36,7 +37,7 @@ class Visualizer extends Component {
   }
 
   beforeHiding() {
-    this.hideChart();
+    this.state.hideChart();
   }
 
   hide() {
@@ -46,6 +47,7 @@ class Visualizer extends Component {
 
   refreshData(data) {
     const res = parser(data);
+    console.log(res);
     this.drawer.draw(
         res,
         {
@@ -72,4 +74,4 @@ const mapDispatchToProps = dispatch => {
   };
 
 };
-export default connect(mapStateToProps, null, null, {withRef: true})(Visualizer);
+export default connect(mapStateToProps, mapDispatchToProps, null, {withRef: true})(Visualizer);
