@@ -12,9 +12,9 @@ describe("registration", function () {
       if (err && err.message !== 'ns not found') throw err;
       console.log('db cleared');
       registration.Register(user,
-        function (err, result) {
-          done(result);
-        });
+          function (err, result) {
+            done(result);
+          });
     });
   };
   before(function (done) {
@@ -26,16 +26,16 @@ describe("registration", function () {
     let regResult = {};
     before(function (done) {
       createUserGetResult(
-        {
-          username: 'hi',
-          email: "123@me.com",
-          password: "freedom",
-          confirm: "freedom"
-        },
-        function (res) {
-          regResult = res;
-          done();
-        });
+          {
+            username: 'hi',
+            email: "123@me.com",
+            password: "freedom",
+            confirm: "freedom"
+          },
+          function (res) {
+            regResult = res;
+            done();
+          });
     });
 
     it("is successful", () => regResult.success.should.equal(true));
@@ -46,16 +46,16 @@ describe("registration", function () {
     let regResult = {};
     before(function (done) {
       createUserGetResult(
-        {
-          username: 'ha',
-          email: null,
-          password: "freedom",
-          confirm: "freedom"
-        },
-        function (res) {
-          regResult = res;
-          done();
-        }
+          {
+            username: 'ha',
+            email: null,
+            password: "freedom",
+            confirm: "freedom"
+          },
+          function (res) {
+            regResult = res;
+            done();
+          }
       );
     });
 
@@ -67,16 +67,16 @@ describe("registration", function () {
     let regResult = null;
     before(function (done) {
       createUserGetResult(
-        {
-          username: 'ha',
-          email: '123@me.com',
-          password: "freedom",
-          confirm: "freedom1"
-        },
-        function (res) {
-          regResult = res;
-          done();
-        }
+          {
+            username: 'ha',
+            email: '123@me.com',
+            password: "freedom",
+            confirm: "freedom1"
+          },
+          function (res) {
+            regResult = res;
+            done();
+          }
       );
     });
 
@@ -97,26 +97,51 @@ describe("registration", function () {
       User.collection.drop(function (err) {
         if (err && err.message !== 'ns not found') throw err;
         console.log('db cleared');
-        registerTwice()
+        registerTwice();
       });
 
       function registerTwice() {
         registration.Register(user,
-          function (err, result) {
-            if (err) throw err;
-            registration.Register(user,
-              function (err, result) {
-                if (err) throw err;
-                regResult = result;
-                done();
-              });
-          });
+            function (err, result) {
+              if (err) throw err;
+              registration.Register(user,
+                  function (err, result) {
+                    if (err) throw err;
+                    regResult = result;
+                    done();
+                  });
+            });
       }
     });
 
     it("is not successful", () => regResult.success.should.equal(false));
     it("message is: This email is used", () => regResult.message.should.equal("This email is used"));
     it("user should be null", () => (regResult.user === null).should.be.ok());
+  });
+
+  describe("user name missing", function () {
+    let regResult = null;
+    before(function (done) {
+      const user = {
+        email: '123@me.com',
+        password: "freedom",
+        confirm: "freedom"
+      };
+
+      User.collection.drop(function (err) {
+        if (err && err.message !== 'ns not found') throw err;
+        createUserGetResult(
+            user,
+            function (res) {
+              regResult = res;
+              done();
+            }
+        );
+      });
+    });
+
+    it("is not successful", () => regResult.success.should.equal(false));
+    it("message is : username missing", () => regResult.message.should.equal("username missing"));
   });
 
 

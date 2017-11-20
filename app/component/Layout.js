@@ -1,25 +1,25 @@
 // This is the default layout of our app
-import React from "react";
+import React, {Component} from "react";
 import {Link, Route} from "react-router-dom";
 import HomePage from "./home/HomePage";
 import TypingPage from "./typing/Main";
+import SignPage from "./sign/Main";
+import UserState from "./sign/UserState";
 
 const Header = () => (
     <div>
       <header className="myHeader">
-        <nav className="navbar navbar-default navbar-fixed-top">
+        <nav className="">
           <li className="left"><Link to="/">Home</Link></li>
           <li className="left"><Link to="/typing">typing</Link></li>
-          <li className="right"><Link to="/register">register</Link></li>
-          <li className="right"><Link to="/login">login</Link></li>
-
+          <UserState/>
         </nav>
       </header>
       <div className="headerHolder"/>
     </div>
 );
 
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
   }
@@ -31,6 +31,7 @@ class App extends React.Component {
           <switch>
             <Route exact path="/" component={HomePage}/>
             <Route path="/typing" component={TypingPage}/>
+            <Route path="/login" component={SignPage}/>
           </switch>
         </div>
     );

@@ -1,4 +1,5 @@
 const express = require('express');
+const membership = require('../service/membershipService');
 const path = require('path');
 const router = express.Router();
 const typing = require('../controllers/typing');
@@ -18,7 +19,7 @@ const record = require('../controllers/recordManage');
 //
 // addRoute(typing, '/typing');
 // addRoute(home, '/');
-// login(router);
+// sign(router);
 // addRoute(addArticle, '/dbs');
 // addRoute(gamePage, '/game');
 // addRoute(record, '/record');
@@ -26,10 +27,13 @@ const record = require('../controllers/recordManage');
 
 router.post('/typingRecord', record);
 
+router.post('/login', membership.login);
+router.post('/register', membership.register);
 
 router.get('*', (req, res) => {
   "use strict";
   // res.render('index.html');
   res.sendFile(path.join(__dirname, '../../app/index.html'));
 });
+
 module.exports = router;

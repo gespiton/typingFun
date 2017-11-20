@@ -2,7 +2,7 @@
  * Created by sher on 2017/1/27 0027.
  */
 function loginFunc() {
-  const $formLogin = $('#login-form');
+  const $formLogin = $('#sign-form');
   const $formLost = $('#lost-form');
   const $formRegister = $('#register-form');
   const $divForms = $('#div-forms');
@@ -12,16 +12,16 @@ function loginFunc() {
 
   $("form").submit(function () {
     switch (this.id) {
-      case "login-form":
+      case "sign-form":
         const $lg_username = $('#login_username').val();
         const $lg_password = $('#login_password').val();
         $.post('login', {'email': $lg_username, 'password': $lg_password}, function (result) {
             console.log(result);
             changeUserState(result.logged, result.username);
             if (result.logged === false) {
-              msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", result.message);
+              msgChange($('#div-sign-msg'), $('#icon-sign-msg'), $('#text-sign-msg'), "error", "glyphicon-remove", result.message);
             } else {
-              msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK");
+              msgChange($('#div-sign-msg'), $('#icon-sign-msg'), $('#text-sign-msg'), "success", "glyphicon-ok", "Login OK");
               setTimeout(function () {
                 $('#closeBT').click();
               }, 500);
@@ -127,7 +127,7 @@ function changeUserState(loged, name) {
     $('#logState').attr('src', '/images/logged.png');
     $('#username').text(name);
   } else {
-    $('#logState').attr('src', '/images/login.png');
+    $('#logState').attr('src', '/images/sign.png');
   }
 }
 module.exports = {

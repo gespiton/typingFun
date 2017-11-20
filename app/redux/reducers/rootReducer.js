@@ -22,6 +22,12 @@ store structure
   stageState:{
     showChart: true
   }
+
+  userState:{
+    username: "me",
+    logged: true,
+    email: "hoho"
+  }
 }
 */
 

@@ -17,7 +17,10 @@ const devConfig = {
           './app/index.js',
           'webpack/hot/dev-server',
           'webpack-hot-middleware/client',
-        ]
+        ],
+        // "materialize": [
+        //   './app/styles/js/bin/materialize.js'
+        // ]
       },
       output: {
         filename: './js/[name].js',
@@ -31,6 +34,7 @@ const devConfig = {
           $: 'jquery',
           jQuery: 'jquery'
         }),
+        new webpack.optimize.ModuleConcatenationPlugin(),
         new HappyPack({
           id: 'js',
           threads: 4,

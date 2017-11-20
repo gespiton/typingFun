@@ -1,20 +1,24 @@
-import React from "react";
+import React, {Component} from "react";
 import typeIn from "../../redux/actions/typeIn";
 import {connect} from "react-redux";
 
-class SingleChar extends React.Component {
+class SingleChar extends Component {
   constructor(props) {
-    super();
+    super(props);
     props.registerMe(props.pos, this);
-    this.state = props;
+    console.log(props);
+    this.state = Object.assign({}, props);
+
     this.keyPressed = this.keyPressed.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     console.log('child update');
     if (nextState.typeResult !== this.state.typeResult || nextState.classNames !== this.state.classNames) {
+      console.log("should update");
       return true;
     }
+
     return false;
   }
 

@@ -9,6 +9,7 @@ import typeIn from "../../redux/actions/typeIn";
 import toastr from 'toastr';
 import DataVisualizer from './TypingDataVisualize';
 import {toggleChart} from "../../redux/actions/stageStatus";
+import PropTypes from 'prop-types';
 
 toastr.options = {
   "closeButton": false,
@@ -59,8 +60,20 @@ class Stage extends Component {
     this.powerMode.draw();
   }
 
-  shouldComponentUpdate(nextProp, nextState) {
+  shouldComponentUpdate(nextprox, nextState) {
+    console.log("props", this.props);
+    console.log("state", this.staet);
+    console.log('one', nextprox);
+    console.log('two', nextState);
     return false;
+  }
+
+  componentWillUpdate() {
+    console.log("updating");
+  }
+
+  componentDidUpdate() {
+    console.log("wtf");
   }
 
   focusStage() {
@@ -119,16 +132,19 @@ class Stage extends Component {
     }
 
     this.curPos += 1;
+    return false;
   }
 
   keyDown(e) {
-    if (this.curPos === 0) return;
+    if (this.curPos === 0) return false;
 
     const backSpaceKeyCode = 8;
     if (e.keyCode === backSpaceKeyCode) {
       this.moveCursor({dir: -1, isBack: true});
       this.curPos -= 1;
+      return false;
     }
+    return true;
   }
 
   getCurrentTransform() {
@@ -202,7 +218,7 @@ class Stage extends Component {
 }
 
 
-Stage.contextTypes = {store: React.PropTypes.object};
+Stage.contextTypes = {store: PropTypes.object};
 
 const mapStateToProps = state => {
   return {typeResult: state.typeResult};

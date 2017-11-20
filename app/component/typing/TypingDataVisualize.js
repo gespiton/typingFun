@@ -4,6 +4,7 @@ import parser from './lib/typeDataParser';
 import Drawer from './lib/graph';
 import {connect} from "react-redux";
 import {toggleChart} from "../../redux/actions/stageStatus";
+import PropTypes from 'prop-types';
 
 class Visualizer extends Component {
   constructor(props) {
@@ -58,7 +59,7 @@ class Visualizer extends Component {
   }
 }
 
-Visualizer.contextTypes = {store: React.PropTypes.object};
+Visualizer.contextTypes = {store: PropTypes.object};
 
 const mapStateToProps = state => {
   return {

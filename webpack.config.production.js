@@ -61,10 +61,10 @@ const productionConfig = {
       jQuery: 'jquery'
     }),
     new webpack.optimize.UglifyJsPlugin({
-      compress: {warnings: false},
-      sourceMap: true
+      compress: {warnings: false}
     }),
-    new HardSourceWebpackPlugin()
+    new HardSourceWebpackPlugin(),
+    new webpack.optimize.ModuleConcatenationPlugin()
   ]
 };
 

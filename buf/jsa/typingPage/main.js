@@ -1,8 +1,8 @@
 /**
  * Created by sher on 9/5/2017.
  */
-import "./particles";
-import "./bgParticle";
+import "../../../app/component/sign/lib/particles";
+import "../../../app/component/sign/lib/bgParticle";
 import typing from "./typingScript";
 import Draw from "./graph";
 import "../../../node_modules/bootstrap-treeview/dist/bootstrap-treeview.min.css";

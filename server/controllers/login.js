@@ -1,12 +1,11 @@
 /**
  * Created by sher on 27/5/2017.
  */
-const session = require('express-session');
 const passport = require('passport');
 const Memb = require('../../membership');
 
 function main(router) {
-  router.route('/login')
+  router.route('/sign')
       .post(function (req, res, next) {
         function authenticateSuccess(user, info) {
           return user && info.success;

@@ -39,7 +39,7 @@ describe('Authentication', function () {
       });
   });
 
-  describe('a valid login', function () {
+  describe('a valid sign', function () {
     let authResult = {};
     before(function (done) {
       authenticateUserGetResult(

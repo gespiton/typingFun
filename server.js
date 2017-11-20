@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const mainRoute = require('./server/routes/index');
 const session = require('express-session');
 const app = express();
-const isDev = process.env.NODE_ENV !== 'production';
 const mongoose = require('mongoose');
 const compression = require('compression');
 const passport = require('passport'),
@@ -19,7 +18,7 @@ passport.use(new LocalStrategy(
     },
     function (email, password, done) {
       memberShip.authenticate(email, password, function (err, authRes) {
-        // console.log(authRes);
+        console.log(authRes);
         if (err) return done(err);
         if (authRes.success) {
           return done(null, authRes.user, authRes);
@@ -59,34 +58,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/typingFun', function (err, db) {
 });
 
 // serve files
-if (isDev) {
-  // static assets served by webpack-dev-middleware & webpack-hot-middleware for development
-  console.log('dev mode');
-  const webpack = require('webpack'),
-      webpackDevMiddleware = require('webpack-dev-middleware'),
-      webpackHotMiddleware = require('webpack-hot-middleware'),
-      webpackDevConfig = require('./webpack.config.js');
-
-  const compiler = webpack(webpackDevConfig);
-
-  // attach to the compiler & the web
-  app.use(webpackDevMiddleware(compiler, {
-
-    // public path should be the same with webpack config
-    publicPath: webpackDevConfig.output.publicPath,
-    // noInfo: true,
-    stats: {
-      colors: true
-    }
-  }));
-  app.use(webpackHotMiddleware(compiler, {
-    log: console.log
-  }));
-
-
-} else {
-  app.use(express.static(path.join(__dirname, 'app')));
-}
+app.use(express.static(path.join(__dirname, 'app')));
 
 
 app.use(
@@ -128,16 +100,8 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-if (isDev) {
-  const http = require('http');
-  const server = http.createServer(app);
-  server.listen(3000, function () {
-    console.log('App (dev) is now running on port 3000!');
-  });
-} else {
-  app.listen(3000, function () {
-    console.log('typing started on port 3000');
-  });
-}
 
+app.listen(3000, function () {
+  console.log('typing started on port 3000');
+});
 module.exports = app;
