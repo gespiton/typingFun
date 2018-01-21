@@ -18,14 +18,15 @@ module.exports = {
           if (err) {
             return next(err);
           }
-          return res.json({logged: info.success, message: info.message, username: user.username});
+          return res.json({logged: info.success, message: info.message, username: user.username, email: user.email});
         });
       } else {
-        res.json({logged: info.success, message: info.message, username: user.username});
+        res.json({logged: info.success, message: info.message});
       }
     })(req, res, next);
   },
-  register: function (req, res) {
+
+  register: function (req, res, next) {
     membership.register(
         {
           email: req.body.email,
@@ -34,12 +35,15 @@ module.exports = {
           confirm: req.body.confirm
         },
         function (err, result) {
-          if (err) {
-            console.log(err);
-            res.json({success: false, message: 'internal fail'});
-          } else {
-            return res.json(result);
-          }
+          console.log(err, result);
+          // next(result);
+          res.json(result);
+          // if (err) {
+          //   console.log(err);
+          //   next({success: false, message: 'internal fail'});
+          // } else {
+          //   next(result);
+          // }
         }
     );
   }

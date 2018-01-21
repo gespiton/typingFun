@@ -17,8 +17,9 @@ describe("registration", function () {
           });
     });
   };
+
   before(function (done) {
-    require('./connectTestDB')(done)
+    require('./connectTestDB')(done);
   });
 
 
@@ -149,6 +150,6 @@ describe("registration", function () {
     db.disconnect(function (err) {
       if (err) throw err;
       done();
-    })
+    });
   });
 });

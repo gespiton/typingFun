@@ -48,7 +48,7 @@ describe('api test', function () {
       memb.authenticate('123@me.com', 'freedom', function (err, res) {
         authResult = res;
         done();
-      })
+      });
     });
 
     it('log in success', () => authResult.success.should.equal(true));
@@ -58,6 +58,6 @@ describe('api test', function () {
     db.disconnect(function (err) {
       if (err) throw err;
       done();
-    })
-  })
+    });
+  });
 });

@@ -1,25 +1,11 @@
 # tasks
-- [ ] header
-    - [ ] use load instead of refresh page
-    - [ ] after login, display different menu
-    - [ ] style change
-    - [ ] click change nav state
 
-- [ ] user profile page
-    - [ ] view history(typing result, maybe replay typing)
-    - [ ] wpf info
+### important
+- [ ] user name display style
+- [ ] use font awesome
 
-- [ ] upload page
-    - [ ] upload article
-
-- [ ] typing page
-    - [ ] after select article, button should lose focus
-
-- [ ] game page
-    - [ ] effects
-
-- [ ] gen exercise
-- [ ] option to close animation
+### later
+- [ ] toastr style change
 
 # typingFun
 enjoy typing

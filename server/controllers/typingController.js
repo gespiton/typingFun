@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
 const Article = require('../models/article');
 
-function main(req, res) {
-  res.render('typing', {page: 'typingPage', title: "typing"});
+function main(router) {
+  router.route('/typing/complete')
+      .post((req, res, next) => {
+        console.log(req.body);
+      });
 }
 
 function getAllArticleData(req, res) {
@@ -51,10 +54,4 @@ function getArticleById(req, res) {
       });
 }
 
-module.exports = {
-  actionList: [
-    {action: 'get', func: main, url: '/'},
-    {action: 'get', func: getAllArticleData, url: '/getArticleData'},
-    {action: 'post', func: getArticleById, url: '/getArticle'}
-  ]
-};
+module.exports = main;

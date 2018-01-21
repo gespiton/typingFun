@@ -25,7 +25,11 @@ const Registration = function () {
     if (!app.email || !app.password) {
       app.setInvalid("Email and password are required");
       self.emit("invalid", app);
-    } else if (app.password !== app.confirm) {
+    } else if (!app.username) {
+      app.setInvalid("username missing");
+      self.emit("invalid", app);
+    }
+    else if (app.password !== app.confirm) {
       app.setInvalid("password and confirm not match");
       self.emit("invalid", app);
     } else {

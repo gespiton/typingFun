@@ -1,4 +1,4 @@
-const RecordManager = require('../../recordManager');
+const RecordManager = require('../../userdata-manager');
 const recordManager = new RecordManager();
 
 function saveRecord(req, res) {

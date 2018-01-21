@@ -11,7 +11,7 @@ const publicPath = 'http://' + 'localhost' + ':3000/';
 console.log('public address: ', publicPath);
 // const hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 const devConfig = {
-      // devtool: '#source-map',
+      devtool: '#source-map',
       entry: {
         main: [
           './app/index.js',

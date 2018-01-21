@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const mainRoute = require('./server/routes/index');
+const mainRoute = require('./server/controllers/index');
 const session = require('express-session');
 const app = express();
 const mongoose = require('mongoose');
@@ -79,6 +79,8 @@ app.use(function (req, res, next) {
   res.locals.user = req.user;
   next();
 });
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', mainRoute);
 

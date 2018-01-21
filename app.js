@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const mainRoute = require('./server/routes/index');
+const mainRoute = require('./server/controllers/index');
 const session = require('express-session');
 const app = express();
 const isDev = process.env.NODE_ENV !== 'production';
@@ -48,8 +48,8 @@ app.set('views', path.join(__dirname, './app'));
 //typing.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 //typing.use(logger('dev'));
 
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 app.use(compression());
 
 mongoose.Promise = global.Promise;
@@ -94,7 +94,10 @@ app.use(
         {
           secret: "forever321",
           resave: false,
-          saveUninitialized: true
+          saveUninitialized: true,
+          cookie: {
+            // maxAge: 1000 * 60 * 60
+          }
         }
     )
 );

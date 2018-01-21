@@ -27,29 +27,29 @@ const Auth = function () {
 
   function checkUserInfo(args) {
     User.findOne(
-      {email: args.email, password: args.password},
-      function (err, user) {
-        if (err) throw err;
+        {email: args.email, password: args.password},
+        function (err, user) {
+          if (err) throw err;
 
-        let authRes = createAuthResult();
-        if (user) {
-          authRes.user = user;
-          authRes.success = true;
-          user.status = 'online';
-          user.save(function (err, res) {
-            if (err) throw err;
-            self.emit('success', authRes);
-          });
-        } else {
-          authRes.success = false;
-          authRes.message = 'log fail';
-          self.emit('fail', authRes);
-        }
+          let authRes = createAuthResult();
+          if (user) {
+            authRes.user = user;
+            authRes.success = true;
+            user.status = 'online';
+            user.save(function (err, res) {
+              if (err) throw err;
+              self.emit('success', authRes);
+            });
+          } else {
+            authRes.success = false;
+            authRes.message = 'log fail';
+            self.emit('fail', authRes);
+          }
 
-        if (continueWith) {
-          continueWith(null, authRes);
-        }
-      });
+          if (continueWith) {
+            continueWith(null, authRes);
+          }
+        });
   }
 
   function loginFail(args) {

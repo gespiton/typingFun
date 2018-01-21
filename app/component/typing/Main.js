@@ -11,23 +11,6 @@ import DataVisualizer from './TypingDataVisualize';
 import {toggleChart} from "../../redux/actions/stageStatus";
 import PropTypes from 'prop-types';
 
-toastr.options = {
-  "closeButton": false,
-  "debug": false,
-  "newestOnTop": false,
-  "progressBar": false,
-  "positionClass": "toast-top-right",
-  "preventDuplicates": false,
-  "onclick": null,
-  "showDuration": "300",
-  "hideDuration": "1000",
-  "timeOut": "5000",
-  "extendedTimeOut": "1000",
-  "showEasing": "swing",
-  "hideEasing": "linear",
-  "showMethod": "fadeIn",
-  "hideMethod": "fadeOut"
-};
 
 const text = `Once when I was six I saw a magnificent picture in a book about the jungle, called True Stories. It showed a boa constrictor swallowing a wild beast. Here is a copy of the picture.
   My drawing was not a picture of a hat. It was a picture of a boa constrictor digesting an elephant. Then I drew the inside of the boa constrictor, so the grown-ups could understand. They always need explanations.
@@ -37,13 +20,20 @@ const text = `Once when I was six I saw a magnificent picture in a book about th
   My drawing was not a picture of a hat. It was a picture of a boa constrictor digesting an elephant. Then I drew the inside of the boa constrictor, so the grown-ups could understand. They always need explanations.
   Whenever I encountered a grown-up who seemed to be intelligent, I would experiment on him with my drawing Number One, which I have always kept. I wanted to see if he really understood anything.
   But he would always answer, "That's a hat." Then I wouldn't talk about boa constrictors or jungles or stars. I would put myself on his level and talk about bridge and golf and politics and neckties. And my grown-up was glad to know such a reasonable person.`;
-const text2 = "tthis is not good tthis is not goodtthis is ";
+const text2 = "tthis is not good";
 
 
 class Stage extends Component {
+
+  static propTypes = {
+    typeResult: PropTypes.object.isRequired,
+    saveTypeResult: PropTypes.func.isRequired,
+    toggleChart: PropTypes.func.isRequired
+  };
+
   constructor(props) {
     super(props);
-    this.state = props;
+    this.state = {'complete': false, 'article': 'default'};
     this.curPos = 0;
     this.text = text2;
     this.childrenTable = {};
@@ -58,23 +48,13 @@ class Stage extends Component {
     this.focusStage();
     this.powerMode = new PowerMode();
     this.powerMode.draw();
+    window.addEventListener('scroll', () => this.scroll());
   }
 
   shouldComponentUpdate(nextprox, nextState) {
-    console.log("props", this.props);
-    console.log("state", this.staet);
-    console.log('one', nextprox);
-    console.log('two', nextState);
     return false;
   }
 
-  componentWillUpdate() {
-    console.log("updating");
-  }
-
-  componentDidUpdate() {
-    console.log("wtf");
-  }
 
   focusStage() {
     this.stage.focus();
@@ -85,7 +65,6 @@ class Stage extends Component {
   }
 
   genChildren() {
-
     const props = {
       registerMe: this.registerChild.bind(this)
     };
@@ -105,14 +84,12 @@ class Stage extends Component {
   }
 
   keyPressed(e) {
+    if (this.state.complete) return;
     e.preventDefault();
-    if (this.curPos >= this.childrenTable.length) {
-      //todo dewire event, trigger complete event
-      return;
-    }
+
     const pressed = String.fromCharCode(e.charCode);
 
-    this.state.saveTypeResult({
+    this.props.saveTypeResult({
       pressedKey: pressed,
       expected: this.textArr[this.curPos],
       currentTime: new Date().getTime(),
@@ -128,6 +105,7 @@ class Stage extends Component {
     if (this.curPos < this.childrenTable.length - 1) {
       this.moveCursor({dir: 1});
     } else {
+      this.setState(() => ({'complete': true}));
       this.complete();
     }
 
@@ -136,6 +114,7 @@ class Stage extends Component {
   }
 
   keyDown(e) {
+    if (this.state.complete) return;
     if (this.curPos === 0) return false;
 
     const backSpaceKeyCode = 8;
@@ -152,16 +131,9 @@ class Stage extends Component {
     return {X: rect.x, Y: rect.y};
   }
 
-  moveCursor(args) {
-    const nextChar = this.childrenTable[this.curPos + args.dir];
-    const nextDom = (ReactDOM.findDOMNode(nextChar).getBoundingClientRect());
 
-    const props = {
-      left: nextDom.left,
-      top: nextDom.top,
-      height: nextDom.height,
-      width: nextDom.width
-    };
+  moveCursor(args) {
+    const props = this.getCurrentCharRect(args.dir);
 
     this.cursor.setState(() => {
       return {styles: props};
@@ -172,15 +144,39 @@ class Stage extends Component {
     } else {
       this.childrenTable[this.curPos].setState(() => ({classNames: []}));
     }
+
+    const nextChar = this.childrenTable[this.curPos + args.dir];
     nextChar.setState(prestate => {
       return {classNames: ['curChar', ...(prestate.classNames || [])]};
     });
   }
 
+  getCurrentCharRect(offset = 0) {
+    const boundingRect = (ReactDOM.findDOMNode(this.childrenTable[this.curPos + offset]).getBoundingClientRect());
+    return {
+      left: boundingRect.left,
+      top: boundingRect.top,
+      height: boundingRect.height,
+      width: boundingRect.width
+    };
+  }
+
 
   complete() {
     toastr.info('type complete');
-    this.state.toggleChart(true);
+    console.log(this.props.typeResult);
+    const typeResult = this.props.typeResult;
+    typeResult.article = this.state.article;
+
+    $.post('/typing/complete',typeResult,function success(msg) {
+      console.log(msg);
+    });
+
+    this.props.toggleChart(true);
+  }
+
+  scroll() {
+    this.moveCursor({dir: 0});
   }
 
   render() {
@@ -220,11 +216,10 @@ class Stage extends Component {
 
 Stage.contextTypes = {store: PropTypes.object};
 
-const mapStateToProps = state => {
-  return {typeResult: state.typeResult};
-};
+const mapStateToProps = state =>
+    ({typeResult: state.typeResult});
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     saveTypeResult: res => {
       dispatch(typeIn(res));

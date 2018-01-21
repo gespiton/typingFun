@@ -28,7 +28,7 @@ const productionConfig = {
         test: /\.s([ca])ss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['sass-loader']
+          use: ['css-loader', 'sass-loader']
         })
       },
       {

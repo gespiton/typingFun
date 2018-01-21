@@ -16,17 +16,17 @@ function loginFunc() {
         const $lg_username = $('#login_username').val();
         const $lg_password = $('#login_password').val();
         $.post('login', {'email': $lg_username, 'password': $lg_password}, function (result) {
-            console.log(result);
-            changeUserState(result.logged, result.username);
-            if (result.logged === false) {
-              msgChange($('#div-sign-msg'), $('#icon-sign-msg'), $('#text-sign-msg'), "error", "glyphicon-remove", result.message);
-            } else {
-              msgChange($('#div-sign-msg'), $('#icon-sign-msg'), $('#text-sign-msg'), "success", "glyphicon-ok", "Login OK");
-              setTimeout(function () {
-                $('#closeBT').click();
-              }, 500);
+              console.log(result);
+              changeUserState(result.logged, result.username);
+              if (result.logged === false) {
+                msgChange($('#div-sign-msg'), $('#icon-sign-msg'), $('#text-sign-msg'), "error", "glyphicon-remove", result.message);
+              } else {
+                msgChange($('#div-sign-msg'), $('#icon-sign-msg'), $('#text-sign-msg'), "success", "glyphicon-ok", "Login OK");
+                setTimeout(function () {
+                  $('#closeBT').click();
+                }, 500);
+              }
             }
-          }
         );
         return false;
         break;
@@ -45,23 +45,23 @@ function loginFunc() {
         const $rg_password = $('#register_password').val();
         const $confirm_password = $('#retype_password').val();
         $.post('/register', {
-            'username': $rg_username,
-            'password': $rg_password,
-            'email': $rg_email,
-            'confirm': $confirm_password
-          },
-          function (result) {
-            // changeUserState(result.success);
-            console.log(result);
-            if (result.success) {
-              msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), 'success', 'glyphicon-ok', 'register success');
-            } else {
-              msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "error", "glyphicon-remove", result.message);
-              // setTimeout(function () {
-              //   $('#closeBT').click();
-              // }, 900);
-            }
-          });
+              'username': $rg_username,
+              'password': $rg_password,
+              'email': $rg_email,
+              'confirm': $confirm_password
+            },
+            function (result) {
+              // changeUserState(result.success);
+              console.log(result);
+              if (result.success) {
+                msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), 'success', 'glyphicon-ok', 'register success');
+              } else {
+                msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "error", "glyphicon-remove", result.message);
+                // setTimeout(function () {
+                //   $('#closeBT').click();
+                // }, 900);
+              }
+            });
         return false;
         break;
       default:
@@ -119,6 +119,7 @@ function loginFunc() {
     }, $msgShowTime);
   }
 }
+
 loginFunc();
 
 function changeUserState(loged, name) {
@@ -130,6 +131,7 @@ function changeUserState(loged, name) {
     $('#logState').attr('src', '/images/sign.png');
   }
 }
+
 module.exports = {
   changeUserState: changeUserState
 };

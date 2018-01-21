@@ -6,16 +6,12 @@ class SingleChar extends Component {
   constructor(props) {
     super(props);
     props.registerMe(props.pos, this);
-    console.log(props);
     this.state = Object.assign({}, props);
-
     this.keyPressed = this.keyPressed.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log('child update');
     if (nextState.typeResult !== this.state.typeResult || nextState.classNames !== this.state.classNames) {
-      console.log("should update");
       return true;
     }
 

@@ -2,14 +2,14 @@ const express = require('express');
 const membership = require('../service/membershipService');
 const path = require('path');
 const router = express.Router();
-const typing = require('../controllers/typing');
-const home = require('../controllers/home');
-const login = require('../controllers/login');
-const addArticle = require('../controllers/addArticle');
-const gamePage = require('../controllers/gamePage');
+const home = require('./home');
+const addArticle = require('./addArticle');
+const gamePage = require('./gamePage');
 const passport = require('passport');
-const record = require('../controllers/recordManage');
+const record = require('./recordManage');
 
+const loginController = require('./loginController');
+const typingController = require('./typingController');
 // function addRoute(controller, urlBase) {
 //   controller.actionList.forEach(c => {
 //     router[c.action](urlBase + c.url, c.func);
@@ -27,9 +27,12 @@ const record = require('../controllers/recordManage');
 
 router.post('/typingRecord', record);
 
-router.post('/login', membership.login);
-router.post('/register', membership.register);
+loginController(router);
+typingController(router);
 
+
+
+// default
 router.get('*', (req, res) => {
   "use strict";
   // res.render('index.html');
