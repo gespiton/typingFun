@@ -40,7 +40,7 @@ describe("registration", function () {
     });
 
     it("is successful", () => regResult.success.should.equal(true));
-    it("create a user", () => regResult.user.should.be.defined)
+    it("create a user", () => regResult.user.should.be.defined);
   });
 
   describe("an empty or null email", function () {
