@@ -4,7 +4,7 @@
 //visit by /dbs,you can add chapters to database
 const express = require('express');
 const fs = require('fs');
-const book = require('../models/article.js');
+// const book = require('../models/article.js');
 
 function main(req, res) {
     res.render('CustomArticle.pug', {title: "add", page: "addArticle"});

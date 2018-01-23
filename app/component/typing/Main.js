@@ -1,26 +1,16 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import SingleChar from "./SingleChar";
 import Cursor from "./Cursor";
 import PowerMode from "./lib/powerMode";
 import InfoBoard from "./InfoBoard";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import typeIn from "../../redux/actions/typeIn";
 import toastr from 'toastr';
 import DataVisualizer from './TypingDataVisualize';
-import {toggleChart} from "../../redux/actions/stageStatus";
+import { toggleChart } from "../../redux/actions/stageStatus";
 import PropTypes from 'prop-types';
-
-
-const text = `Once when I was six I saw a magnificent picture in a book about the jungle, called True Stories. It showed a boa constrictor swallowing a wild beast. Here is a copy of the picture.
-  My drawing was not a picture of a hat. It was a picture of a boa constrictor digesting an elephant. Then I drew the inside of the boa constrictor, so the grown-ups could understand. They always need explanations.
-  Whenever I encountered a grown-up who seemed to be intelligent, I would experiment on him with my drawing Number One, which I have always kept. I wanted to see if he really understood anything.
-  But he would alwak it said: "Boa constrictors swallow their prey whole, without chewing. Afterward they are no longer able to move, and they sleep for six months they need for digestion."
-  I showed the grown-ups my masterpiece, and I asked them if my drawing scared them.
-  My drawing was not a picture of a hat. It was a picture of a boa constrictor digesting an elephant. Then I drew the inside of the boa constrictor, so the grown-ups could understand. They always need explanations.
-  Whenever I encountered a grown-up who seemed to be intelligent, I would experiment on him with my drawing Number One, which I have always kept. I wanted to see if he really understood anything.
-  But he would always answer, "That's a hat." Then I wouldn't talk about boa constrictors or jungles or stars. I would put myself on his level and talk about bridge and golf and politics and neckties. And my grown-up was glad to know such a reasonable person.`;
-const text2 = "tthis is not good";
+import { debug } from "util";
 
 
 class Stage extends Component {
@@ -33,19 +23,17 @@ class Stage extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {'complete': false, 'article': 'default'};
+    this.state = { 'complete': false, 'article': {} };
     this.curPos = 0;
-    this.text = text2;
+    // this.text = text2;
     this.childrenTable = {};
-    this.genTextArr();
-    this.genChildren();
+
     this.keyPressed = this.keyPressed.bind(this);
     this.keyDown = this.keyDown.bind(this);
   }
 
   componentDidMount() {
-    this.moveCursor({dir: 0});
-    this.focusStage();
+    this.loadDefaultArticle();
     this.powerMode = new PowerMode();
     this.powerMode.draw();
     window.addEventListener('scroll', () => this.scroll());
@@ -55,13 +43,28 @@ class Stage extends Component {
     return false;
   }
 
+  loadDefaultArticle() {
+    const that = this;
+    $.get('/article', function (res) {
+      that.setState({ article: res.article });
+      that.genTextArr();
+      that.genChildren();
+      that.forceUpdate();
+      that.moveCursor({ dir: 0 });
+      that.focusStage();
+    });
+  }
+
 
   focusStage() {
     this.stage.focus();
   }
 
   genTextArr() {
-    this.textArr = this.text.split('');
+    //todo think of better way
+    console.log(this.state.article.sub[0].text);
+    
+    this.textArr = this.state.article.sub[0].text.split('');
   }
 
   genChildren() {
@@ -70,9 +73,9 @@ class Stage extends Component {
     };
 
     this.Children = this.textArr.map(
-        (char, index) => (
-            <SingleChar key={index} char={char} pos={index} {...props} />
-        )
+      (char, index) => (
+        <SingleChar key={index} char={char} pos={index} {...props} />
+      )
     );
   }
 
@@ -103,9 +106,9 @@ class Stage extends Component {
 
 
     if (this.curPos < this.childrenTable.length - 1) {
-      this.moveCursor({dir: 1});
+      this.moveCursor({ dir: 1 });
     } else {
-      this.setState(() => ({'complete': true}));
+      this.setState(() => ({ 'complete': true }));
       this.complete();
     }
 
@@ -119,7 +122,7 @@ class Stage extends Component {
 
     const backSpaceKeyCode = 8;
     if (e.keyCode === backSpaceKeyCode) {
-      this.moveCursor({dir: -1, isBack: true});
+      this.moveCursor({ dir: -1, isBack: true });
       this.curPos -= 1;
       return false;
     }
@@ -128,7 +131,7 @@ class Stage extends Component {
 
   getCurrentTransform() {
     const rect = ReactDOM.findDOMNode(this.childrenTable[this.curPos]).getBoundingClientRect();
-    return {X: rect.x, Y: rect.y};
+    return { X: rect.x, Y: rect.y };
   }
 
 
@@ -136,18 +139,18 @@ class Stage extends Component {
     const props = this.getCurrentCharRect(args.dir);
 
     this.cursor.setState(() => {
-      return {styles: props};
+      return { styles: props };
     });
 
     if (args.isBack) {
-      this.childrenTable[this.curPos].setState(() => ({classNames: [], typeResult: ''}));
+      this.childrenTable[this.curPos].setState(() => ({ classNames: [], typeResult: '' }));
     } else {
-      this.childrenTable[this.curPos].setState(() => ({classNames: []}));
+      this.childrenTable[this.curPos].setState(() => ({ classNames: [] }));
     }
 
     const nextChar = this.childrenTable[this.curPos + args.dir];
     nextChar.setState(prestate => {
-      return {classNames: ['curChar', ...(prestate.classNames || [])]};
+      return { classNames: ['curChar', ...(prestate.classNames || [])] };
     });
   }
 
@@ -168,7 +171,7 @@ class Stage extends Component {
     const typeResult = this.props.typeResult;
     typeResult.article = this.state.article;
 
-    $.post('/typing/complete',typeResult,function success(msg) {
+    $.post('/typing/complete', typeResult, function success(msg) {
       console.log(msg);
     });
 
@@ -176,48 +179,48 @@ class Stage extends Component {
   }
 
   scroll() {
-    this.moveCursor({dir: 0});
+    this.moveCursor({ dir: 0 });
   }
 
   render() {
     return (
-        <div
-            className="typing main"
-            tabIndex="0"
-            onKeyPress={this.keyPressed}
-            onKeyDown={this.keyDown}
-            ref={elem => this.stage = elem}
-        >
-          <InfoBoard>
-            children
+      <div
+        className="typing main"
+        tabIndex="0"
+        onKeyPress={this.keyPressed}
+        onKeyDown={this.keyDown}
+        ref={elem => this.stage = elem}
+      >
+        <InfoBoard>
+          children
           </InfoBoard>
+        <div
+          id="stage-wrap"
+          className="col-md-10 col-md-offset-1"
+        >
+          <canvas id="canvas" className="col-md-10" />
           <div
-              id="stage-wrap"
-              className="col-md-10 col-md-offset-1"
+            id="stage"
           >
-            <canvas id="canvas" className="col-md-10"/>
-            <div
-                id="stage"
-            >
-              {this.Children}
-              <Cursor ref={elem => this.cursor = elem}/>
-            </div>
+            {this.Children}
+            <Cursor ref={elem => this.cursor = elem} />
           </div>
-          <DataVisualizer
-              ref={elem => {
-                this.visualizer = elem;
-              }}
-          />
         </div>
+        <DataVisualizer
+          ref={elem => {
+            this.visualizer = elem;
+          }}
+        />
+      </div>
     );
   }
 }
 
 
-Stage.contextTypes = {store: PropTypes.object};
+Stage.contextTypes = { store: PropTypes.object };
 
 const mapStateToProps = state =>
-    ({typeResult: state.typeResult});
+  ({ typeResult: state.typeResult });
 
 const mapDispatchToProps = (dispatch) => {
   return {

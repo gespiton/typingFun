@@ -1,11 +1,13 @@
-const RecordManager = require('../../userdata-manager');
-const recordManager = new RecordManager();
+const articlManager = require("../../article-manager/index");
 
 function main(router) {
   router.route('/article')
-      .get((req, res, next) => {
-
-      });
+    .get((req, res, next) => {
+      articlManager.findArticleByName('default')
+        .then(result => {
+          res.json(result);
+        });
+    });
 }
 
-export default main;
+module.exports = main;

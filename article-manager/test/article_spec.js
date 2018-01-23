@@ -1,17 +1,15 @@
-const should = require('should');
 const Article = require('../models/Article');
+const should = require('should');
 
-describe("Article model test", function () {
-  describe("default article", function () {
+describe("article model spec", () => {
+  describe("default article", () => {
     let article = {};
 
-    before(function () {
+    beforeAll(function () {
       article = new Article();
     });
 
-    it("article has created date", () => {
-      article.createAt.should.be.defined;
-    });
+    it("article has created date", () => article.createAt.should.exist);
   });
 
 });

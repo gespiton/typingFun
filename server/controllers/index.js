@@ -10,6 +10,7 @@ const record = require('./recordManage');
 
 const loginController = require('./loginController');
 const typingController = require('./typingController');
+const articleController = require("./articleController");
 // function addRoute(controller, urlBase) {
 //   controller.actionList.forEach(c => {
 //     router[c.action](urlBase + c.url, c.func);
@@ -29,6 +30,7 @@ router.post('/typingRecord', record);
 
 loginController(router);
 typingController(router);
+articleController(router);
 
 
 
