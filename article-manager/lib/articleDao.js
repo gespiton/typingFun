@@ -30,7 +30,7 @@ class Dao {
 
         resolve({
           success: true,
-          article: result
+          result: result
         });
       });
     });
@@ -56,9 +56,49 @@ class Dao {
         if (result === null) {
           resolve({ success: false, msg: 'name not existed' });
         }
-        resolve({ success: true, article: result });
+        resolve({ success: true, result: result });
       });
     });
+  }
+
+  getArticleIndex() {
+    //todo: it seems I can't select certain fileds of children
+    const that = this;
+
+    return new Promise(resolve => {
+      Article.find({})
+        .select('-text')
+        .sort('name')
+        .exec(function (err, res) {
+          if (err) resolve({ success: false, msg: err });
+          resolve({ success: true, result: that.buildIndex(res) });
+        });
+    });
+  }
+
+  buildIndex(src) {
+    const result = [];
+
+    src.forEach(element => {
+      result.push(this.build(element));
+    });
+
+    return result;
+  }
+
+  build(element) {
+    const res = {
+      name: element.name,
+      charNum: element.charNum,
+      id: element._id
+    };
+
+    if (element.sub.length > 0) {
+      const sub = [];
+      element.sub.forEach(ele => sub.push(this.build(ele)));
+      res.sub = sub;
+    }
+    return res;
   }
 }
 

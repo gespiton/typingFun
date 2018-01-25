@@ -11,6 +11,7 @@ import DataVisualizer from './TypingDataVisualize';
 import { toggleChart } from "../../redux/actions/stageStatus";
 import PropTypes from 'prop-types';
 import { debug } from "util";
+import ArticleSelector from "./ArticleSelector";
 
 
 class Stage extends Component {
@@ -43,18 +44,32 @@ class Stage extends Component {
     return false;
   }
 
+  componentDidUpdate(prevState, curState) {
+    console.log(prevState, curState);
+  }
+
   loadDefaultArticle() {
     const that = this;
     $.get('/article', function (res) {
-      that.setState({ article: res.article });
-      that.genTextArr();
-      that.genChildren();
-      that.forceUpdate();
-      that.moveCursor({ dir: 0 });
-      that.focusStage();
+      console.log(res);
+      if (!res.success) {
+        toastr.error('default article load fail');
+        return;
+      } else {
+        toastr.success('article loaded', 'success',
+          { timeOut: 1000 });
+      }
+
+      that.setState({ article: res.result }, function () {
+        that.genTextArr();
+        that.genChildren();
+        that.forceUpdate(function () {
+          that.moveCursor({ dir: 0 });
+          that.focusStage();
+        });
+      });
     });
   }
-
 
   focusStage() {
     this.stage.focus();
@@ -62,9 +77,8 @@ class Stage extends Component {
 
   genTextArr() {
     //todo think of better way
-    console.log(this.state.article.sub[0].text);
-    
-    this.textArr = this.state.article.sub[0].text.split('');
+
+    this.textArr = this.state.article.text.split('');
   }
 
   genChildren() {
@@ -211,6 +225,7 @@ class Stage extends Component {
             this.visualizer = elem;
           }}
         />
+        <ArticleSelector />
       </div>
     );
   }

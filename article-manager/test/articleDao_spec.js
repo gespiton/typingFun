@@ -2,6 +2,7 @@ const dbConnector = require('./connectTestDB');
 const Dao = require('../lib/articleDao');
 const should = require('should');
 const Article = require('../models/Article');
+const mongoose = require('mongoose');
 
 describe('article manager specification', () => {
 
@@ -9,10 +10,9 @@ describe('article manager specification', () => {
     dbConnector(done);
   });
 
-  beforeAll(function (done) {
+  beforeEach(function (done) {
     Article.collection.drop(function (err) {
       if (err && err.message !== 'ns not found') throw err;
-      console.log('db cleared');
       done();
     });
   });
@@ -34,10 +34,10 @@ describe('article manager specification', () => {
     });
 
     it('save success', () => expect(saveResult.success).toBe(true));
-    it('has result article', () => expect(saveResult.article).toBeDefined());
+    it('has result article', () => expect(saveResult.result).toBeDefined());
     it(
       'result article has the same name with save article',
-      () => expect(saveResult.article.name).toBe(testName)
+      () => expect(saveResult.result.name).toBe(testName)
     );
   });
 
@@ -58,14 +58,14 @@ describe('article manager specification', () => {
     });
 
     it('save success', () => expect(saveResult.success).toBe(true));
-    it('has result article', () => expect(saveResult.article).toBeDefined());
+    it('has result article', () => expect(saveResult.result).toBeDefined());
     it(
       'result article has the same name with save article',
-      () => expect(saveResult.article.name).toBe(testName)
+      () => expect(saveResult.result.name).toBe(testName)
     );
 
     it('article has the expected content',
-      () => expect(saveResult.article.text).toBe(content));
+      () => expect(saveResult.result.text).toBe(content));
   });
 
   describe("save nested article", () => {
@@ -99,18 +99,18 @@ describe('article manager specification', () => {
     });
 
     it('save success', () => expect(saveResult.success).toBe(true));
-    it('has result article', () => expect(saveResult.article).toBeDefined());
+    it('has result article', () => expect(saveResult.result).toBeDefined());
     it(
       'result article is correct',
       () => {
-        expect(saveResult.article.name).toBe(str);
-        expect(saveResult.article.text).toBe(content);
+        expect(saveResult.result.name).toBe(str);
+        expect(saveResult.result.text).toBe(content);
 
-        const article2 = saveResult.article.sub[0];
+        const article2 = saveResult.result.sub[0];
         expect(article2.name).toBe(str2);
         expect(article2.text).toBe(content2);
 
-        const article3 = saveResult.article.sub[1];
+        const article3 = saveResult.result.sub[1];
         expect(article3.name).toBe(str3);
         expect(article3.text).toBe(content3);
       }
@@ -141,8 +141,8 @@ describe('article manager specification', () => {
     });
 
     it('should be success', () => expect(optResult.success).toBe(true));
-    it('should found it', () => expect(optResult.article.name).toBe(testName));
-    it('should have content', () => expect(optResult.article.text).toBe(testText));
+    it('should found it', () => expect(optResult.result.name).toBe(testName));
+    it('should have content', () => expect(optResult.result.text).toBe(testText));
   });
 
   describe("get article by name fail, name not exist", () => {
@@ -158,5 +158,65 @@ describe('article manager specification', () => {
     });
 
     it('should be failed', () => expect(optResult.success).toBe(false));
+  });
+
+  describe("get index of all articles", function () {
+    const data = [
+      {
+        name: 'first',
+        text: 'this is the first article'
+      },
+      {
+        name: 'forth',
+        text: 'this is the forth article',
+        sub: [
+          {
+            name: 'fifth',
+            text: 'this is the fifth article',
+          }
+        ]
+      },
+      {
+        name: 'second',
+        text: 'this is the second article'
+      },
+      {
+        name: 'third',
+        text: 'this is the third article'
+      }
+    ];
+
+    let optResult = {};
+    beforeAll(done => {
+      const opts = [];
+
+      data.forEach(article => opts.push(dao.saveArticle(article)));
+
+
+      Promise.all(opts).then(() => { return dao.getArticleIndex(); }).then(res => {
+        optResult = res;
+        done();
+      });
+    });
+
+    it('is success', () => expect(optResult.success).toBe(true));
+    it('has correct result', () => {
+      expect(optResult.result.length).toBe(data.length);
+      data.forEach((value, index) => indexMatch(optResult.result[index], value));
+    });
+
+    function indexMatch(result, ori) {
+      expect(result.name).toBe(ori.name);
+      expect(result.id).toBeDefined;
+      if (result.sub) {
+        result.sub.forEach((value, index) => indexMatch(value, ori.sub[index]));
+      }
+    }
+  });
+
+  afterAll(function () {
+    mongoose.disconnect(function () {
+      console.log('disconnected');
+    });
   });
 });

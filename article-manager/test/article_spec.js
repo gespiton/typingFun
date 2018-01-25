@@ -11,5 +11,4 @@ describe("article model spec", () => {
 
     it("article has created date", () => article.createAt.should.exist);
   });
-
 });

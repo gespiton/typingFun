@@ -7,7 +7,6 @@ const App = (function () {
   };
 
   function App() {
-    debugger;
     const canvas = $('#canvas');
     canvas.width($('#stage').width());
     const w = canvas.width();
