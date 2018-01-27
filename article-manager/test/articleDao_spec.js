@@ -160,6 +160,8 @@ describe('article manager specification', () => {
     it('should be failed', () => expect(optResult.success).toBe(false));
   });
 
+
+
   describe("get index of all articles", function () {
     const data = [
       {
@@ -212,6 +214,34 @@ describe('article manager specification', () => {
         result.sub.forEach((value, index) => indexMatch(value, ori.sub[index]));
       }
     }
+  });
+
+  describe("get article by id", () => {
+    const articleName = 'test';
+    const articleText = 'hah hah';
+    const article = {
+      name: articleName,
+      text: articleText
+    };
+
+    let optResult = {};
+    beforeAll(done => {
+      dao.saveArticle(article)
+        .then(res => {
+          return dao.findArticleById(res.result._id);
+        })
+        .then(res => {
+          optResult = res;
+          done();
+        })
+        .catch(err => console.log(err));
+    });
+
+    it('is successful', () => expect(optResult.success).toBe(true));
+    it('is correct article', () => {
+      expect(optResult.data.name).toBe(article.name);
+      expect(optResult.data.text).toBe(article.text);
+    });
   });
 
   afterAll(function () {

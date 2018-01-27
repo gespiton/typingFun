@@ -19,7 +19,8 @@ class Stage extends Component {
   static propTypes = {
     typeResult: PropTypes.object.isRequired,
     saveTypeResult: PropTypes.func.isRequired,
-    toggleChart: PropTypes.func.isRequired
+    toggleChart: PropTypes.func.isRequired,
+    article: PropTypes.object
   };
 
   constructor(props) {
@@ -40,17 +41,34 @@ class Stage extends Component {
     window.addEventListener('scroll', () => this.scroll());
   }
 
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.article.id === this.props.article.id) {
+      return false;
+    }
+    this.loadArticle(nextProps.article.id);
+    return true;
+  }
+
   shouldComponentUpdate(nextprox, nextState) {
     return false;
   }
 
-  componentDidUpdate(prevState, curState) {
-    console.log(prevState, curState);
+  componentDidUpdate() {
+    console.log('updated');
   }
 
   loadDefaultArticle() {
+    this._loadArticle('/article');
+  }
+
+  loadArticle(articleId) {
+    this._loadArticle(`/article/${articleId}`);
+  }
+
+  _loadArticle(url) {
     const that = this;
-    $.get('/article', function (res) {
+    $.get(url, function (res) {
       console.log(res);
       if (!res.success) {
         toastr.error('default article load fail');
@@ -77,7 +95,6 @@ class Stage extends Component {
 
   genTextArr() {
     //todo think of better way
-
     this.textArr = this.state.article.text.split('');
   }
 
@@ -178,7 +195,6 @@ class Stage extends Component {
     };
   }
 
-
   complete() {
     toastr.info('type complete');
     console.log(this.props.typeResult);
@@ -197,6 +213,11 @@ class Stage extends Component {
   }
 
   render() {
+    const currentArticle = this.props.article;
+
+    if (currentArticle.name != 'default') {
+      console.log('new');
+    }
     return (
       <div
         className="typing main"
@@ -235,7 +256,10 @@ class Stage extends Component {
 Stage.contextTypes = { store: PropTypes.object };
 
 const mapStateToProps = state =>
-  ({ typeResult: state.typeResult });
+  ({
+    typeResult: state.typeResult,
+    article: state.currentArticle
+  });
 
 const mapDispatchToProps = (dispatch) => {
   return {

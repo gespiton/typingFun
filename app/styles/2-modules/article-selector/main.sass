@@ -24,14 +24,19 @@ $toggler-width: 45px
             padding: 0 5px
 
         .listItem
-            &:hover
-                background-color: silver
+            cursor: pointer
+            user-select: none
+        .active
+            background-color: silver
         .articles
             color: white
+
 
             .article
                 color: white
                 padding: 5px 0
+                &.selected
+                    color: cyan
 
 
     #class-selector-toggler

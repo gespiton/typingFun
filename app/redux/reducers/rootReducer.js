@@ -1,7 +1,8 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 import typeResult from './saveTypeResultReducer';
 import stageState from './stageStateReducer';
 import userState from './userStateReducer';
+import currentArticle from "./currentArticleReducer";
 /*
 store structure
 {
@@ -28,11 +29,16 @@ store structure
     username: "me",
     email: "hoho"
   }
+
+  currentArticle:{
+    name: "default",
+    id: "324211234988478"
+  }
 }
 */
 
 const typingApp = combineReducers({
-  typeResult, stageState, userState
+  typeResult, stageState, userState, currentArticle
 });
 
 export default typingApp;

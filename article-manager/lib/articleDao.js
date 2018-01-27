@@ -1,3 +1,4 @@
+
 const Article = require('../models/Article');
 
 class Dao {
@@ -57,6 +58,19 @@ class Dao {
           resolve({ success: false, msg: 'name not existed' });
         }
         resolve({ success: true, result: result });
+      });
+    });
+  }
+
+  findArticleById(id) {
+    return new Promise(resolve => {
+      Article.findById(id, function (err, res) {
+
+        if (err) {
+          resolve({ success: false, msg: err });
+          return;
+        }
+        resolve({ success: true, data: res });
       });
     });
   }

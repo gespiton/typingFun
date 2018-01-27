@@ -34,7 +34,6 @@ class UserState extends Component {
 
 
   render() {
-    console.log("render", this.props.userState);
     const user = this.props.userState;
     if (user.email) {
       return (

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
-import ArticleList from "./article_selector/ArticleList";
+import createList from "./article_selector/ListItemFactory";
 
 
 
@@ -10,16 +10,25 @@ class ArticleSelector extends Component {
     }
 
     constructor(props) {
-        console.log('class selector');
         super(props);
         this.state = {
             //todo: change this to true
-            folded: false
+            folded: false,
+            items: []
         };
     }
 
+    componentDidMount() {
+        const that = this;
+        $.get('/article/index', function (res) {
+            console.log(res);
+            if (res.success) {
+                that.setState({ items: res.result });
+            }
+        });
+    }
+
     toggleSelector = () => {
-        console.log('haha');
         this.setState({
             folded: !this.state.folded
         });
@@ -27,35 +36,6 @@ class ArticleSelector extends Component {
 
     render() {
         const that = this;
-        const items = [
-            {
-                name: 'first',
-                text: 'this is the first article',
-                id: '123123'
-            },
-            {
-                name: 'forth',
-                text: 'this is the forth article',
-                id: '12312asdf3',
-                sub: [
-                    {
-                        name: 'fifth',
-                        id: '12312asdasdf3',
-                        text: 'this is the fifth article'
-                    }
-                ]
-            },
-            {
-                name: 'second',
-                text: 'this is the second article',
-                id: 'asdfa12312asdasdf3'
-            },
-            {
-                name: 'third',
-                id: 'asdfasdfa12312asdasdf3',
-                text: 'this is the third article'
-            }
-        ];
 
 
         return (
@@ -63,7 +43,11 @@ class ArticleSelector extends Component {
                 <div id="class-selector-toggler"  >
                     <i className="fa fa-bars fa-3x" onClick={this.toggleSelector} />
                 </div >
-                <ArticleList items={items} />
+                <div id="article-list" className="z-depth-1" >
+                    <ul className="articles">
+                        {createList(this.state.items)}
+                    </ul>
+                </div>
             </div>
         );
     }
