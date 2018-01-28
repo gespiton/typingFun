@@ -2,7 +2,7 @@
  * Created by sher on 27/5/2017.
  */
 const mongoose = require('mongoose');
-const Article = require('../server/models/article');
+const Article = require("../article-manager/models/Article");
 const fs = require('fs');
 
 mongoose.Promise = global.Promise;
@@ -11,7 +11,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/typingFun', function (err, db) {
   else console.log('connected to db');
 
 
-  const book = fs.readFileSync('./prince.txt', {encoding: 'utf-8'});
+  const book = fs.readFileSync('./prince.txt', { encoding: 'utf-8' });
   const arr = book.split('\n');
 
 
@@ -19,11 +19,13 @@ mongoose.connect('mongodb://127.0.0.1:27017/typingFun', function (err, db) {
   const saved = new Article();
 
   saved.name = 'The little prince';
+  let counter = 1;
   arr.forEach(line => {
     if (line.length === 0) return;
     if (line.startsWith('\tChapter')) {
       if (curArticle.length > 0) {
-        saved.sub.push({text: curArticle, charNum: curArticle.length});
+        saved.sub.push({ name: counter, text: curArticle, charNum: curArticle.length });
+        counter += 1;
         curArticle = '';
       }
     } else {

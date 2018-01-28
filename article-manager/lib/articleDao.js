@@ -64,7 +64,11 @@ class Dao {
 
   findArticleById(id) {
     return new Promise(resolve => {
-      Article.findById(id, function (err, res) {
+      Article.findOne({ '_id': id }, function (err, res) {
+
+        console.log(err);
+
+        console.log(res);
 
         if (err) {
           resolve({ success: false, msg: err });

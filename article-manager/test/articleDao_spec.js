@@ -1,6 +1,5 @@
 const dbConnector = require('./connectTestDB');
 const Dao = require('../lib/articleDao');
-const should = require('should');
 const Article = require('../models/Article');
 const mongoose = require('mongoose');
 

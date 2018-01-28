@@ -22,7 +22,7 @@ function main(router) {
 
       articleManager.findArticleById(req.params.id)
         .then(result => {
-          console.log('hahahhah');
+          console.log(result);
           const article = result.data;
           res.json(result);
         });

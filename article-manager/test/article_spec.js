@@ -10,5 +10,7 @@ describe("article model spec", () => {
     });
 
     it("article has created date", () => article.createAt.should.exist);
+    // it("article has textId", () => expect(article.textId).toBeDefined());
+    // it("article has name", () => expect(article.name).toBeDefined());
   });
 });
