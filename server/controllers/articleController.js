@@ -2,9 +2,10 @@ const articleManager = require("../../article-manager/index");
 
 function main(router) {
   router.route('/article')
-    .get((req, res, next) => {
+    .get((req, res) => {
       articleManager.findArticleByName('default')
         .then(result => {
+          console.log(result);
           res.json(result);
         });
     });
@@ -16,7 +17,7 @@ function main(router) {
     });
 
   router.route('/article/:id')
-    .get((req, res, next) => {
+    .get((req, res) => {
       console.log(req.params);
 
 

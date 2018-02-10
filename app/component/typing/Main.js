@@ -1,16 +1,16 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import ReactDOM from "react-dom";
 import SingleChar from "./SingleChar";
 import Cursor from "./Cursor";
 import PowerMode from "./lib/powerMode";
 import InfoBoard from "./InfoBoard";
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import typeIn from "../../redux/actions/typeIn";
 import toastr from 'toastr';
 import DataVisualizer from './TypingDataVisualize';
-import { toggleChart } from "../../redux/actions/stageStatus";
+import {toggleChart} from "../../redux/actions/stageStatus";
 import PropTypes from 'prop-types';
-import { debug } from "util";
+import {debug} from "util";
 import ArticleSelector from "./ArticleSelector";
 
 
@@ -25,7 +25,7 @@ class Stage extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { 'complete': false, 'article': {} };
+    this.state = {'complete': false, 'article': {}};
     this.curPos = 0;
     // this.text = text2;
     this.childrenTable = {};
@@ -75,14 +75,14 @@ class Stage extends Component {
         return;
       } else {
         toastr.success('article loaded', 'success',
-          { timeOut: 1000 });
+          {timeOut: 1000});
       }
 
-      that.setState({ article: res.result }, function () {
+      that.setState({article: res.result}, function () {
         that.genTextArr();
         that.genChildren();
         that.forceUpdate(function () {
-          that.moveCursor({ dir: 0 });
+          that.moveCursor({dir: 0});
           that.focusStage();
         });
       });
@@ -137,9 +137,9 @@ class Stage extends Component {
 
 
     if (this.curPos < this.childrenTable.length - 1) {
-      this.moveCursor({ dir: 1 });
+      this.moveCursor({dir: 1});
     } else {
-      this.setState(() => ({ 'complete': true }));
+      this.setState(() => ({'complete': true}));
       this.complete();
     }
 
@@ -153,7 +153,7 @@ class Stage extends Component {
 
     const backSpaceKeyCode = 8;
     if (e.keyCode === backSpaceKeyCode) {
-      this.moveCursor({ dir: -1, isBack: true });
+      this.moveCursor({dir: -1, isBack: true});
       this.curPos -= 1;
       return false;
     }
@@ -162,7 +162,7 @@ class Stage extends Component {
 
   getCurrentTransform() {
     const rect = ReactDOM.findDOMNode(this.childrenTable[this.curPos]).getBoundingClientRect();
-    return { X: rect.x, Y: rect.y };
+    return {X: rect.x, Y: rect.y};
   }
 
 
@@ -170,18 +170,18 @@ class Stage extends Component {
     const props = this.getCurrentCharRect(args.dir);
 
     this.cursor.setState(() => {
-      return { styles: props };
+      return {styles: props};
     });
 
     if (args.isBack) {
-      this.childrenTable[this.curPos].setState(() => ({ classNames: [], typeResult: '' }));
+      this.childrenTable[this.curPos].setState(() => ({classNames: [], typeResult: ''}));
     } else {
-      this.childrenTable[this.curPos].setState(() => ({ classNames: [] }));
+      this.childrenTable[this.curPos].setState(() => ({classNames: []}));
     }
 
     const nextChar = this.childrenTable[this.curPos + args.dir];
     nextChar.setState(prestate => {
-      return { classNames: ['curChar', ...(prestate.classNames || [])] };
+      return {classNames: ['curChar', ...(prestate.classNames || [])]};
     });
   }
 
@@ -209,7 +209,7 @@ class Stage extends Component {
   }
 
   scroll() {
-    this.moveCursor({ dir: 0 });
+    this.moveCursor({dir: 0});
   }
 
   render() {
@@ -228,17 +228,17 @@ class Stage extends Component {
       >
         <InfoBoard>
           children
-          </InfoBoard>
+        </InfoBoard>
         <div
           id="stage-wrap"
           className="col-md-10 col-md-offset-1"
         >
-          <canvas id="canvas" className="col-md-10" />
+          <canvas id="canvas" className="col-md-10"/>
           <div
             id="stage"
           >
             {this.Children}
-            <Cursor ref={elem => this.cursor = elem} />
+            <Cursor ref={elem => this.cursor = elem}/>
           </div>
         </div>
         <DataVisualizer
@@ -246,14 +246,14 @@ class Stage extends Component {
             this.visualizer = elem;
           }}
         />
-        <ArticleSelector />
+        <ArticleSelector/>
       </div>
     );
   }
 }
 
 
-Stage.contextTypes = { store: PropTypes.object };
+Stage.contextTypes = {store: PropTypes.object};
 
 const mapStateToProps = state =>
   ({

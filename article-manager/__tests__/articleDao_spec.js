@@ -69,6 +69,7 @@ describe('article manager specification', () => {
 
   describe("save nested article", () => {
     let saveResult = {};
+    let nestedArticleResult = {};
     const str = new Date().toDateString();
     const str2 = new Date().toDateString();
     const str3 = new Date().toDateString();
@@ -93,6 +94,12 @@ describe('article manager specification', () => {
       })
         .then(res => {
           saveResult = res;
+
+          const article2ID = saveResult.result.sub[0];
+          return dao.findArticleById(article2ID);
+        })
+        .then(res => {
+          nestedArticleResult = res;
           done();
         });
     });
@@ -105,13 +112,10 @@ describe('article manager specification', () => {
         expect(saveResult.result.name).toBe(str);
         expect(saveResult.result.text).toBe(content);
 
-        const article2 = saveResult.result.sub[0];
+        const article2 = nestedArticleResult.result;
         expect(article2.name).toBe(str2);
         expect(article2.text).toBe(content2);
 
-        const article3 = saveResult.result.sub[1];
-        expect(article3.name).toBe(str3);
-        expect(article3.text).toBe(content3);
       }
     );
   });
@@ -160,7 +164,6 @@ describe('article manager specification', () => {
   });
 
 
-
   describe("get index of all articles", function () {
     const data = [
       {
@@ -194,21 +197,26 @@ describe('article manager specification', () => {
       data.forEach(article => opts.push(dao.saveArticle(article)));
 
 
-      Promise.all(opts).then(() => { return dao.getArticleIndex(); }).then(res => {
-        optResult = res;
-        done();
-      });
+      Promise.all(opts)
+        .then(() => {
+          return dao.getArticleIndex();
+        })
+        .then(res => {
+          optResult = res;
+          done();
+        });
     });
 
     it('is success', () => expect(optResult.success).toBe(true));
     it('has correct result', () => {
+      console.log(optResult);
       expect(optResult.result.length).toBe(data.length);
       data.forEach((value, index) => indexMatch(optResult.result[index], value));
     });
 
     function indexMatch(result, ori) {
       expect(result.name).toBe(ori.name);
-      expect(result.id).toBeDefined;
+      expect(result.id).toBeDefined();
       if (result.sub) {
         result.sub.forEach((value, index) => indexMatch(value, ori.sub[index]));
       }
@@ -238,8 +246,8 @@ describe('article manager specification', () => {
 
     it('is successful', () => expect(optResult.success).toBe(true));
     it('is correct article', () => {
-      expect(optResult.data.name).toBe(article.name);
-      expect(optResult.data.text).toBe(article.text);
+      expect(optResult.result.name).toBe(article.name);
+      expect(optResult.result.text).toBe(article.text);
     });
   });
 

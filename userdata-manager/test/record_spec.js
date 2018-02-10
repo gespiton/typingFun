@@ -1,7 +1,7 @@
 const should = require('should');
 const Record = require('../models/record');
 
-describe("Record test", function () {
+describe("Record __tests__", function () {
   describe("default", function () {
     let record = {};
     before(function () {

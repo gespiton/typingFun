@@ -29,7 +29,7 @@ const App = (function () {
         this.particlePointer = 0;
 
         // $('#')
-        // test only
+        // __tests__ only
         // console.log(this.cursor[0].getBoundingClientRect().left);
         // this.powermode.push(this.createParticle(this.cursor.position().left - this.canvas.position().left, this.cursor.position().top - this.canvas.position().top, 'green'));
         // this.powermode.push(this.createParticle(this.cursor.position().left - this.canvas.position().left, this.cursor.position().top - this.canvas.position().top, 'blue'));

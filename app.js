@@ -42,7 +42,7 @@ passport.deserializeUser(function (id, done) {
   });
 });
 // view engine setup
-app.set('views', path.join(__dirname, './app'));
+// app.set('views', path.join(__dirname, './app'));
 
 // uncomment after placing your favicon in /public
 //typing.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -55,7 +55,7 @@ app.use(compression());
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://127.0.0.1:27017/typingFun', function (err, db) {
   if (err) throw err;
-  else console.log('connected to db');
+  else console.log('connected to db typingFun');
 });
 
 // serve files
@@ -85,7 +85,7 @@ if (isDev) {
 
 
 } else {
-  app.use(express.static(path.join(__dirname, 'app')));
+  app.use(express.static(path.join(__dirname, 'public/')));
 }
 
 
