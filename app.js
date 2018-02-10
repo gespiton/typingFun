@@ -138,7 +138,7 @@ if (isDev) {
     console.log('App (dev) is now running on port 3000!');
   });
 } else {
-  app.listen(3000, function () {
+  app.listen(80, function () {
     console.log('typing started on port 3000');
   });
 }
