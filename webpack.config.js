@@ -1,11 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-const localIp = require('./utility/getLocalIp');
 const HappyPack = require('happypack');
-
-if (localIp.length !== 1) {
-  throw 'get local ip error!';
-}
 
 const publicPath = 'http://' + 'localhost' + ':3000/';
 console.log('public address: ', publicPath);
