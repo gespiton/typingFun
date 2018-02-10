@@ -37,7 +37,7 @@
     "clean-webpack-plugin": "^0.1.17",
     "cross-env": "^5.1.3",
     "css-loader": "^0.28.9",
-    "d3": "^4.12.2",
+    "d3": "^4.13.0",
     "d3-array": "latest",
     "d3-scale": "latest",
     "d3-selection": "latest",
