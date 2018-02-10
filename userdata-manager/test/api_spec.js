@@ -2,7 +2,7 @@ const Api = require('../index');
 const should = require('should');
 const mongoose = require('mongoose');
 const Record = require('../models/record');
-describe('api test', function () {
+describe('api __tests__', function () {
   before(function (done) {
     require('./connectTestDB')(() => done());
   });

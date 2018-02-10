@@ -55,7 +55,7 @@ app.use(compression());
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://127.0.0.1:27017/typingFun', function (err, db) {
   if (err) throw err;
-  else console.log('connected to db');
+  else console.log('connected to db typingFun');
 });
 
 // serve files

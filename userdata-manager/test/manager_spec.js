@@ -3,7 +3,7 @@ const Manager = require('../lib/manager');
 const should = require('should');
 const Record = require('../models/record');
 
-describe("record manager test", function () {
+describe("record manager __tests__", function () {
   let manager = new Manager();
   before(function (done) {
     require('./connectTestDB')(function () {

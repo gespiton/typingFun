@@ -6,13 +6,13 @@ const Memb = require('../index');
 const db = require('mongoose');
 
 
-describe('api test', function () {
+describe('api __tests__', function () {
   const memb = new Memb();
   before(function (done) {
     require('./connectTestDB')(done);
   });
 
-  describe('test registration', function () {
+  describe('__tests__ registration', function () {
     let regResult = {};
     before(function (done) {
       User.collection.drop(
@@ -42,7 +42,7 @@ describe('api test', function () {
     });
   });
 
-  describe('test authentication', function () {
+  describe('__tests__ authentication', function () {
     let authResult = {};
     before(function (done) {
       memb.authenticate('123@me.com', 'freedom', function (err, res) {
