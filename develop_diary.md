@@ -18,3 +18,7 @@
     the big problem in the process is that a plugin I use called hardSourceWebpackPlugin is buggy(it crash on second npm build wtf!), and it took me a while to locate the problem
     
     
+* I found that since certain commit, div#typing.main's focus became lugging and unbearable. spend many time debugging this. And finally found that it's because  "box-sizing:inherit" inside  materialize.css. WTF? anyway, I can't understand it at all. during this process. I found that vscode's diff tool is very useful, and workspace in vscode too. -- To my dear precise time. 
+
+    > lesson learned: always use performance tool first, and recalculating style problem came from css
+    
