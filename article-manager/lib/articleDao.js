@@ -62,7 +62,6 @@ class Dao {
         resolve({success: true, result: result});
       });
     });
-    
   }
 
   findArticleById(id) {
