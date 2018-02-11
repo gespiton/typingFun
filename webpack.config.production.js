@@ -2,7 +2,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+// const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production')
@@ -64,7 +64,6 @@ const productionConfig = {
     new webpack.optimize.UglifyJsPlugin({
       compress: {warnings: false}
     }),
-    new HardSourceWebpackPlugin(),
     new webpack.optimize.ModuleConcatenationPlugin()
   ]
 };
