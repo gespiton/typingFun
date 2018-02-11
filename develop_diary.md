@@ -10,5 +10,11 @@
     yes, when I finally get this to work I found that I can't decide which article is top. stupid me, lesson learned: **first make sure algorithm work, then do the coding**
 
 * finish index algorithm: get all the doc then do the structuring part, cause I have to get the doc anyway.
+
+
+### 2018/2/11
+* today I find a npm lib that use github webhook to sync my project on server. after some tweak I finally got it to work, perfect!
+
+    the big problem in the process is that a plugin I use called hardSourceWebpackPlugin is buggy(it crash on second npm build wtf!), and it took me a while to locate the problem
     
     

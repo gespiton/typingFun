@@ -13,7 +13,24 @@ import PropTypes from 'prop-types';
 import {debug} from "util";
 import ArticleSelector from "./ArticleSelector";
 
+const mapStateToProps = state =>
+  ({
+    typeResult: state.typeResult,
+    article: state.currentArticle
+  });
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    saveTypeResult: res => {
+      dispatch(typeIn(res));
+    },
+    toggleChart: showIt => {
+      dispatch(toggleChart(showIt));
+    }
+  };
+};
+
+@connect(mapStateToProps, mapDispatchToProps)
 class Stage extends Component {
 
   static propTypes = {
@@ -246,7 +263,7 @@ class Stage extends Component {
             this.visualizer = elem;
           }}
         />
-        <ArticleSelector/>
+        {/*<ArticleSelector/>*/}
       </div>
     );
   }
@@ -255,21 +272,5 @@ class Stage extends Component {
 
 Stage.contextTypes = {store: PropTypes.object};
 
-const mapStateToProps = state =>
-  ({
-    typeResult: state.typeResult,
-    article: state.currentArticle
-  });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    saveTypeResult: res => {
-      dispatch(typeIn(res));
-    },
-    toggleChart: showIt => {
-      dispatch(toggleChart(showIt));
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Stage);
+export default Stage;

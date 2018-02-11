@@ -79,11 +79,11 @@ const App = (function () {
   App.prototype.drawParticles = function () {
 
     if (this.lastDrawnParticles.length > 0) {
-      for (let i in this.lastDrawnParticles) {
-        const particle = this.lastDrawnParticles[i];
-        this.ctx.clearRect(particle.x, particle.y, particle.size, particle.size);
-      }
-
+      // for (let i in this.lastDrawnParticles) {
+      // const particle = this.lastDrawnParticles[i];
+      // this.ctx.clearRect(particle.x, particle.y, particle.size, particle.size);
+      // }
+      this.ctx.clearRect(0, 0, this.canvasW, this.canvasH);
       this.lastDrawnParticles = [];
     }
 
