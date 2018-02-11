@@ -45,7 +45,6 @@ class Dao {
         });
       });
     });
-    
   }
 
   findArticleByName(name) {
