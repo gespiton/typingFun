@@ -51,6 +51,7 @@ class Dao {
 
     return new Promise(resolve => {
       Article.findOne({'name': name}, function (err, result) {
+        
         if (err) {
           resolve({success: false, msg: err});
         }
