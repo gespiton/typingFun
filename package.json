@@ -5,7 +5,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node ./app.js",
     "lint": "node_modules/.bin/eslint --fix webpack.config.* app.js app/component app/redux server; exit 0",
-    "build": "./node_modules/webpack/bin/webpack.js --config webpack.config.production.js",
+    "build": "yarn install && ./node_modules/webpack/bin/webpack.js --config webpack.config.production.js",
     "analyse": "npm run build && source-map-explorer ./public/js/main.js ./public/js/main.js.map"
   },
   "dependencies": {
