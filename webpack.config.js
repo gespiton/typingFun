@@ -39,8 +39,8 @@ const devConfig = {
             options: {
               presets: ['env', 'react', 'react-hmre'],
               plugins: [
-                'transform-class-properties',
-                "transform-decorators-legacy"
+                "transform-decorators-legacy",
+                'transform-class-properties'
               ]
             }
           }

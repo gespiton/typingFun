@@ -6,8 +6,11 @@
 - [ ] firefox performance issue
 
 ### later
+- [ ] page indicator
+- [ ] article selector style(icons overlap)
 - [ ] toastr style change
 - [ ] combo hits get more particles
+- [ ] should use tooltip in graph
 
 # typingFun
 enjoy typing

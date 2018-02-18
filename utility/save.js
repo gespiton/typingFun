@@ -7,6 +7,10 @@ const article = {
   text: 'yyou should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should you should try that you really should ou should try that you really should '
 };
 
+const simpleArticle = {
+  name: 'simple',
+  text: 'this is a simple article'
+};
 mongoose.Promise = Promise;
 mongoose.connect('mongodb://127.0.0.1:27017/typingFun', function (err, db) {
   if (err) throw err;
@@ -21,6 +25,9 @@ mongoose.connect('mongodb://127.0.0.1:27017/typingFun', function (err, db) {
     })
     .then(() => {
       return articleManager.saveArticle(genBook());
+    })
+    .then(()=>{
+      return articleManager.saveArticle(simpleArticle);
     })
     .then(() => {
       return mongoose.disconnect();

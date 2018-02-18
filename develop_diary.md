@@ -15,10 +15,15 @@
 ### 2018/2/11
 * today I find a npm lib that use github webhook to sync my project on server. after some tweak I finally got it to work, perfect!
 
-    the big problem in the process is that a plugin I use called hardSourceWebpackPlugin is buggy(it crash on second npm build wtf!), and it took me a while to locate the problem
+    the big problem in the process is that a plugin I use called hardSourceWebpackPlugin has a bug(it crash on second npm build wtf!), and it took me a while to locate the problem
     
     
 * I found that since certain commit, div#typing.main's focus became lugging and unbearable. spend many time debugging this. And finally found that it's because  "box-sizing:inherit" inside  materialize.css. WTF? anyway, I can't understand it at all. during this process. I found that vscode's diff tool is very useful, and workspace in vscode too. -- To my dear precise time. 
 
     > lesson learned: always use performance tool first, and recalculating style problem came from css
     
+
+### 2018/2/12
+* prop type verification give me error
+
+    > transform-decorators-legacy must come before transform-class-properties to be able to use the connect decorator and static propTypes together.

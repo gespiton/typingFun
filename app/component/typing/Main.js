@@ -13,24 +13,25 @@ import PropTypes from 'prop-types';
 import {debug} from "util";
 import ArticleSelector from "./ArticleSelector";
 
-const mapStateToProps = state =>
-  ({
-    typeResult: state.typeResult,
-    article: state.currentArticle
-  });
+@connect(
+  state => {
+    return {
+      typeResult: state.typeResult,
+      article: state.currentArticle
+    };
+  },
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    saveTypeResult: res => {
-      dispatch(typeIn(res));
-    },
-    toggleChart: showIt => {
-      dispatch(toggleChart(showIt));
-    }
-  };
-};
-
-@connect(mapStateToProps, mapDispatchToProps)
+  dispatch => {
+    return {
+      saveTypeResult: res => {
+        dispatch(typeIn(res));
+      },
+      toggleChart: showIt => {
+        dispatch(toggleChart(showIt));
+      }
+    };
+  }
+)
 class Stage extends Component {
 
   static propTypes = {
@@ -44,8 +45,7 @@ class Stage extends Component {
     super(props);
     this.state = {'complete': false, 'article': {}};
     this.curPos = 0;
-    // this.text = text2;
-    this.childrenTable = {};
+    this.childrenTable = [];
 
     this.keyPressed = this.keyPressed.bind(this);
     this.keyDown = this.keyDown.bind(this);
@@ -58,7 +58,6 @@ class Stage extends Component {
     window.addEventListener('scroll', () => this.scroll());
   }
 
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.article.id === this.props.article.id) {
       return false;
@@ -67,12 +66,8 @@ class Stage extends Component {
     return true;
   }
 
-  shouldComponentUpdate(nextprox, nextState) {
+  shouldComponentUpdate() {
     return false;
-  }
-
-  componentDidUpdate() {
-    console.log('updated');
   }
 
   loadDefaultArticle() {
@@ -80,6 +75,8 @@ class Stage extends Component {
   }
 
   loadArticle(articleId) {
+    this.curPos = 0;
+    this.childrenTable = [];
     this._loadArticle(`/article/${articleId}`);
   }
 
@@ -95,7 +92,7 @@ class Stage extends Component {
           {timeOut: 1000});
       }
 
-      that.setState({article: res.result}, function () {
+      that.setState({complete: false, article: res.result}, function () {
         that.genTextArr();
         that.genChildren();
         that.forceUpdate(function () {
@@ -120,18 +117,16 @@ class Stage extends Component {
       registerMe: this.registerChild.bind(this)
     };
 
+    const now = '-' + Date.now().toString();
     this.Children = this.textArr.map(
       (char, index) => (
-        <SingleChar key={index} char={char} pos={index} {...props} />
+        <SingleChar key={index + now} char={char} pos={index} {...props} />
       )
     );
   }
 
   registerChild(pos, child) {
     this.childrenTable[pos] = child;
-    if (!this.childrenTable.length || this.childrenTable.length < pos) {
-      this.childrenTable.length = pos + 1;
-    }
   }
 
   keyPressed(e) {
@@ -229,10 +224,27 @@ class Stage extends Component {
     this.moveCursor({dir: 0});
   }
 
+
+  static getRefMem = {};
+
+  getRefBuilder(refName) {
+    const that = this;
+    if (Stage.getRefMem[refName]) {
+      return Stage.getRefMem[refName];
+    }
+
+    const func = function (elem) {
+      that[refName] = elem;
+    };
+
+    Stage.getRefMem[refName] = func;
+    return func;
+  }
+
   render() {
     const currentArticle = this.props.article;
 
-    if (currentArticle.name != 'default') {
+    if (currentArticle.name !== 'default') {
       console.log('new');
     }
     return (
@@ -241,7 +253,7 @@ class Stage extends Component {
         tabIndex="0"
         onKeyPress={this.keyPressed}
         onKeyDown={this.keyDown}
-        ref={elem => this.stage = elem}
+        ref={this.getRefBuilder('stage')}
       >
         <InfoBoard>
           children
@@ -263,7 +275,7 @@ class Stage extends Component {
             this.visualizer = elem;
           }}
         />
-        {/*<ArticleSelector/>*/}
+        <ArticleSelector/>
       </div>
     );
   }
@@ -271,6 +283,5 @@ class Stage extends Component {
 
 
 Stage.contextTypes = {store: PropTypes.object};
-
 
 export default Stage;
