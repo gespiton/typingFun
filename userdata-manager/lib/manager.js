@@ -1,21 +1,18 @@
-const mongoose = require('mongoose');
 const Record = require('../models/record');
-const Emitter = require('events').EventEmitter;
+const membership = require('membership');
 
-class Manager extends Emitter {
-
-  constructor() {
-    super();
-    // this.emit('done');
-    // this.on('done', this.save);
-  }
+class Manager {
 
   save(args) {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve) {
       const record = new Record();
       record.user = args.user;
-      record.data = args.data;
-      record.articleId = mongoose.Types.ObjectId(args.articleId);
+      record.keyStrokes = args.keyStrokes;
+      record.articleId = args.articleId;
+      record.wpf = args.wpf;
+      record.incorrect = args.incorrect;
+      record.total = args.total;
+      record.timeSpent = args.timeSpent;
 
       record
         .save()
@@ -30,16 +27,10 @@ class Manager extends Emitter {
 
   getUserRecords(userId) {
     return new Promise(function (resolve, reject) {
-      let id;
-      if (typeof userId === 'string') {
-        id = mongoose.ObjectId(userId);
-      } else {
-        throw 'unknown type';
-      }
-      console.log('type', id instanceof mongoose.Types.ObjectId);
-      Record.findById(userId)
+
+      Record.find({user: userId})
         .then(function (res) {
-          resolve(res)
+          resolve(res);
         })
         .catch(function (err) {
           reject(err);

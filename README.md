@@ -6,6 +6,7 @@
 - [ ] firefox performance issue
 
 ### later
+- [ ] drawing graph, green means fast, red means slow
 - [ ] page indicator
 - [ ] article selector style(icons overlap)
 - [ ] toastr style change

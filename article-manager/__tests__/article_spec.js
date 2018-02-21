@@ -1,5 +1,4 @@
 const Article = require('../models/Article');
-const should = require('should');
 
 describe("article model spec", () => {
   describe("default article", () => {

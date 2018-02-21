@@ -10,14 +10,14 @@ import toastr from 'toastr';
 import DataVisualizer from './TypingDataVisualize';
 import {toggleChart} from "../../redux/actions/stageStatus";
 import PropTypes from 'prop-types';
-import {debug} from "util";
 import ArticleSelector from "./ArticleSelector";
 
 @connect(
   state => {
     return {
       typeResult: state.typeResult,
-      article: state.currentArticle
+      article: state.currentArticle,
+      user: state.userState
     };
   },
 
@@ -38,7 +38,8 @@ class Stage extends Component {
     typeResult: PropTypes.object.isRequired,
     saveTypeResult: PropTypes.func.isRequired,
     toggleChart: PropTypes.func.isRequired,
-    article: PropTypes.object
+    article: PropTypes.object,
+    user: PropTypes.object
   };
 
   constructor(props) {
@@ -46,7 +47,7 @@ class Stage extends Component {
     this.state = {'complete': false, 'article': {}};
     this.curPos = 0;
     this.childrenTable = [];
-
+    this.registerMe = this.registerChild.bind(this);
     this.keyPressed = this.keyPressed.bind(this);
     this.keyDown = this.keyDown.bind(this);
   }
@@ -63,11 +64,14 @@ class Stage extends Component {
       return false;
     }
     this.loadArticle(nextProps.article.id);
-    return true;
+    return false;
   }
 
-  shouldComponentUpdate() {
-    return false;
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.article._id === nextState.article._id) {
+      return false;
+    }
+    return true;
   }
 
   loadDefaultArticle() {
@@ -91,38 +95,16 @@ class Stage extends Component {
         toastr.success('article loaded', 'success',
           {timeOut: 1000});
       }
-
       that.setState({complete: false, article: res.result}, function () {
-        that.genTextArr();
-        that.genChildren();
-        that.forceUpdate(function () {
-          that.moveCursor({dir: 0});
-          that.focusStage();
-        });
+        console.log('force update');
+        that.moveCursor({dir: 0});
+        that.focusStage();
       });
     });
   }
 
   focusStage() {
     this.stage.focus();
-  }
-
-  genTextArr() {
-    //todo think of better way
-    this.textArr = this.state.article.text.split('');
-  }
-
-  genChildren() {
-    const props = {
-      registerMe: this.registerChild.bind(this)
-    };
-
-    const now = '-' + Date.now().toString();
-    this.Children = this.textArr.map(
-      (char, index) => (
-        <SingleChar key={index + now} char={char} pos={index} {...props} />
-      )
-    );
   }
 
   registerChild(pos, child) {
@@ -137,7 +119,7 @@ class Stage extends Component {
 
     this.props.saveTypeResult({
       pressedKey: pressed,
-      expected: this.textArr[this.curPos],
+      expected: this.state.article.text[this.curPos],
       currentTime: new Date().getTime(),
       cursorPos: this.curPos
     });
@@ -211,7 +193,8 @@ class Stage extends Component {
     toastr.info('type complete');
     console.log(this.props.typeResult);
     const typeResult = this.props.typeResult;
-    typeResult.article = this.state.article;
+    typeResult.articleId = this.state.article._id;
+    typeResult.userEmail = this.props.user.email;
 
     $.post('/typing/complete', typeResult, function success(msg) {
       console.log(msg);
@@ -242,22 +225,19 @@ class Stage extends Component {
   }
 
   render() {
-    const currentArticle = this.props.article;
+    const now = '-' + Date.now().toString();
 
-    if (currentArticle.name !== 'default') {
-      console.log('new');
-    }
     return (
       <div
         className="typing main"
         tabIndex="0"
         onKeyPress={this.keyPressed}
         onKeyDown={this.keyDown}
-        ref={this.getRefBuilder('stage')}
+        // ref={this.getRefBuilder('stage')}
+        ref={elem => this.stage = elem}
+        //todo: figure out this
       >
-        <InfoBoard>
-          children
-        </InfoBoard>
+        <InfoBoard/>
         <div
           id="stage-wrap"
           className="col-md-10 col-md-offset-1"
@@ -266,7 +246,14 @@ class Stage extends Component {
           <div
             id="stage"
           >
-            {this.Children}
+            {
+              this.state.article._id ? (
+                  this.state.article.text.split('').map(
+                    (char, index) => (
+                      <SingleChar key={index + now} char={char} pos={index} registerMe={this.registerMe}/>
+                    )))
+                : 'no article loaded'
+            }
             <Cursor ref={elem => this.cursor = elem}/>
           </div>
         </div>

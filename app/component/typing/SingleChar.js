@@ -12,6 +12,7 @@ class SingleChar extends Component {
     return nextState.typeResult !== this.state.typeResult || nextState.classNames !== this.state.classNames;
   }
 
+
   keyPressed(key) {
     const isCorrect = key === this.state.char;
     //todo put function in state, is it best practice?

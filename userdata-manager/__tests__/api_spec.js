@@ -1,24 +1,20 @@
+const Api = require('../index');
 const mongoose = require('mongoose');
-const Manager = require('../lib/manager');
-const should = require('should');
 const Record = require('../models/record');
-
-describe("record manager __tests__", function () {
-  let manager = new Manager();
-  before(function (done) {
-    require('./connectTestDB')(function () {
-      done();
-    });
+describe('api __tests__', () => {
+  beforeAll(function (done) {
+    require('./connectTestDB')(() => done());
   });
+  const api = new Api();
 
-  describe("save record", function () {
+  describe("save record", () => {
     let saveRes = {};
-    before(function (done) {
-      manager.save(
+    beforeAll(function (done) {
+      api.saveRecord(
         {
           articleId: '111111111111',
           data: [1, 2, 3],
-          user: 'mock user'
+          user: '313131313131313131313134'
         })
         .then(function (res) {
           saveRes = res;
@@ -26,30 +22,28 @@ describe("record manager __tests__", function () {
         });
     });
 
-    it('should be success', () => saveRes.success.should.equal(true));
-    it('should return a record', () => saveRes.record.should.be.defined)
+    test('should be success', () => expect(saveRes.success).toBe(true));
+    test('should return a record', () => expect(saveRes.record).toBeDefined())
   });
-
-  describe("get record", function () {
-    describe('get all record of a user', function () {
+  describe("get record", () => {
+    describe('get all record of a user', () => {
       const userId = new mongoose.Types.ObjectId();
-
       let queryRes = {};
-      before(function (done) {
+      beforeAll(function (done) {
         Record.collection.drop(function saveARecord(err, res) {
           if (err && err.message !== 'ns not found') throw err;
           Promise.all([
-            manager.save({
+            api.saveRecord({
               articleId: '111111111111',
               data: [1, 2, 3],
               user: userId
             }),
-            manager.save({
+            api.saveRecord({
               articleId: '222222222222',
               data: [1, 2, 3],
               user: userId
             })])
-            .then(manager.getUserRecords(userId))
+            .then(api.getUserRecords(userId))
             .then(res => {
               queryRes = res;
               done();
@@ -57,13 +51,13 @@ describe("record manager __tests__", function () {
         });
       });
 
-      it('should have two record', () => queryRes.length.should.equal(2));
+      test('should have two record', () => expect(queryRes.length).toBe(2));
     });
 
-    after(function () {
+
+    afterAll(function () {
       console.log('disconnect');
       mongoose.disconnect();
     });
-
   });
 });

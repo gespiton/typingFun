@@ -12,7 +12,7 @@ describe('api __tests__', function () {
     require('./connectTestDB')(done);
   });
 
-  describe('__tests__ registration', function () {
+  describe('registration', function () {
     let regResult = {};
     before(function (done) {
       User.collection.drop(
@@ -42,7 +42,7 @@ describe('api __tests__', function () {
     });
   });
 
-  describe('__tests__ authentication', function () {
+  describe('authentication', function () {
     let authResult = {};
     before(function (done) {
       memb.authenticate('123@me.com', 'freedom', function (err, res) {

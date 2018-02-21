@@ -3,11 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
   "scripts": {
     "test": "node_modules/.bin/jest -b --watchAll **/*spec.js"
   },
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "membership": "file:../membership"
+  },
   "devDependencies": {
     "jest": "^22.1.4"
   }

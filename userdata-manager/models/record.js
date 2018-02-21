@@ -1,9 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const recordSchema = new Schema({
-  user: {type: Schema.Types.Mixed, required: true},
+  user: {type: Schema.Types.ObjectId, required: true},
   createAt: {type: Date, required: true, default: new Date()},
-  data: {type: Array, required: true},
+  keyStrokes: {type: Array, required: true},
+  wpf: {type: Number, required: true},
+  incorrect: {type: Number, required: true},
+  total: {type: Number, required: true},
+  timeSpent: {type: Number, required: true},
   articleId: {type: Schema.Types.ObjectId, required: true}
 });
 
