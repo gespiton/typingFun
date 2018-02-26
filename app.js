@@ -8,26 +8,25 @@ const isDev = process.env.NODE_ENV !== 'production';
 const mongoose = require('mongoose');
 const compression = require('compression');
 const passport = require('passport'),
-    LocalStrategy = require('passport-local'),
-    Memb = require('./membership/index');
+  LocalStrategy = require('passport-local'),
+  memberShip = require('./membership/index');
 
-const memberShip = new Memb();
 passport.use(new LocalStrategy(
-    {
-      usernameField: 'email',
-      passwordField: 'password'
-    },
-    function (email, password, done) {
-      memberShip.authenticate(email, password, function (err, authRes) {
-        // console.log(authRes);
-        if (err) return done(err);
-        if (authRes.success) {
-          return done(null, authRes.user, authRes);
-        } else {
-          return done(null, null, authRes);
-        }
-      });
-    }
+  {
+    usernameField: 'email',
+    passwordField: 'password'
+  },
+  function (email, password, done) {
+    memberShip.authenticate(email, password, function (err, authRes) {
+      // console.log(authRes);
+      if (err) return done(err);
+      if (authRes.success) {
+        return done(null, authRes.user, authRes);
+      } else {
+        return done(null, null, authRes);
+      }
+    });
+  }
 ));
 
 passport.serializeUser(function (user, done) {
@@ -63,9 +62,9 @@ if (isDev) {
   // static assets served by webpack-dev-middleware & webpack-hot-middleware for development
   console.log('dev mode');
   const webpack = require('webpack'),
-      webpackDevMiddleware = require('webpack-dev-middleware'),
-      webpackHotMiddleware = require('webpack-hot-middleware'),
-      webpackDevConfig = require('./webpack.config.js');
+    webpackDevMiddleware = require('webpack-dev-middleware'),
+    webpackHotMiddleware = require('webpack-hot-middleware'),
+    webpackDevConfig = require('./webpack.config.js');
 
   const compiler = webpack(webpackDevConfig);
 
@@ -90,16 +89,16 @@ if (isDev) {
 
 
 app.use(
-    session(
-        {
-          secret: "forever321",
-          resave: false,
-          saveUninitialized: true,
-          cookie: {
-            // maxAge: 1000 * 60 * 60
-          }
-        }
-    )
+  session(
+    {
+      secret: "forever321",
+      resave: false,
+      saveUninitialized: true,
+      cookie: {
+        // maxAge: 1000 * 60 * 60
+      }
+    }
+  )
 );
 
 app.use(passport.initialize());

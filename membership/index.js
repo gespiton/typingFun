@@ -1,6 +1,7 @@
 const Auth = require('./lib/auth');
 const Registration = require('./lib/registration');
 const User = require('./models/user');
+const librarian = require('./lib/librarian');
 
 const auth = new Auth();
 const registration = new Registration();
@@ -26,6 +27,10 @@ const MemberShip = {
     User.findById(id, function (err, user) {
       next(err, user);
     });
+  },
+
+  findUserByEmail(email, next) {
+    librarian.findUserByEmail(email,next);
   }
 };
 

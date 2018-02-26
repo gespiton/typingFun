@@ -4914,6 +4914,9 @@ mem@^1.1.0:
   dependencies:
     mimic-fn "^1.0.0"
 
+"membership@file:./membership", "membership@file:membership":
+  version "1.0.1"
+
 memory-fs@^0.4.0, memory-fs@~0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/memory-fs/-/memory-fs-0.4.1.tgz#3a9a20b8462523e447cfbc7e8bb80ed667bfc552"
@@ -7650,6 +7653,11 @@ use@^2.0.0:
     define-property "^0.2.5"
     isobject "^3.0.0"
     lazy-cache "^2.0.2"
+
+"userdata-manager@file:./userdata-manager":
+  version "1.0.0"
+  dependencies:
+    membership "file:../../.cache/yarn/v1/membership"
 
 util-deprecate@~1.0.1:
   version "1.0.2"

@@ -2,9 +2,8 @@ const Registration = require('../lib/registration');
 const Verifier = require('../models/Application');
 const db = require('mongoose');
 let User = require('../models/user');
-require('should');
 
-describe("registration", function () {
+describe("registration", () => {
   const registration = new Registration();
 
   const createUserGetResult = function (user, done) {
@@ -18,14 +17,14 @@ describe("registration", function () {
     });
   };
 
-  before(function (done) {
+  beforeAll(function (done) {
     require('./connectTestDB')(done);
   });
 
 
-  describe("a valid application", function () {
+  describe("a valid application", () => {
     let regResult = {};
-    before(function (done) {
+    beforeAll(function (done) {
       createUserGetResult(
           {
             username: 'hi',
@@ -39,13 +38,13 @@ describe("registration", function () {
           });
     });
 
-    it("is successful", () => regResult.success.should.equal(true));
-    it("create a user", () => regResult.user.should.be.defined);
+    test("is successful", () => expect(regResult.success).toBe(true));
+    test("create a user", () => expect(regResult.user).toBeDefined());
   });
 
-  describe("an empty or null email", function () {
+  describe("an empty or null email", () => {
     let regResult = {};
-    before(function (done) {
+    beforeAll(function (done) {
       createUserGetResult(
           {
             username: 'ha',
@@ -60,13 +59,16 @@ describe("registration", function () {
       );
     });
 
-    it("is not successful", () => regResult.success.should.equal(false));
-    it("tells user that email is required", () => regResult.message.should.equal("Email and password are required"));
+    test("is not successful", () => expect(regResult.success).toBe(false));
+    test(
+      "tells user that email is required",
+      () => expect(regResult.message).toBe("Email and password are required")
+    );
   });
 
-  describe("password and confirm not match", function () {
+  describe("password and confirm not match", () => {
     let regResult = null;
-    before(function (done) {
+    beforeAll(function (done) {
       createUserGetResult(
           {
             username: 'ha',
@@ -81,13 +83,16 @@ describe("registration", function () {
       );
     });
 
-    it("is not successful", () => regResult.success.should.equal(false));
-    it("message is : password and confirm not match", () => regResult.message.should.equal("password and confirm not match"));
+    test("is not successful", () => expect(regResult.success).toBe(false));
+    test(
+      "message is : password and confirm not match",
+      () => expect(regResult.message).toBe("password and confirm not match")
+    );
   });
 
-  describe("user already exist", function () {
+  describe("user already exist", () => {
     let regResult = null;
-    before(function (done) {
+    beforeAll(function (done) {
       const user = {
         username: 'ha',
         email: '123@me.com',
@@ -115,14 +120,17 @@ describe("registration", function () {
       }
     });
 
-    it("is not successful", () => regResult.success.should.equal(false));
-    it("message is: This email is used", () => regResult.message.should.equal("This email is used"));
-    it("user should be null", () => (regResult.user === null).should.be.ok());
+    test("is not successful", () => expect(regResult.success).toBe(false));
+    test(
+      "message is: This email is used",
+      () => expect(regResult.message).toBe("This email is used")
+    );
+    test("user should be null", () => expect(regResult.user === null).toBeTruthy());
   });
 
-  describe("user name missing", function () {
+  describe("user name missing", () => {
     let regResult = null;
-    before(function (done) {
+    beforeAll(function (done) {
       const user = {
         email: '123@me.com',
         password: "freedom",
@@ -141,12 +149,15 @@ describe("registration", function () {
       });
     });
 
-    it("is not successful", () => regResult.success.should.equal(false));
-    it("message is : username missing", () => regResult.message.should.equal("username missing"));
+    test("is not successful", () => expect(regResult.success).toBe(false));
+    test(
+      "message is : username missing",
+      () => expect(regResult.message).toBe("username missing")
+    );
   });
 
 
-  after(function (done) {
+  afterAll(function (done) {
     db.disconnect(function (err) {
       if (err) throw err;
       done();

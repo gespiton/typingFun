@@ -194,9 +194,10 @@ class Stage extends Component {
     console.log(this.props.typeResult);
     const typeResult = this.props.typeResult;
     typeResult.articleId = this.state.article._id;
-    typeResult.userEmail = this.props.user.email;
+    //todo: guest situation handler
+    typeResult.userEmail = this.props.user.email||'guestEmail';
 
-    $.post('/typing/complete', typeResult, function success(msg) {
+    $.post('/record/save', typeResult, function success(msg) {
       console.log(msg);
     });
 

@@ -72,13 +72,14 @@ describe("record manager tests", () => {
       email: '123@gg.com',
       password: 'complicated',
       confirm: 'complicated'
-    }, done);
+    }, (err, res) => {
+      done();
+    });
   }));
 
   beforeEach(function (done) {
     Record.collection.drop((err) => {
       if (err && err.message !== 'ns not found') throw err;
-      console.log('records cleared');
       done();
     });
   });
@@ -103,31 +104,22 @@ describe("record manager tests", () => {
     test('should return a record', () => {
       expect(saveRes.record).toBeDefined();
       const record = saveRes.record;
-      expect(record.articleId.toString()).toBe(record.articleId);
+      expect(record.articleId).toBe(record.articleId);
     });
   });
 
 
   describe('get all record of a user', () => {
-    const userId = new mongoose.Types.ObjectId();
 
     let queryRes = {};
     beforeAll(function (done) {
       manager
-        .save({
-          articleId: '313131313131313131313131',
-          data: [1, 2, 3],
-          user: userId
+        .save(sampleTypeResult)
+        .then(() => {
+          return manager.save(sampleTypeResult);
         })
         .then(() => {
-          return manager.save({
-            articleId: '313131313131313131313122',
-            data: [1, 2, 3],
-            user: userId
-          });
-        })
-        .then(() => {
-          return manager.getUserRecords(userId);
+          return manager.getUserRecords(sampleTypeResult.userEmail);
         })
         .then(res => {
           queryRes = res;
