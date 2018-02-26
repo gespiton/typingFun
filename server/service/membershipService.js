@@ -1,7 +1,6 @@
 const passport = require('passport');
-const Membership = require('../../membership');
+const membership = require('../../membership');
 
-const membership = new Membership();
 module.exports = {
   login: function (req, res, next) {
     console.log(req.body);
@@ -47,5 +46,4 @@ module.exports = {
         }
     );
   }
-
 };

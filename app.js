@@ -8,26 +8,25 @@ const isDev = process.env.NODE_ENV !== 'production';
 const mongoose = require('mongoose');
 const compression = require('compression');
 const passport = require('passport'),
-    LocalStrategy = require('passport-local'),
-    Memb = require('./membership/index');
+  LocalStrategy = require('passport-local'),
+  memberShip = require('./membership/index');
 
-const memberShip = new Memb();
 passport.use(new LocalStrategy(
-    {
-      usernameField: 'email',
-      passwordField: 'password'
-    },
-    function (email, password, done) {
-      memberShip.authenticate(email, password, function (err, authRes) {
-        // console.log(authRes);
-        if (err) return done(err);
-        if (authRes.success) {
-          return done(null, authRes.user, authRes);
-        } else {
-          return done(null, null, authRes);
-        }
-      });
-    }
+  {
+    usernameField: 'email',
+    passwordField: 'password'
+  },
+  function (email, password, done) {
+    memberShip.authenticate(email, password, function (err, authRes) {
+      // console.log(authRes);
+      if (err) return done(err);
+      if (authRes.success) {
+        return done(null, authRes.user, authRes);
+      } else {
+        return done(null, null, authRes);
+      }
+    });
+  }
 ));
 
 passport.serializeUser(function (user, done) {
@@ -42,7 +41,7 @@ passport.deserializeUser(function (id, done) {
   });
 });
 // view engine setup
-app.set('views', path.join(__dirname, './app'));
+// app.set('views', path.join(__dirname, './app'));
 
 // uncomment after placing your favicon in /public
 //typing.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -55,7 +54,7 @@ app.use(compression());
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://127.0.0.1:27017/typingFun', function (err, db) {
   if (err) throw err;
-  else console.log('connected to db');
+  else console.log('connected to db typingFun');
 });
 
 // serve files
@@ -63,9 +62,9 @@ if (isDev) {
   // static assets served by webpack-dev-middleware & webpack-hot-middleware for development
   console.log('dev mode');
   const webpack = require('webpack'),
-      webpackDevMiddleware = require('webpack-dev-middleware'),
-      webpackHotMiddleware = require('webpack-hot-middleware'),
-      webpackDevConfig = require('./webpack.config.js');
+    webpackDevMiddleware = require('webpack-dev-middleware'),
+    webpackHotMiddleware = require('webpack-hot-middleware'),
+    webpackDevConfig = require('./webpack.config.js');
 
   const compiler = webpack(webpackDevConfig);
 
@@ -85,21 +84,21 @@ if (isDev) {
 
 
 } else {
-  app.use(express.static(path.join(__dirname, 'app')));
+  app.use(express.static(path.join(__dirname, 'public/')));
 }
 
 
 app.use(
-    session(
-        {
-          secret: "forever321",
-          resave: false,
-          saveUninitialized: true,
-          cookie: {
-            // maxAge: 1000 * 60 * 60
-          }
-        }
-    )
+  session(
+    {
+      secret: "forever321",
+      resave: false,
+      saveUninitialized: true,
+      cookie: {
+        // maxAge: 1000 * 60 * 60
+      }
+    }
+  )
 );
 
 app.use(passport.initialize());
@@ -138,7 +137,7 @@ if (isDev) {
     console.log('App (dev) is now running on port 3000!');
   });
 } else {
-  app.listen(3000, function () {
+  app.listen(80, function () {
     console.log('typing started on port 3000');
   });
 }

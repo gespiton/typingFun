@@ -1,9 +1,9 @@
-
 const Article = require('../models/Article');
 
 class Dao {
   saveArticle(arg) {
     const article = new Article();
+    const that = this;
     article.name = arg.name;
     if (arg.text) {
       article.text = arg.text;
@@ -11,15 +11,25 @@ class Dao {
     }
 
     if (arg.sub) {
-      const sub = [];
+      // assume that the nested article only has one level
+      const subOpts = [];
 
       for (const a of arg.sub) {
-        sub.push(this.createArticle(a));
+        subOpts.push(that.saveArticle(a));
       }
 
-      article.sub = sub;
+      return Promise.all(subOpts)
+        .then(results => {
+          article.sub = results.map(result => result.result._id);
+          return that._save(article);
+        });
     }
 
+    return this._save(article);
+
+  }
+
+  _save(article) {
     return new Promise(function (resolve) {
       article.save(function (err, result) {
         if (err) {
@@ -37,86 +47,88 @@ class Dao {
     });
   }
 
-  createArticle(arg) {
-    const article = new Article();
-    article.name = arg.name;
-    article.text = arg.text;
-    article.charNum = arg.text.length;
-    return article;
-  }
-
   findArticleByName(name) {
 
     return new Promise(resolve => {
-      Article.findOne({ name: name }, function (err, result) {
-
+      Article.findOne({'name': name}, function (err, result) {
         if (err) {
-          resolve({ success: false, msg: err });
+          resolve({success: false, msg: err});
         }
 
         if (result === null) {
-          resolve({ success: false, msg: 'name not existed' });
+          resolve({success: false, msg: 'name not existed'});
         }
-        resolve({ success: true, result: result });
+        resolve({success: true, result: result});
       });
+
     });
   }
 
   findArticleById(id) {
     return new Promise(resolve => {
-      Article.findOne({ '_id': id }, function (err, res) {
-
-        console.log(err);
-
-        console.log(res);
-
+      Article.findOne({'_id': id}, function (err, res) {
         if (err) {
-          resolve({ success: false, msg: err });
+          resolve({success: false, msg: err});
           return;
         }
-        resolve({ success: true, data: res });
+        resolve({success: true, result: res});
       });
     });
   }
 
   getArticleIndex() {
-    //todo: it seems I can't select certain fileds of children
+    //todo: it seems I can't select certain fields of children
     const that = this;
 
     return new Promise(resolve => {
+      //todo find article with no children
       Article.find({})
         .select('-text')
-        .sort('name')
         .exec(function (err, res) {
-          if (err) resolve({ success: false, msg: err });
-          resolve({ success: true, result: that.buildIndex(res) });
+          if (err) resolve({success: false, msg: err});
+
+          resolve({success: true, result: that.buildIndex(res)});
         });
     });
   }
 
-  buildIndex(src) {
-    const result = [];
 
-    src.forEach(element => {
-      result.push(this.build(element));
+  buildIndex(src) {
+    const idToArticle = {};
+    const articles = [];
+
+    src.forEach(doc => {
+      const article = {
+        name: doc.name,
+        id: doc.id,
+        _sub: doc.sub,
+        sub: [],
+        charNum: doc.charNum
+      };
+
+      articles.push(article);
+      idToArticle[doc.id] = article;
     });
 
-    return result;
+    articles.forEach(article => {
+      if (article._sub.length > 0) {
+
+        article._sub.forEach(id => {
+          const a = idToArticle[id];
+          a.bottom = true;
+          article.sub.push(a);
+        });
+      }
+    });
+
+    return this._sortIndexes(articles.filter(article => !article.bottom));
   }
 
-  build(element) {
-    const res = {
-      name: element.name,
-      charNum: element.charNum,
-      id: element._id
-    };
-
-    if (element.sub.length > 0) {
-      const sub = [];
-      element.sub.forEach(ele => sub.push(this.build(ele)));
-      res.sub = sub;
-    }
-    return res;
+  _sortIndexes(indexes) {
+    indexes.sort((a, b) => {
+      return a.name.localeCompare(b.name);
+    });
+    return indexes;
   }
 }
 

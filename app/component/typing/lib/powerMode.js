@@ -23,9 +23,10 @@ const App = (function () {
     this.canvasW = this.canvas.width();
     this.ctx = document.getElementById('canvas').getContext('2d');
     this.particlePointer = 0;
+    this.lastDrawnParticles = [];
 
     // $('#')
-    // test only
+    // __tests__ only
     // console.log(this.cursor[0].getBoundingClientRect().left);
     // this.powermode.push(this.createParticle(this.cursor.position().left - this.canvas.position().left, this.cursor.position().top - this.canvas.position().top, 'green'));
     // this.powermode.push(this.createParticle(this.cursor.position().left - this.canvas.position().left, this.cursor.position().top - this.canvas.position().top, 'blue'));
@@ -46,7 +47,6 @@ const App = (function () {
 
   // functions
   App.prototype.spawnParticles = function (pos) {
-    console.log(pos);
     for (let i = 0; i !== this.maxSpawnParticleNum; ++i) {
       this.particlePointer = (i + this.particlePointer) % this.maxParticleNum;
       // const color = [
@@ -77,7 +77,15 @@ const App = (function () {
     return window.requestAnimationFrame(this.draw);
   };
   App.prototype.drawParticles = function () {
-    this.ctx.clearRect(0, 0, this.canvasW, this.canvasH);
+
+    if (this.lastDrawnParticles.length > 0) {
+      // for (let i in this.lastDrawnParticles) {
+      // const particle = this.lastDrawnParticles[i];
+      // this.ctx.clearRect(particle.x, particle.y, particle.size, particle.size);
+      // }
+      this.ctx.clearRect(0, 0, this.canvasW, this.canvasH);
+      this.lastDrawnParticles = [];
+    }
 
     for (let i = 0; i !== this.particles.length; ++i) {
       const particle = this.particles[i];
@@ -89,7 +97,16 @@ const App = (function () {
       particle.y += particle.velocity.y;
       particle.alpha *= this.PARTICLE_ALPHA_FADEOUT;
       this.ctx.fillStyle = "rgba(" + (particle.color.join(", ")) + ", " + particle.alpha + ")";
-      this.ctx.fillRect(Math.round(particle.x - this.PARTICLE_SIZE / 2), Math.round(particle.y - this.PARTICLE_SIZE / 2), this.PARTICLE_SIZE, this.PARTICLE_SIZE);
+
+
+      const x = Math.floor(particle.x - this.PARTICLE_SIZE / 2);
+      const y = Math.floor(particle.y - this.PARTICLE_SIZE / 2);
+      const size = this.PARTICLE_SIZE;
+
+      this.ctx.fillRect(x, y, size, size);
+      this.lastDrawnParticles.push({
+        x, y, size
+      });
     }
   };
 

@@ -63,6 +63,7 @@ const Auth = function () {
   }
 
 
+
   self.on('valid attempt', checkUserInfo);
 
   self.on('invalid attempt', loginFail);

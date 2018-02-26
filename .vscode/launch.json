@@ -9,6 +9,18 @@
             "request": "launch",
             "name": "Launch Program",
             "program": "${workspaceFolder}/app.js"
+
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Jest Current File",
+            "program": "${workspaceRoot}/node_modules/jest/bin/jest",
+            "args": [
+                "${file}"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
         }
     ]
 }

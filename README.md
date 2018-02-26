@@ -3,9 +3,15 @@
 ### important
 - [ ] user name display style
 - [ ] use font awesome
+- [ ] firefox performance issue
 
 ### later
+- [ ] drawing graph, green means fast, red means slow
+- [ ] page indicator
+- [ ] article selector style(icons overlap)
 - [ ] toastr style change
+- [ ] combo hits get more particles
+- [ ] should use tooltip in graph
 
 # typingFun
 enjoy typing

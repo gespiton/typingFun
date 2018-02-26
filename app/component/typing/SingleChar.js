@@ -1,6 +1,4 @@
 import React, {Component} from "react";
-import typeIn from "../../redux/actions/typeIn";
-import {connect} from "react-redux";
 
 class SingleChar extends Component {
   constructor(props) {
@@ -11,25 +9,9 @@ class SingleChar extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if (nextState.typeResult !== this.state.typeResult || nextState.classNames !== this.state.classNames) {
-      return true;
-    }
-
-    return false;
+    return nextState.typeResult !== this.state.typeResult || nextState.classNames !== this.state.classNames;
   }
 
-  render() {
-    const classNames = `char ${this.state.typeResult || ''} ${(this.state.classNames || []).join(' ')}`;
-    return (
-        <span className={classNames}>
-        {this.state.char}
-      </span>
-    );
-  }
-
-  setCurrentChar() {
-
-  }
 
   keyPressed(key) {
     const isCorrect = key === this.state.char;
@@ -59,6 +41,15 @@ class SingleChar extends Component {
     this.setState(() => {
       return {typeResult: ' incorrect '};
     });
+  }
+
+  render() {
+    const classNames = `char ${this.state.typeResult || ''} ${(this.state.classNames || []).join(' ')}`;
+    return (
+      <span className={classNames}>
+        {this.state.char}
+      </span>
+    );
   }
 
 }

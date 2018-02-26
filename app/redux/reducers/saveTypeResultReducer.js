@@ -25,7 +25,6 @@ const saveTypeResult = (state = iniState, action) => {
           const startedTime = state.keyStrokes[0].currentTime;
           const elapsed = Math.floor((typeResult.currentTime - startedTime) / 100) / 10;
           let wpf = Math.floor((newState.total / 5 - newState.incorrect) / (elapsed / 60));
-          console.log('new wpf is: ', wpf);
           newState.wpf = wpf > 0 ? wpf : 0;
           newState.timeSpent = elapsed;
           return newState;
