@@ -1,4 +1,4 @@
-const dataManager = require('userdata-manager');
+const dataManager = require("../../localModules").userDataManager;
 
 // const Article  = require('../models/article');
 

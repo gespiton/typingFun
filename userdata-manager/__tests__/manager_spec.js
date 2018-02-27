@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Manager = require('../lib/manager');
 const Record = require('../models/record');
 const dbConnector = require("./connectTestDB");
-const memberShip = require("membership");
+const membership = require("../../membership");
 
 describe("record manager tests", () => {
   let manager = new Manager();
@@ -67,12 +67,12 @@ describe("record manager tests", () => {
     "userEmail": "123@gg.com"
   };
   beforeAll(done => dbConnector(function createMockUser() {
-    memberShip.register({
+    membership.register({
       username: 'testUser',
       email: '123@gg.com',
       password: 'complicated',
       confirm: 'complicated'
-    }, (err, res) => {
+    }, () => {
       done();
     });
   }));

@@ -12,10 +12,8 @@ loginController(router);
 typingController(router);
 articleController(router);
 
-// default
 router.get('*', (req, res) => {
   "use strict";
-  // res.render('index.html');
   res.sendFile(path.join(__dirname, '../../app/index.html'));
 });
 

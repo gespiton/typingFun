@@ -7,4 +7,6 @@ const userSchema = new mongoose.Schema({
   status: {type: String, required: true, default: 'offline'}
 });
 
-module.exports = mongoose.model('User', userSchema);
+const exportModel = mongoose.model('User', userSchema);
+
+module.exports = exportModel;

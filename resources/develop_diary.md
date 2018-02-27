@@ -27,3 +27,11 @@
 * prop type verification give me error
 
     > transform-decorators-legacy must come before transform-class-properties to be able to use the connect decorator and static propTypes together.
+
+
+### 2018/2/27
+* got a little problem with using require('mongoose'),I expect it will return same mongoose instance between different place, turned out it didn't and at last I found that it was because I didn't update my node_modules and it contained a mongoose package which it shouldn't have. dame!
+
+* trying to figure out a way to manage local package. using **file:./...** is problematic, it might reimport the same package multiple times causing problem.(e.x. mongoose schema)
+
+    my current solution is write a simple distributor in app root, every local package is declared here and other script can reference them here.

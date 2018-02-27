@@ -1,5 +1,4 @@
 const Record = require('../models/record');
-const membership = require('membership');
 
 class Manager {
 

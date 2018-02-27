@@ -1,6 +1,6 @@
 {
   "name": "record-manager",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "directories": {
@@ -12,9 +12,6 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "membership": "file:../membership"
-  },
   "devDependencies": {
     "jest": "^22.1.4"
   }

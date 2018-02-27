@@ -1,4 +1,4 @@
-const articleManager = require("../../article-manager/index");
+const articleManager = require("../../localModules").articleManager;
 
 function main(router) {
   router.route('/article')

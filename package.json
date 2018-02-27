@@ -21,9 +21,7 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "serve-favicon": "^2.4.5",
-    "session": "^0.1.0",
-    "membership": "file:./membership",
-    "userdata-manager": "file:./userdata-manager"
+    "session": "^0.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

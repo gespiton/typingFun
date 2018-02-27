@@ -1,6 +1,3 @@
-/**
- * Created by sher on 27/5/2017.
- */
 const membershipService = require('../service/membershipService');
 
 function main(router) {
