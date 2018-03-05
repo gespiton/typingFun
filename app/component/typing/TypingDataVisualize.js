@@ -14,15 +14,6 @@ class Visualizer extends Component {
     this.state = props;
   }
 
-  render() {
-    return (
-        <MyModal ref={elem => this.modal = elem} beforeHiding={this.beforeHiding}>
-          <h2 className="">typing result</h2>
-          <div id="indicator" ref={elem => this.indicator = elem}/>
-          <svg ref={elem => this.svg = elem}/>
-        </MyModal>
-    );
-  }
 
   componentWillReceiveProps(nextProp) {
     if (nextProp.showChart) {
@@ -55,6 +46,16 @@ class Visualizer extends Component {
           indicator: this.indicator,
           svg: this.indicator
         }
+    );
+  }
+
+  render() {
+    return (
+        <MyModal ref={elem => this.modal = elem} beforeHiding={this.beforeHiding}>
+          <h2 className="">typing result</h2>
+          <div id="indicator" ref={elem => this.indicator = elem}/>
+          <svg ref={elem => this.svg = elem}/>
+        </MyModal>
     );
   }
 }

@@ -6,6 +6,7 @@ import PowerMode from "./lib/powerMode";
 import InfoBoard from "./InfoBoard";
 import {connect} from "react-redux";
 import typeIn from "../../redux/actions/typeIn";
+import resetTypeResult from "../../redux/actions/resetTypeResult";
 import toastr from 'toastr';
 import DataVisualizer from './TypingDataVisualize';
 import {toggleChart} from "../../redux/actions/stageStatus";
@@ -13,24 +14,27 @@ import PropTypes from 'prop-types';
 import ArticleSelector from "./ArticleSelector";
 
 @connect(
-  state => {
-    return {
-      typeResult: state.typeResult,
-      article: state.currentArticle,
-      user: state.userState
-    };
-  },
+    state => {
+      return {
+        typeResult: state.typeResult,
+        article: state.currentArticle,
+        user: state.userState
+      };
+    },
 
-  dispatch => {
-    return {
-      saveTypeResult: res => {
-        dispatch(typeIn(res));
-      },
-      toggleChart: showIt => {
-        dispatch(toggleChart(showIt));
-      }
-    };
-  }
+    dispatch => {
+      return {
+        saveTypeResult: res => {
+          dispatch(typeIn(res));
+        },
+        toggleChart: showIt => {
+          dispatch(toggleChart(showIt));
+        },
+        resetTypeResult: () => {
+          dispatch(resetTypeResult());
+        }
+      };
+    }
 )
 class Stage extends Component {
 
@@ -38,6 +42,7 @@ class Stage extends Component {
     typeResult: PropTypes.object.isRequired,
     saveTypeResult: PropTypes.func.isRequired,
     toggleChart: PropTypes.func.isRequired,
+    resetTypeResult: PropTypes.func.isRequired,
     article: PropTypes.object,
     user: PropTypes.object
   };
@@ -50,28 +55,35 @@ class Stage extends Component {
     this.registerMe = this.registerChild.bind(this);
     this.keyPressed = this.keyPressed.bind(this);
     this.keyDown = this.keyDown.bind(this);
+    this.scroll = this.scroll.bind(this);
   }
 
   componentDidMount() {
-    this.loadDefaultArticle();
+    if (!this.props.article.id) {
+      this.loadDefaultArticle();
+    }
     this.powerMode = new PowerMode();
     this.powerMode.draw();
-    window.addEventListener('scroll', () => this.scroll());
+    window.addEventListener('scroll', this.scroll);
   }
 
   componentWillReceiveProps(nextProps) {
+    // compare props because it will receive props many times as user type in
     if (nextProps.article.id === this.props.article.id) {
       return false;
     }
+
+    this.props.resetTypeResult();
     this.loadArticle(nextProps.article.id);
     return false;
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.article._id === nextState.article._id) {
-      return false;
-    }
-    return true;
+    return this.state.article._id !== nextState.article._id;
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.scroll);
   }
 
   loadDefaultArticle() {
@@ -87,16 +99,14 @@ class Stage extends Component {
   _loadArticle(url) {
     const that = this;
     $.get(url, function (res) {
-      console.log(res);
       if (!res.success) {
         toastr.error('default article load fail');
         return;
       } else {
         toastr.success('article loaded', 'success',
-          {timeOut: 1000});
+            {timeOut: 1000});
       }
       that.setState({complete: false, article: res.result}, function () {
-        console.log('force update');
         that.moveCursor({dir: 0});
         that.focusStage();
       });
@@ -191,16 +201,23 @@ class Stage extends Component {
 
   complete() {
     toastr.info('type complete');
-    console.log(this.props.typeResult);
     const typeResult = this.props.typeResult;
     typeResult.articleId = this.state.article._id;
     //todo: guest situation handler
-    typeResult.userEmail = this.props.user.email||'guestEmail';
+    typeResult.userEmail = this.props.user.email || 'guestEmail';
 
-    $.post('/record/save', typeResult, function success(msg) {
-      console.log(msg);
+
+    $.ajax({
+      type: "POST",
+      //the url where you want to sent the userName and password to
+      url: '/record/save',
+      dataType: 'json',
+      contentType: 'application/json',
+      data: JSON.stringify(typeResult),
+      success: function () {
+        alert("Thanks!");
+      }
     });
-
     this.props.toggleChart(true);
   }
 
@@ -229,42 +246,42 @@ class Stage extends Component {
     const now = '-' + Date.now().toString();
 
     return (
-      <div
-        className="typing main"
-        tabIndex="0"
-        onKeyPress={this.keyPressed}
-        onKeyDown={this.keyDown}
-        // ref={this.getRefBuilder('stage')}
-        ref={elem => this.stage = elem}
-        //todo: figure out this
-      >
-        <InfoBoard/>
         <div
-          id="stage-wrap"
-          className="col-md-10 col-md-offset-1"
+            className="typing main"
+            tabIndex="0"
+            onKeyPress={this.keyPressed}
+            onKeyDown={this.keyDown}
+            // ref={this.getRefBuilder('stage')}
+            ref={elem => this.stage = elem}
+            //todo: figure out this
         >
-          <canvas id="canvas" className="col-md-10"/>
+          <InfoBoard/>
           <div
-            id="stage"
+              id="stage-wrap"
+              className="col-md-10 col-md-offset-1"
           >
-            {
-              this.state.article._id ? (
-                  this.state.article.text.split('').map(
-                    (char, index) => (
-                      <SingleChar key={index + now} char={char} pos={index} registerMe={this.registerMe}/>
-                    )))
-                : 'no article loaded'
-            }
-            <Cursor ref={elem => this.cursor = elem}/>
+            <canvas id="canvas" className="col-md-10"/>
+            <div
+                id="stage"
+            >
+              {
+                this.state.article._id ? (
+                        this.state.article.text.split('').map(
+                            (char, index) => (
+                                <SingleChar key={index + now} char={char} pos={index} registerMe={this.registerMe}/>
+                            )))
+                    : 'no article loaded'
+              }
+              <Cursor ref={elem => this.cursor = elem}/>
+            </div>
           </div>
+          <DataVisualizer
+              ref={elem => {
+                this.visualizer = elem;
+              }}
+          />
+          <ArticleSelector/>
         </div>
-        <DataVisualizer
-          ref={elem => {
-            this.visualizer = elem;
-          }}
-        />
-        <ArticleSelector/>
-      </div>
     );
   }
 }

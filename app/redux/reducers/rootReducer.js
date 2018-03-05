@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux';
-import typeResult from './saveTypeResultReducer';
+import {combineReducers} from 'redux';
+import typeResult from './typeResultReducer';
 import stageState from './stageStateReducer';
 import userState from './userStateReducer';
 import currentArticle from "./currentArticleReducer";
@@ -22,12 +22,13 @@ store structure
   }
 
   stageState:{
-    showChart: true
+    showChart: false
   }
 
   userState:{
-    username: "me",
-    email: "hoho"
+    username: "guest",
+    email: "",
+    records: undefined
   }
 
   currentArticle:{

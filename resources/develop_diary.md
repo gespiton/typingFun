@@ -35,3 +35,11 @@
 * trying to figure out a way to manage local package. using **file:./...** is problematic, it might reimport the same package multiple times causing problem.(e.x. mongoose schema)
 
     my current solution is write a simple distributor in app root, every local package is declared here and other script can reference them here.
+
+* mother fucker... write promise.catch to promise.cache, causing so much trouble
+
+    > **set break point and look for err info**
+
+### 2018/3/3
+* carefully manage the life cycle of your component, register event when mount, remember to remove these event after component unmount.
+

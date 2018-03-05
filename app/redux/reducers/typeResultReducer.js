@@ -29,6 +29,11 @@ const saveTypeResult = (state = iniState, action) => {
           newState.timeSpent = elapsed;
           return newState;
         }
+
+        case constant.resetTypeInfo: {
+          return iniState;
+        }
+
         default: {
           return state;
         }

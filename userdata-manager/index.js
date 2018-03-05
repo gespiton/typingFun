@@ -1,14 +1,12 @@
 const Manager = require('./lib/manager');
 const manager = new Manager();
 
-class ArticleManager {
+module.exports = {
   saveRecord(record) {
     return manager.save(record);
-  }
+  },
 
-  getUserRecords(id) {
-    return manager.getUserRecords(id);
+  getUserRecords(userEmail) {
+    return manager.getUserRecords(userEmail);
   }
-}
-
-module.exports = ArticleManager;
+};

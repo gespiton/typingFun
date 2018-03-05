@@ -7,8 +7,10 @@ const Header = () => (
     <div>
       <header className="myHeader">
         <nav className="">
-          <li className="left"><Link to="/">Home</Link></li>
-          <li className="left"><Link to="/typing">typing</Link></li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/typing">typing</Link></li>
+          <li className="spacer"/>
+
           <UserState/>
         </nav>
       </header>

@@ -3,7 +3,9 @@
 ### important
 - [ ] user name display style
 - [ ] use font awesome
-- [ ] firefox performance issue
+- [x] firefox performance issue
+
+    can't fix these, seemed to be a firefox + react problem?
 
 ### later
 - [ ] drawing graph, green means fast, red means slow

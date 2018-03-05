@@ -37,9 +37,9 @@ class UserState extends Component {
     const user = this.props.userState;
     if (user.email) {
       return (
-          <div>
-            <li className="right label">{user.username}</li>
-          </div>
+          <li className="user-panel">
+            <i className="fa fa-user-o fa-3x"/>
+          </li>
       );
     } else {
       return (

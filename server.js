@@ -8,9 +8,8 @@ const mongoose = require('mongoose');
 const compression = require('compression');
 const passport = require('passport'),
     LocalStrategy = require('passport-local'),
-    Memb = require('./membership/index');
+    memberShip = require('./membership/index');
 
-const memberShip = new Memb();
 passport.use(new LocalStrategy(
     {
       usernameField: 'email',
@@ -99,7 +98,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.send("internal error");
 });
 
 
