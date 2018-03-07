@@ -47,6 +47,28 @@ header.myHeader
         display: flex
         flex-flow: column
         padding: 0 20px
+        position: relative
+        #dropdown
+          position: absolute
+          top: 80px
+          right: 0
+          color: #0f0f0f
+          background: white
+          display: flex
+          flex-direction: column
+          justify-content: space-between
+          transform-origin: top right
+
+          transition: 0.3s all ease-in-out
+          &.folded
+            transform: scaleY(0) scaleX(0)
+          li
+            border: 1px solid #d0d0d0
+            height: auto
+            display: block
+            padding: 0 40px
+            font-size: 1.5rem
+            white-space: nowrap
       &.label
         height: 60px
         width: 60px

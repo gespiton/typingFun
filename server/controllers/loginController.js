@@ -4,6 +4,12 @@ function main(router) {
   router.route('/login')
       .post((req, res, next) => membershipService.login(req, res, next));
 
+
+  router.get('/logout', function (req, res) {
+    req.logout();
+    res.redirect('/');
+  });
+
   router.route('/register')
       .post((req, res, next) => membershipService.register(req, res, next));
 

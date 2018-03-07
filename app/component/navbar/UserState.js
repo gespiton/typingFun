@@ -8,15 +8,17 @@ import logIn from "../../redux/actions/logInUser";
 
 class UserState extends Component {
 
-  static propType = {
+  static propTypes = {
     logInUser: PropTypes.object.isRequired
   };
 
   constructor(props) {
     super(props);
-    this.state = Object.assign({}, props.userState);
+    this.state = Object.assign({}, props.userState, {hide: true});
     this.logInUser = props.logInUser;
     this.initUserState();
+    this.bindDropDown = (elem) => this.dropDown = elem;
+    this.toggleDropdown = this.toggleDropdown.bind(this);
   }
 
   initUserState() {
@@ -33,12 +35,22 @@ class UserState extends Component {
   }
 
 
+  toggleDropdown() {
+    this.setState({hide: !this.state.hide});
+  }
+
+
   render() {
     const user = this.props.userState;
+    const hide = this.state.hide;
+
     if (user.email) {
       return (
-          <li className="user-panel">
-            <i className="fa fa-user-o fa-3x"/>
+          <li className="user-panel" onClick={this.toggleDropdown}>
+            <i className="fa fa-user-o fa-2x"/>
+            <div className={hide ? "folded" : ""} id="dropdown" ref={this.bindDropDown}>
+              <li className="my-collection-item"><a href="/logout">log out</a></li>
+            </div>
           </li>
       );
     } else {
