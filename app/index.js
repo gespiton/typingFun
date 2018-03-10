@@ -6,6 +6,9 @@ import App from "./component/Layout";
 import createStore from './redux/store';
 import toastr from 'toastr';
 require('./styles/main.sass');
+require('jquery');
+require('materialize-css');
+
 toastr.options = {
   "closeButton": false,
   "debug": false,
